@@ -46,7 +46,9 @@ function getReadableDate(date) {
 }
 
 export default async function imageImporter() {
-    await fs.mkdirSync('images/thumbnail');
+    if (!fs.existsSync('images/thumbnail')) {
+        await fs.mkdirSync('images/thumbnail');
+    }
 
     const image_names = await Promise.all(imageLister().map(
         async (image, index) => {
