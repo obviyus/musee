@@ -5,7 +5,7 @@ node_modules
 /functions/\[\[path\]\].js.map
 /public/build
 .env
-public/images/thumbnail
-public/index.js
+images/thumbnail
+index.js
 .idea/
-./app/styles/*
+app/styles/*
