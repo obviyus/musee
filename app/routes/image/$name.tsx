@@ -1,6 +1,6 @@
 import type { LoaderFunction } from "@remix-run/cloudflare";
 import { redirect } from "@remix-run/cloudflare";
-import images from "public/index";
+import images from "images/index";
 import { useLoaderData } from "@remix-run/react";
 
 export const loader: LoaderFunction = async ({ params, }) => {

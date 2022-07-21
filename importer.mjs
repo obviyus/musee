@@ -4,14 +4,14 @@ import ExifReader from "exifreader";
 import { parse } from "fecha";
 
 function imageLister() {
-    return fs.readdirSync('public/images/original');
+    return fs.readdirSync('images/original');
 }
 
 function importStatementBuilder(images) {
     let importStatement = "";
     images.forEach(image => {
-        importStatement += `import ${ image.name } from "${ image.thumbnailPath }";\n`;
-        importStatement += `import ${ image.name }_OG from "${ image.originalPath }";\n`;
+        importStatement += `import ${ image.name } from ".${ image.thumbnailPath }";\n`;
+        importStatement += `import ${ image.name }_OG from ".${ image.originalPath }";\n`;
     });
 
     return importStatement;
@@ -46,33 +46,33 @@ function getReadableDate(date) {
 }
 
 export default async function imageImporter() {
-    console.log(fs.readdirSync('public/images/original'));
+    await fs.mkdirSync('images/thumbnail');
 
     const image_names = await Promise.all(imageLister().map(
         async (image, index) => {
             const filename = `IMG_${ index + 1 }`;
 
-            await sharp(`public/images/original/${ image }`)
+            await sharp(`images/original/${ image }`)
                 .withMetadata()
                 .rotate()
                 .resize({ width: 640, withoutEnlargement: true })
                 .jpeg({ quality: 80, mozjpeg: true, force: true })
-                .toFile(`./public/images/thumbnail/${ filename }.jpeg`);
+                .toFile(`./images/thumbnail/${ filename }.jpeg`);
 
-            const original_metadata = await sharp(`public/images/original/${ image }`).metadata();
-            const original_size = fs.statSync(`public/images/original/${ image }`).size;
+            const original_metadata = await sharp(`images/original/${ image }`).metadata();
+            const original_size = fs.statSync(`images/original/${ image }`).size;
 
-            const exifTags = await ExifReader.load(`public/images/original/${ image }`);
+            const exifTags = await ExifReader.load(`images/original/${ image }`);
 
             let date;
             if ("DateTimeOriginal" in exifTags) {
                 date = parse(exifTags['DateTimeOriginal'].description, 'YYYY:MM:DD HH:mm:ss');
             } else {
-                date = fs.statSync(`public/images/original/${ image }`).ctime;
+                date = fs.statSync(`images/original/${ image }`).ctime;
             }
 
-            const converted_metadata = await sharp(`public/images/thumbnail/${ filename }.jpeg`).metadata();
-            const converted_size = fs.statSync(`public/images/thumbnail/${ filename }.jpeg`).size;
+            const converted_metadata = await sharp(`images/thumbnail/${ filename }.jpeg`).metadata();
+            const converted_size = fs.statSync(`images/thumbnail/${ filename }.jpeg`).size;
 
             console.log(
                 `${ filename }: ${ original_metadata.width } ✕ ${ original_metadata.height } [ ${ original_size / 1000 }KB ] => ${ converted_metadata.width } ✕ ${ converted_metadata.height } [ ${ converted_size / 1000 }KB ]`
