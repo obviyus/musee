@@ -15,7 +15,7 @@ export const loader: LoaderFunction = async ({ params, }) => {
         title: name,
         image: image.original,
         width: image.width,
-        date: image.date,
+        date: image.readableDate,
         height: image.height,
     };
 }

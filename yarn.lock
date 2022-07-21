@@ -1719,6 +1719,11 @@
   resolved "https://registry.yarnpkg.com/@web3-storage/multipart-parser/-/multipart-parser-1.0.0.tgz#6b69dc2a32a5b207ba43e556c25cc136a56659c4"
   integrity sha512-BEO6al7BYqcnfX15W2cnGR+Q566ACXAT9UQykORCWW80lmkpWsnEob6zJS1ZVBKsSJC8+7vJkHwlp+lXG1UCdw==
 
+"@xmldom/xmldom@^0.7.5":
+  version "0.7.5"
+  resolved "https://registry.yarnpkg.com/@xmldom/xmldom/-/xmldom-0.7.5.tgz#09fa51e356d07d0be200642b0e4f91d8e6dd408d"
+  integrity sha512-V3BIhmY36fXZ1OtVcI9W+FxQqxVLsPKcNjWigIaa81dLC9IolJl5Mt4Cvhmr0flUnjSpTdrbMTSbXqYqV5dT6A==
+
 "@yarnpkg/esbuild-plugin-pnp@3.0.0-rc.11":
   version "3.0.0-rc.11"
   resolved "https://registry.yarnpkg.com/@yarnpkg/esbuild-plugin-pnp/-/esbuild-plugin-pnp-3.0.0-rc.11.tgz#5cd829662b916a3dbbdc5a76913380f1913d2b65"
@@ -3402,6 +3407,13 @@ etag@~1.8.1:
   resolved "https://registry.yarnpkg.com/etag/-/etag-1.8.1.tgz#41ae2eeb65efa62268aebfea83ac7d79299b0887"
   integrity sha512-aIL5Fx7mawVa300al2BnEE4iNvo1qETxLrPI/o05L7z6go7fCw1J6EQmbK4FmJ2AS7kgVF/KEZWufBfdClMcPg==
 
+exifreader@^4.5.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/exifreader/-/exifreader-4.5.0.tgz#350545e2de9f20ca72c585c8adb11ad54349d16b"
+  integrity sha512-CUkDKjA+hNV6+bx5skPPdjeyPV28LZtqrd/7Sli1j2Y/QTZC7PQc+h2j5TeIo5zYbYhwzEN6chgeTdWLY33cUg==
+  optionalDependencies:
+    "@xmldom/xmldom" "^0.7.5"
+
 exit-hook@2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/exit-hook/-/exit-hook-2.2.1.tgz#007b2d92c6428eda2b76e7016a34351586934593"
@@ -3544,6 +3556,11 @@ fault@^2.0.0:
   integrity sha512-WtySTkS4OKev5JtpHXnib4Gxiurzh5NCGvWrFaZ34m6JehfTUhKZvn9njTfw48t6JumVQOmrKqpmGcdwxnhqBQ==
   dependencies:
     format "^0.2.0"
+
+fecha@^4.2.3:
+  version "4.2.3"
+  resolved "https://registry.yarnpkg.com/fecha/-/fecha-4.2.3.tgz#4d9ccdbc61e8629b259fdca67e65891448d569fd"
+  integrity sha512-OP2IUU6HeYKJi3i0z4A19kHMQoLVs4Hc+DPqqxI2h/DPZHTm/vjsfC6P0b4jCMy14XizLBqvndQ+UilD7707Jw==
 
 figures@^3.0.0:
   version "3.2.0"
