@@ -1,0 +1,10 @@
+node_modules
+
+/.cache
+/functions/\[\[path\]\].js
+/functions/\[\[path\]\].js.map
+/public/build
+.env
+public/images
+public/index.js
+.idea/
