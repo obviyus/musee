@@ -99,8 +99,8 @@ export default async function imageImporter() {
     /**
      * Write all imports to the index.js file
      */
-    fs.writeFileSync('public/index.js', importStatementBuilder(image_names));
-    fs.appendFileSync('public/index.js', imageExportListBuilder(image_names));
+    fs.writeFileSync('./app/images.ts', importStatementBuilder(image_names));
+    fs.appendFileSync('./app/images.ts', imageExportListBuilder(image_names));
 }
 
 await imageImporter();
