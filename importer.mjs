@@ -4,7 +4,7 @@ import ExifReader from "exifreader";
 import { parse } from "fecha";
 
 function imageLister() {
-    return fs.readdirSync('./public/images/original');
+    return fs.readdirSync('public/images/original');
 }
 
 function importStatementBuilder(images) {
@@ -46,31 +46,33 @@ function getReadableDate(date) {
 }
 
 export default async function imageImporter() {
+    console.log(fs.readdirSync('public/images/original'));
+
     const image_names = await Promise.all(imageLister().map(
         async (image, index) => {
             const filename = `IMG_${ index + 1 }`;
 
-            await sharp(`./public/images/original/${ image }`)
+            await sharp(`public/images/original/${ image }`)
                 .withMetadata()
                 .rotate()
                 .resize({ width: 640, withoutEnlargement: true })
                 .jpeg({ quality: 80, mozjpeg: true, force: true })
                 .toFile(`./public/images/thumbnail/${ filename }.jpeg`);
 
-            const original_metadata = await sharp(`./public/images/original/${ image }`).metadata();
-            const original_size = fs.statSync(`./public/images/original/${ image }`).size;
+            const original_metadata = await sharp(`public/images/original/${ image }`).metadata();
+            const original_size = fs.statSync(`public/images/original/${ image }`).size;
 
-            const exifTags = await ExifReader.load(`./public/images/original/${ image }`);
+            const exifTags = await ExifReader.load(`public/images/original/${ image }`);
 
             let date;
             if ("DateTimeOriginal" in exifTags) {
                 date = parse(exifTags['DateTimeOriginal'].description, 'YYYY:MM:DD HH:mm:ss');
             } else {
-                date = fs.statSync(`./public/images/original/${ image }`).ctime;
+                date = fs.statSync(`public/images/original/${ image }`).ctime;
             }
 
-            const converted_metadata = await sharp(`./public/images/thumbnail/${ filename }.jpeg`).metadata();
-            const converted_size = fs.statSync(`./public/images/thumbnail/${ filename }.jpeg`).size;
+            const converted_metadata = await sharp(`public/images/thumbnail/${ filename }.jpeg`).metadata();
+            const converted_size = fs.statSync(`public/images/thumbnail/${ filename }.jpeg`).size;
 
             console.log(
                 `${ filename }: ${ original_metadata.width } ✕ ${ original_metadata.height } [ ${ original_size / 1000 }KB ] => ${ converted_metadata.width } ✕ ${ converted_metadata.height } [ ${ converted_size / 1000 }KB ]`
@@ -95,8 +97,8 @@ export default async function imageImporter() {
     /**
      * Write all imports to the index.js file
      */
-    fs.writeFileSync('./public/index.js', importStatementBuilder(image_names));
-    fs.appendFileSync('./public/index.js', imageExportListBuilder(image_names));
+    fs.writeFileSync('public/index.js', importStatementBuilder(image_names));
+    fs.appendFileSync('public/index.js', imageExportListBuilder(image_names));
 }
 
 await imageImporter();
