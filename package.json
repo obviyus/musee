@@ -2,7 +2,8 @@
   "private": true,
   "sideEffects": false,
   "scripts": {
-    "build": "yarn run build:css && remix build",
+    "build:images": "node importer.mjs",
+    "build": "yarn run build:css && yarn run build:images && remix build",
     "build:css": "tailwindcss -m -i ./styles/app.css -o app/styles/app.css",
     "dev:remix": "remix watch",
     "dev:css": "tailwindcss -w -i ./styles/app.css -o app/styles/app.css",
