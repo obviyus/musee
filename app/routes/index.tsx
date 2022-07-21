@@ -1,4 +1,4 @@
-import images from '../../public/index';
+import images from 'images/index';
 import Masonry from 'react-masonry-css'
 import { Link } from "@remix-run/react";
 
