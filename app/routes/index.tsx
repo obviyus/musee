@@ -3,9 +3,12 @@ import Masonry from 'react-masonry-css'
 import { Link } from "@remix-run/react";
 
 const breakpointColumnsObj = {
-    default: 4,
-    1100: 3,
-    700: 2,
+    default: 2,
+    3000: 5,
+    2500: 5,
+    2000: 4,
+    1500: 3,
+    1000: 2,
     500: 1
 };
 
