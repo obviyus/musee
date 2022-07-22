@@ -6,6 +6,9 @@ node_modules
 /public/build
 .env
 images/thumbnail
+images/compressed
 index.js
 .idea/
+*.zip
+*.log
 app/styles/*
