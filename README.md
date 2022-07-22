@@ -5,9 +5,9 @@
 <h2 align="center">Musée</h2>
 
 <p align="center">
-  <img alt="GitHub package.json version" src="https://img.shields.io/github/package-json/v/obviyus/galerie">
-  <img alt="Website" src="https://img.shields.io/website?down_message=offline&label=gallery&up_message=online&url=https%3A%2F%2Fgallery.obviy.us%2F">
-  <img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/m/obviyus/galerie">
+  <img alt="GitHub package.json version" src="https://img.shields.io/github/package-json/v/obviyus/musee">
+  <img alt="Website" src="https://img.shields.io/website?down_message=offline&label=website&up_message=online&url=https%3A%2F%2Fgallery.obviy.us%2F">
+  <img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/m/obviyus/musee">
 </p>
 
 <p align="center">Fast, responsive , self-hosted image gallery. Ships minimal JS to the client.</p>
