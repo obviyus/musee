@@ -39,9 +39,10 @@ export default function ImageRoute() {
     const data = useLoaderData();
 
     return (
-        <div className={ 'flex flex-col max-w-screen-xl min-h-screen max-h-screen mx-auto p-10 items-center pb-16 pt-12' }>
+        <div
+            className={ 'flex flex-col max-w-screen-xl min-h-screen max-h-screen mx-auto p-10 items-center pb-16 pt-12' }>
             <a href={ data.image }>
-                <img src={ data.image }
+                <img src={ `https://cdn.statically.io/img/gallery.obviy.us${ data.image }` }
                      alt={ data.title }
                      title={ data.title }
                      width={ data.width }
