@@ -20,7 +20,7 @@ export default function Index() {
             columnClassName=""
         >
             {
-                Object.entries(images).map(([name, image]) => {
+                Object.entries(images).map(([name, image], index) => {
                     return <Link prefetch={ 'intent' } to={ `/image/${ name }` } key={ name }>
                         <img src={ image.thumbnail }
                              key={ name }
@@ -28,7 +28,7 @@ export default function Index() {
                              title={ name }
                              width={ image.width }
                              height={ image.height }
-                             loading={ 'lazy' }
+                             loading={ index > 4 ? 'lazy' : 'eager' }
                              className={ 'transition ease-in-out delay-75 hover:-translate-y-1 hover:scale-110 duration-300' }
                         />
                     </Link>
