@@ -2,10 +2,11 @@ import * as fs from "fs";
 import sharp from "sharp";
 import ExifReader from "exifreader";
 import { parse } from "fecha";
+import * as path from "path";
 
 function imageLister() {
     return fs.readdirSync('images/original').filter(file => {
-        return file.endsWith('.jpg') || file.endsWith('.jpeg');
+        return [".jpg", ".jpeg", ".png", ".webp"].includes(path.extname(file));
     });
 }
 
@@ -67,11 +68,11 @@ export default async function imageImporter() {
                 sharp(`images/original/${ image }`)
                     .rotate()
                     .resize({ width: 640, withoutEnlargement: true })
-                    .jpeg({ quality: 80, mozjpeg: true, force: true })
-                    .toFile(`./images/thumbnail/${ filename }.jpeg`),
+                    .webp({ quality: 80, force: true })
+                    .toFile(`./images/thumbnail/${ filename }.webp`),
                 sharp(`images/original/${ image }`)
                     .rotate()
-                    .webp()
+                    .jpeg({ mozjpeg: true, force: true })
                     .toFile(`./images/compressed/${ filename }.jpeg`),
             ]);
 
@@ -85,14 +86,14 @@ export default async function imageImporter() {
                 date = fs.statSync(`images/original/${ image }`).birthtime;
             }
 
-            const thumbnailMetadata = await sharp(`images/thumbnail/${ filename }.jpeg`).metadata();
+            const thumbnailMetadata = await sharp(`images/thumbnail/${ filename }.webp`).metadata();
 
             original_size += fs.statSync(`images/original/${ image }`).size;
             compressed_size += fs.statSync(`images/compressed/${ filename }.jpeg`).size;
 
             return {
                 name: filename,
-                thumbnailPath: `./images/thumbnail/${ filename }.jpeg`,
+                thumbnailPath: `./images/thumbnail/${ filename }.webp`,
                 compressedPath: `./images/compressed/${ filename }.jpeg`,
                 readableDate: getReadableDate(date),
                 date: date,
