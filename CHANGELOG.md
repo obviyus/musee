@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/obviyus/musee/compare/v1.1.1...v1.1.2) (2022-07-22)
+
+
+### Bug Fixes
+
+* **link:** pre-fetch links on hover ([c3552cd](https://github.com/obviyus/musee/commit/c3552cd604295d75edf403cf719e6646227b16d5))
+
 ## [1.1.1](https://github.com/obviyus/musee/compare/v1.1.0...v1.1.1) (2022-07-22)
 
 
