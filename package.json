@@ -1,6 +1,11 @@
 {
+  "name": "galerie",
+  "version": "0.1.0",
   "private": true,
   "sideEffects": false,
+  "author": "Ayaan Zaidi (hi@obviy.us)",
+  "license": "GNU GPLv3",
+  "description": "Self hosted gallery written in React + Remix. Ships minimal JS to the client. Server Side Rendered.",
   "scripts": {
     "build:images": "node importer.mjs",
     "build": "yarn run build:css && yarn run build:images && remix build",
