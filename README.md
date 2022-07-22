@@ -16,6 +16,14 @@
 
 Unfortunately, a responsive masonry layout is [not possible](https://stackoverflow.com/a/45200955/11940280) without the use of client-side JS to determine the window size (used for calculating the number of columns). At least until [CSS Grid Masonry](https://drafts.csswg.org/css-grid-3/#masonry-layout) becomes available.
 
+<a align="center" href="https://gallery.obviy.us/">
+    <img src="images/preview.webp" alt="demo" width="100%">
+</a>
+
+<p align="center">
+  <a href="https://gallery.obviy.us/"><code>[ Live Demo ]</code></a>
+</p>
+
 ## ✨ Features
 
 - [x] Generate WebP image thumbnails
