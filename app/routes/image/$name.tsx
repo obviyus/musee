@@ -39,18 +39,18 @@ export default function ImageRoute() {
     const data = useLoaderData();
 
     return (
-        <div className={ 'flex mx-auto max-w-screen-sm p-2 items-center flex-col pb-16 pt-12 min-h-screen' }>
+        <div className={ 'flex flex-col max-w-screen-xl min-h-screen max-h-screen mx-auto p-10 items-center pb-16 pt-12' }>
             <a href={ data.image }>
                 <img src={ data.image }
                      alt={ data.title }
                      title={ data.title }
                      width={ data.width }
                      height={ data.height }
-                     className={ 'm-auto shadow-2xl rounded-xl border-slate-50 border-2 transition ease-in-out delay-75 hover:-translate-y-1 hover:scale-110 duration-300' }
+                     className={ 'w-full max-h-[80vh] shadow-2xl rounded-xl border-slate-50 border-2 transition ease-in-out delay-75 hover:-translate-y-1 hover:scale-110 duration-300' }
                 />
             </a>
 
-            <h1 className={ 'font-bold text-slate-700 mt-5' }>
+            <h1 className={ 'font-bold text-slate-700 mt-8' }>
                 { data.title }
             </h1>
 
