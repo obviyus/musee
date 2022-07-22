@@ -4,7 +4,9 @@ import ExifReader from "exifreader";
 import { parse } from "fecha";
 
 function imageLister() {
-    return fs.readdirSync('images/original');
+    return fs.readdirSync('images/original').filter(file => {
+        return file.endsWith('.jpg') || file.endsWith('.jpeg');
+    });
 }
 
 function importStatementBuilder(images) {
@@ -83,13 +85,10 @@ export default async function imageImporter() {
                 date = fs.statSync(`images/original/${ image }`).birthtime;
             }
 
-            const compressed_metadata = await sharp(`images/thumbnail/${ filename }.jpeg`).metadata();
+            const thumbnailMetadata = await sharp(`images/thumbnail/${ filename }.jpeg`).metadata();
+
             original_size += fs.statSync(`images/original/${ image }`).size;
             compressed_size += fs.statSync(`images/compressed/${ filename }.jpeg`).size;
-
-            console.log(
-                `Processed ${ filename }.jpeg [ ${ compressed_metadata.width } x ${ compressed_metadata.height } ] => ${ (fs.statSync(`images/compressed/${ filename }.jpeg`).size / 1024 / 1024).toFixed(2) } MB`
-            );
 
             return {
                 name: filename,
@@ -97,8 +96,8 @@ export default async function imageImporter() {
                 compressedPath: `./images/compressed/${ filename }.jpeg`,
                 readableDate: getReadableDate(date),
                 date: date,
-                width: compressed_metadata.width,
-                height: compressed_metadata.height,
+                width: thumbnailMetadata.width,
+                height: thumbnailMetadata.height,
             };
         }
     ));
