@@ -1,3 +1,11 @@
+# [1.4.0](https://github.com/obviyus/musee/compare/v1.3.0...v1.4.0) (2022-07-22)
+
+
+### Features
+
+* **cdn:** convert to webp for card ([52030b4](https://github.com/obviyus/musee/commit/52030b4aba2ce25194908ff6ed0ce85474d45c31))
+* **cdn:** use statically.io for image delivery ([7cdb05b](https://github.com/obviyus/musee/commit/7cdb05b4b9d5853ade5051486a7dcbccc3db1c88))
+
 # [1.3.0](https://github.com/obviyus/musee/compare/v1.2.0...v1.3.0) (2022-07-22)
 
 
