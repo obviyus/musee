@@ -15,12 +15,12 @@ export const meta: MetaFunction = () => ({
     "og:description": config.description,
     "og:type": "website",
     "og:url": config.url,
-    "og:image": `${ config.url }/image/${ config.socialPreviewImage }`,
+    "og:image": `${ config.url }${ config.socialPreviewImage }`,
     "og:locale": "en_US",
     "og:locale_alternative": "fr_FR",
     "twitter:card": "summary_large_image",
     "twitter:title": config.title,
-    "twitter:image": `${ config.url }/image/${ config.socialPreviewImage }`,
+    "twitter:image": `${ config.url }${ config.socialPreviewImage }`,
 
 });
 
