@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/obviyus/musee/compare/v1.1.0...v1.1.1) (2022-07-22)
+
+
+### Bug Fixes
+
+* **link:** remove prefetching ([6318a0f](https://github.com/obviyus/musee/commit/6318a0ff9c033ac51c33ba687a7552facd190b43))
+
 # [1.1.0](https://github.com/obviyus/galerie/compare/v1.0.0...v1.1.0) (2022-07-22)
 
 
