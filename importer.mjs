@@ -11,7 +11,7 @@ function importStatementBuilder(images) {
     let importStatement = "";
     images.forEach(image => {
         importStatement += `import ${ image.name } from ".${ image.thumbnailPath }";\n`;
-        importStatement += `import ${ image.name }_OG from ".${ image.originalPath }";\n`;
+        importStatement += `import ${ image.name }_OG from ".${ image.compressedPath }";\n`;
     });
 
     return importStatement;
@@ -50,19 +50,29 @@ export default async function imageImporter() {
         await fs.mkdirSync('images/thumbnail');
     }
 
+    if (!fs.existsSync('images/compressed')) {
+        await fs.mkdirSync('images/compressed');
+    }
+
+    let original_size = 0;
+    let compressed_size = 0;
+
     const image_names = await Promise.all(imageLister().map(
         async (image, index) => {
             const filename = `IMG_${ index + 1 }`;
 
-            await sharp(`images/original/${ image }`)
-                .withMetadata()
-                .rotate()
-                .resize({ width: 640, withoutEnlargement: true })
-                .jpeg({ quality: 80, mozjpeg: true, force: true })
-                .toFile(`./images/thumbnail/${ filename }.jpeg`);
+            await Promise.all([
+                sharp(`images/original/${ image }`)
+                    .rotate()
+                    .resize({ width: 640, withoutEnlargement: true })
+                    .jpeg({ quality: 80, mozjpeg: true, force: true })
+                    .toFile(`./images/thumbnail/${ filename }.jpeg`),
+                sharp(`images/original/${ image }`)
+                    .rotate()
+                    .jpeg({ mozjpeg: true, force: true })
+                    .toFile(`./images/compressed/${ filename }.jpeg`),
+            ]);
 
-            const original_metadata = await sharp(`images/original/${ image }`).metadata();
-            const original_size = fs.statSync(`images/original/${ image }`).size;
 
             const exifTags = await ExifReader.load(`images/original/${ image }`);
 
@@ -70,27 +80,32 @@ export default async function imageImporter() {
             if ("DateTimeOriginal" in exifTags) {
                 date = parse(exifTags['DateTimeOriginal'].description, 'YYYY:MM:DD HH:mm:ss');
             } else {
-                date = fs.statSync(`images/original/${ image }`).ctime;
+                date = fs.statSync(`images/original/${ image }`).birthtime;
             }
 
-            const converted_metadata = await sharp(`images/thumbnail/${ filename }.jpeg`).metadata();
-            const converted_size = fs.statSync(`images/thumbnail/${ filename }.jpeg`).size;
+            const compressed_metadata = await sharp(`images/thumbnail/${ filename }.jpeg`).metadata();
+            original_size += fs.statSync(`images/original/${ image }`).size;
+            compressed_size += fs.statSync(`images/compressed/${ filename }.jpeg`).size;
 
             console.log(
-                `${ filename }: ${ original_metadata.width } ✕ ${ original_metadata.height } [ ${ original_size / 1000 }KB ] => ${ converted_metadata.width } ✕ ${ converted_metadata.height } [ ${ converted_size / 1000 }KB ]`
+                `Processed ${ filename }.jpeg [ ${ compressed_metadata.width } x ${ compressed_metadata.height } ] => ${ (fs.statSync(`images/compressed/${ filename }.jpeg`).size / 1024 / 1024).toFixed(2) } MB`
             );
 
             return {
                 name: filename,
                 thumbnailPath: `./images/thumbnail/${ filename }.jpeg`,
-                originalPath: `./images/original/${ image }`,
+                compressedPath: `./images/compressed/${ filename }.jpeg`,
                 readableDate: getReadableDate(date),
                 date: date,
-                width: converted_metadata.width,
-                height: converted_metadata.height,
+                width: compressed_metadata.width,
+                height: compressed_metadata.height,
             };
         }
     ));
+
+    console.log(`Original size: ${ (original_size / 1024 / 1024).toFixed(2) } MB`);
+    console.log(`Compressed size: ${ (compressed_size / 1024 / 1024).toFixed(2) } MB`);
+    console.log(`Reduced by: ${ (compressed_size / original_size * 100).toFixed(2) }% [ ${ (original_size - compressed_size) / 1024 / 1024 } MB ]`);
 
     image_names.sort((a, b) => {
         return new Date(b.date) - new Date(a.date);
