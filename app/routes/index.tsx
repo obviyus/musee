@@ -1,5 +1,6 @@
 import images from '~/images';
 import Masonry from 'react-masonry-css'
+import { Link } from "@remix-run/react";
 
 const breakpointColumnsObj = {
     default: 2,
@@ -20,7 +21,7 @@ export default function Index() {
         >
             {
                 Object.entries(images).map(([name, image]) => {
-                    return <a href={ `/image/${ name }` } key={ name }>
+                    return <Link prefetch={ 'intent' } to={ `/image/${ name }` } key={ name }>
                         <img src={ image.thumbnail }
                              key={ name }
                              alt={ name }
@@ -30,7 +31,7 @@ export default function Index() {
                              loading={ 'lazy' }
                              className={ 'transition ease-in-out delay-75 hover:-translate-y-1 hover:scale-110 duration-300' }
                         />
-                    </a>
+                    </Link>
                 })
             }
         </Masonry>
