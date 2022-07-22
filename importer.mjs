@@ -71,7 +71,7 @@ export default async function imageImporter() {
                     .toFile(`./images/thumbnail/${ filename }.jpeg`),
                 sharp(`images/original/${ image }`)
                     .rotate()
-                    .jpeg({ mozjpeg: true, force: true })
+                    .webp()
                     .toFile(`./images/compressed/${ filename }.jpeg`),
             ]);
 
