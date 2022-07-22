@@ -11,10 +11,10 @@ export const meta: MetaFunction = ({ data }) => {
         "og:title": data.title,
         "og:type": "image",
         "og:url": `${ config.url }/image/${ data.name }`,
-        "og:image": `${ config.url }/${ data.image }`,
+        "og:image": `${ config.url }${ data.image }`,
         "twitter:card": "summary_large_image",
         "twitter:title": data.title,
-        "twitter:image": `${ config.url }/${ data.image }`,
+        "twitter:image": `${ config.url }${ data.image }`,
     }
 };
 
