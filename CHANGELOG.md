@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/obviyus/musee/compare/v1.1.2...v1.2.0) (2022-07-22)
+
+
+### Features
+
+* **image:** show larger images ([2bd52f9](https://github.com/obviyus/musee/commit/2bd52f91de7f602bcd54c395415dae5dcb63c7d1))
+
 ## [1.1.2](https://github.com/obviyus/musee/compare/v1.1.1...v1.1.2) (2022-07-22)
 
 
