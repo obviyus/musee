@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/obviyus/galerie/compare/v1.0.0...v1.1.0) (2022-07-22)
+
+
+### Features
+
+* **image:** generate WebP for thumbnails ([e330cf7](https://github.com/obviyus/galerie/commit/e330cf79ad22298c62697220e0b9b39dea17a2ce))
+
 # 1.0.0 (2022-07-22)
 
 
