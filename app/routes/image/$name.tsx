@@ -1,7 +1,22 @@
-import type { LoaderFunction } from "@remix-run/cloudflare";
+import type { LoaderFunction, MetaFunction } from "@remix-run/cloudflare";
 import { redirect } from "@remix-run/cloudflare";
 import images from '~/images';
 import { useLoaderData } from "@remix-run/react";
+import { config } from "../../../config";
+
+export const meta: MetaFunction = ({ data }) => {
+    return {
+        title: data.title,
+        viewport: "width=device-width,initial-scale=1, shrink-to-fit=no, viewport-fit=cover",
+        "og:title": data.title,
+        "og:type": "image",
+        "og:url": `${ config.url }/image/${ data.name }`,
+        "og:image": data.image,
+        "twitter:card": "summary_large_image",
+        "twitter:title": data.title,
+        "twitter:image": data.image,
+    }
+};
 
 export const loader: LoaderFunction = async ({ params, }) => {
     const { name } = params;
