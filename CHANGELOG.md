@@ -1,3 +1,11 @@
+# [1.3.0](https://github.com/obviyus/musee/compare/v1.2.0...v1.3.0) (2022-07-22)
+
+
+### Features
+
+* **image:** eager load first 5 images ([8fedc0e](https://github.com/obviyus/musee/commit/8fedc0e8e9b08f1c4283a9a28a1d1a90942f50fc))
+* **webp:** use webp for thumbnails ([a556ff1](https://github.com/obviyus/musee/commit/a556ff1aba72ff53a0c6e0403bb91534f95a088b))
+
 # [1.2.0](https://github.com/obviyus/musee/compare/v1.1.2...v1.2.0) (2022-07-22)
 
 
