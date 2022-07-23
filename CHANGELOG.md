@@ -1,3 +1,10 @@
+## [1.5.1](https://github.com/obviyus/musee/compare/v1.5.0...v1.5.1) (2022-07-23)
+
+
+### Bug Fixes
+
+* **transition:** fix ever-increasing load delay ([a0e486c](https://github.com/obviyus/musee/commit/a0e486ce0d183e839abb492edc095bdc6957cab9))
+
 # [1.5.0](https://github.com/obviyus/musee/compare/v1.4.0...v1.5.0) (2022-07-23)
 
 
