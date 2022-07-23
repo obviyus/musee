@@ -3,6 +3,7 @@ import { redirect } from "@remix-run/cloudflare";
 import images from '~/images';
 import { useLoaderData } from "@remix-run/react";
 import { config } from "../../../config";
+import { motion } from "framer-motion"
 
 export const meta: MetaFunction = ({ data }) => {
     return {
@@ -40,16 +41,27 @@ export default function ImageRoute() {
 
     return (
         <div
-            className={ 'flex flex-col max-w-screen-xl min-h-screen max-h-screen mx-auto p-10 items-center pb-16 pt-12' }>
-            <a href={ data.image }>
-                <img src={ `https://cdn.statically.io/img/gallery.obviy.us/f=auto,q=80${ data.image }` }
-                     alt={ data.title }
-                     title={ data.title }
-                     width={ data.width }
-                     height={ data.height }
-                     className={ 'w-full max-h-[80vh] shadow-2xl rounded-xl border-slate-50 border-2 transition ease-in-out delay-75 hover:-translate-y-1 hover:scale-110 duration-300' }
-                />
-            </a>
+            className={ 'flex flex-col overflow-hidden max-w-screen-xl min-h-screen max-h-screen mx-auto p-10 items-center pb-16 pt-12' }>
+            <motion.div
+                initial={ { opacity: 0, y: -100 } }
+                animate={ { opacity: 1, y: 0 } }
+                exit={ { opacity: 0, y: -100 } }
+                transition={ {
+                    type: "spring",
+                    stiffness: 260,
+                    damping: 20
+                } }
+            >
+                <a href={ data.image }>
+                    <img src={ `https://cdn.statically.io/img/gallery.obviy.us/f=auto,q=80${ data.image }` }
+                         alt={ data.title }
+                         title={ data.title }
+                         width={ data.width }
+                         height={ data.height }
+                         className={ 'w-full max-h-[80vh] shadow-2xl rounded-xl border-slate-50 border-2 transition ease-in-out delay-75 hover:-translate-y-1 hover:scale-110 duration-300' }
+                    />
+                </a>
+            </motion.div>
 
             <h1 className={ 'font-bold text-slate-700 mt-8' }>
                 { data.title }
