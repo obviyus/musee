@@ -1,8 +1,9 @@
 import type { LinksFunction, MetaFunction } from "@remix-run/cloudflare";
-import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration, } from "@remix-run/react";
+import { Links, LiveReload, Meta, Scripts, ScrollRestoration, useOutlet, } from "@remix-run/react";
 import styles from "~/styles/app.css";
 import favicon from "../public/favicon.svg";
 import { config } from "../config";
+import { AnimatePresence } from 'framer-motion'
 
 
 export const meta: MetaFunction = () => ({
@@ -32,14 +33,19 @@ export const links: LinksFunction = () => {
 }
 
 export default function App() {
+    const outlet = useOutlet();
+
     return (
         <html lang="en">
         <head>
+            <title>{ config.title }</title>
             <Meta/>
             <Links/>
         </head>
         <body>
-        <Outlet/>
+        <AnimatePresence exitBeforeEnter>
+            { outlet }
+        </AnimatePresence>
         <Scripts/>
         <ScrollRestoration/>
         <LiveReload/>
