@@ -31,7 +31,7 @@ export default function Index() {
                             type: "spring",
                             stiffness: 260,
                             damping: 20,
-                            delay: index * 0.05,
+                            delay: (index % 5) * 0.05,
                         } }
                     >
                         <Link prefetch={ 'intent' } to={ `/image/${ name }` } key={ name }>
