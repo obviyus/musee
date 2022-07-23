@@ -1,3 +1,15 @@
+# [1.5.0](https://github.com/obviyus/musee/compare/v1.4.0...v1.5.0) (2022-07-23)
+
+
+### Bug Fixes
+
+* **cdn:** re-add CDN links ([5b963cd](https://github.com/obviyus/musee/commit/5b963cdb708884aeab8af0f51cb7296c5c1a6aae))
+
+
+### Features
+
+* **framer:** use `framer-motion` animations ([b6e1947](https://github.com/obviyus/musee/commit/b6e194728ff3876413a257d330b9c5e1557b3f3a))
+
 # [1.4.0](https://github.com/obviyus/musee/compare/v1.3.0...v1.4.0) (2022-07-22)
 
 
