@@ -35,7 +35,7 @@ export default function Index() {
                         } }
                     >
                         <Link prefetch={ 'intent' } to={ `/image/${ name }` } key={ name }>
-                            <img src={ `${ image.thumbnail }` }
+                            <img src={ `https://cdn.statically.io/img/gallery.obviy.us${ image.thumbnail }` }
                                  key={ name }
                                  alt={ name }
                                  title={ name }
