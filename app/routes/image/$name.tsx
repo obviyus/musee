@@ -54,13 +54,14 @@ export default function ImageRoute() {
                     damping: 20
                 } }
             >
-                <a href={ data.image }>
+                <a href={ data.image }
+                >
                     <img src={ `https://cdn.statically.io/img/gallery.obviy.us/f=auto,q=80${ data.image }` }
                          alt={ data.title }
                          title={ data.title }
                          width={ data.width }
                          height={ data.height }
-                         className={ 'w-full max-h-[80vh] shadow-2xl rounded-xl border-slate-50 border-2 transition ease-in-out delay-75 hover:-translate-y-1 hover:scale-110 duration-300' }
+                         className={ 'w-full max-h-[80vh] object-contain shadow-2xl rounded-xl border-slate-50 border-2 transition ease-in-out delay-75 hover:-translate-y-1 hover:scale-110 duration-300' }
                     />
                 </a>
             </motion.div>
