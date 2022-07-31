@@ -1,3 +1,10 @@
+## [1.5.2](https://github.com/obviyus/musee/compare/v1.5.1...v1.5.2) (2022-07-31)
+
+
+### Bug Fixes
+
+* **meta:** remove parent description from image page ([0ed6d09](https://github.com/obviyus/musee/commit/0ed6d097d96edd1af08cd6bed843f30c0dd9ebd8))
+
 ## [1.5.1](https://github.com/obviyus/musee/compare/v1.5.0...v1.5.1) (2022-07-23)
 
 
