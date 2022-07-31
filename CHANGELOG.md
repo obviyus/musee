@@ -1,3 +1,10 @@
+## [1.5.3](https://github.com/obviyus/musee/compare/v1.5.2...v1.5.3) (2022-07-31)
+
+
+### Bug Fixes
+
+* **img:** temporary fix for images stretching on Safari ([03b2aa4](https://github.com/obviyus/musee/commit/03b2aa48f9f24dd8bcc874e9f4ff9cc8b81be8f6))
+
 ## [1.5.2](https://github.com/obviyus/musee/compare/v1.5.1...v1.5.2) (2022-07-31)
 
 
