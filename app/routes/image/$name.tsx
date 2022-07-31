@@ -8,8 +8,10 @@ import { motion } from "framer-motion"
 export const meta: MetaFunction = ({ data }) => {
     return {
         title: data.title,
+        description: data.title,
         viewport: "width=device-width,initial-scale=1, shrink-to-fit=no, viewport-fit=cover",
         "og:title": data.title,
+        "og:description": data.title,
         "og:type": "image",
         "og:url": `${ config.url }/image/${ data.name }`,
         "og:image": `${ config.url }${ data.image }`,
