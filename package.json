@@ -1,5 +1,5 @@
 {
-  "name": "galerie",
+  "name": "musee",
   "version": "1.5.3",
   "private": true,
   "sideEffects": false,
@@ -14,21 +14,22 @@
     "dev:css": "tailwindcss -w -i ./styles/app.css -o app/styles/app.css",
     "dev:wrangler": "cross-env NODE_ENV=development wrangler pages dev ./public",
     "dev": "remix build && run-p \"dev:*\"",
-    "start": "cross-env NODE_ENV=production npm run dev:wrangler"
+    "start": "cross-env NODE_ENV=production npm run dev:wrangler",
+    "lint": "xo"
   },
   "dependencies": {
     "@remix-run/cloudflare": "^1.7.0",
     "@remix-run/cloudflare-pages": "^1.7.0",
     "@remix-run/react": "^1.7.0",
     "cross-env": "^7.0.3",
-    "framer-motion": "^7.2.1",
+    "framer-motion": "^7.3.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-masonry-css": "^1.0.16",
     "tailwindcss": "^3.1.8"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^3.10.0",
+    "@cloudflare/workers-types": "^3.16.0",
     "@remix-run/dev": "^1.7.0",
     "@remix-run/eslint-config": "^1.7.0",
     "@semantic-release/changelog": "^6.0.1",
@@ -36,7 +37,7 @@
     "@semantic-release/github": "^8.0.6",
     "@semantic-release/npm": "^9.0.1",
     "@semantic-release/release-notes-generator": "^10.0.3",
-    "@types/react": "^18.0.17",
+    "@types/react": "^18.0.19",
     "@types/react-dom": "^18.0.6",
     "autoprefixer": "^10.4.8",
     "eslint": "^8.23.0",
@@ -44,9 +45,10 @@
     "fecha": "^4.2.3",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.4.16",
-    "sharp": "^0.30.7",
-    "typescript": "^4.8.2",
-    "wrangler": "2.0.27"
+    "sharp": "^0.31.0",
+    "typescript": "^4.8.3",
+    "wrangler": "2.0.29",
+    "xo": "^0.52.3"
   },
   "engines": {
     "node": ">=14"
@@ -62,5 +64,7 @@
       "@semantic-release/git",
       "@semantic-release/github"
     ]
-  }
+  },
+  "main": "server.js",
+  "repository": "git@github.com:obviyus/musee.git"
 }
