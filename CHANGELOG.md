@@ -1,3 +1,10 @@
+## [1.5.4](https://github.com/obviyus/musee/compare/v1.5.3...v1.5.4) (2022-09-11)
+
+
+### Bug Fixes
+
+* **git:** remove functions from VCS ([427859e](https://github.com/obviyus/musee/commit/427859eee6c688424a812b8ab2da4f807b97c03d))
+
 ## [1.5.3](https://github.com/obviyus/musee/compare/v1.5.2...v1.5.3) (2022-07-31)
 
 
