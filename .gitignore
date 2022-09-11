@@ -1,8 +1,7 @@
 node_modules
 
 /.cache
-/functions/\[\[path\]\].js
-/functions/\[\[path\]\].js.map
+/functions/
 /public/build
 .env
 images/thumbnail
