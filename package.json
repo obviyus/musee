@@ -20,7 +20,7 @@
   "dependencies": {
     "@remix-run/cloudflare": "^1.7.0",
     "@remix-run/cloudflare-pages": "^1.7.0",
-    "@remix-run/react": "^1.7.0",
+    "@remix-run/react": "^1.7.1",
     "cross-env": "^7.0.3",
     "framer-motion": "^7.3.2",
     "react": "^18.2.0",
