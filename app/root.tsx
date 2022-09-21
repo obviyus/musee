@@ -40,7 +40,7 @@ export default function App() {
 				<Links/>
 			</head>
 			<body>
-				<AnimatePresence exitBeforeEnter>
+				<AnimatePresence mode='wait'>
 					{ outlet }
 				</AnimatePresence>
 				<Scripts/>
