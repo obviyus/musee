@@ -5,7 +5,7 @@ import ExifReader from 'exifreader';
 import {parse} from 'fecha';
 
 function imageLister() {
-	return fs.readdirSync('images/original').filter(file => ['.jpg', '.jpeg', '.png', '.webp'].includes(path.extname(file)));
+	return fs.readdirSync('images/original').filter(file => ['.jpg', '.jpeg', '.JPG', '.png', '.webp'].includes(path.extname(file)));
 }
 
 function importStatementBuilder(images) {
