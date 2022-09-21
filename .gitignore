@@ -11,3 +11,4 @@ index.js
 *.zip
 *.log
 app/styles/*
+app/images.ts
