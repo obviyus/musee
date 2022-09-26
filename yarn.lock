@@ -1730,10 +1730,10 @@
     "@cloudflare/kv-asset-handler" "^0.1.3"
     "@remix-run/server-runtime" "1.7.1"
 
-"@remix-run/dev@^1.7.1":
-  version "1.7.1"
-  resolved "https://registry.yarnpkg.com/@remix-run/dev/-/dev-1.7.1.tgz#5bb55bca873ba76a02d293cf802a352bc24ae297"
-  integrity sha512-yjxcCDb48mPUjiogGtxbWpoxauiM6jnSel2oyhztYlenfCM3wDzN2tOqBkfidNFlqpNQCkiRBN4FV97I03hDNw==
+"@remix-run/dev@^1.7.2":
+  version "1.7.2"
+  resolved "https://registry.yarnpkg.com/@remix-run/dev/-/dev-1.7.2.tgz#dee9ce4502e402652395f2d9aa9a56cd766778f6"
+  integrity sha512-oJcaju9zID+xOUnkMQJBEbjiiYBvILVsX64Fzi1itlm5vjNuo99nmKM7gleaDawNLo3lyd6Xd+JyMa3aIwDKOQ==
   dependencies:
     "@babel/core" "^7.18.6"
     "@babel/plugin-syntax-jsx" "^7.18.6"
@@ -1741,7 +1741,7 @@
     "@babel/preset-typescript" "^7.18.6"
     "@esbuild-plugins/node-modules-polyfill" "^0.1.4"
     "@npmcli/package-json" "^2.0.0"
-    "@remix-run/server-runtime" "1.7.1"
+    "@remix-run/server-runtime" "1.7.2"
     "@yarnpkg/esbuild-plugin-pnp" "3.0.0-rc.11"
     arg "^5.0.1"
     cacache "^15.0.5"
@@ -1810,6 +1810,18 @@
   version "1.7.1"
   resolved "https://registry.yarnpkg.com/@remix-run/server-runtime/-/server-runtime-1.7.1.tgz#95c47699907d531324fc85615ea266cdfff6ef2b"
   integrity sha512-bvKuESSf7cW5ORlXayVPWHDpU8xiglKu7PQtiyKi+Gwjasp/GnUO6Xwqpy2HqHtoC7RNQYt2oRkWc/pRhpe55g==
+  dependencies:
+    "@types/cookie" "^0.4.0"
+    "@web3-storage/multipart-parser" "^1.0.0"
+    cookie "^0.4.1"
+    react-router-dom "6.3.0"
+    set-cookie-parser "^2.4.8"
+    source-map "^0.7.3"
+
+"@remix-run/server-runtime@1.7.2":
+  version "1.7.2"
+  resolved "https://registry.yarnpkg.com/@remix-run/server-runtime/-/server-runtime-1.7.2.tgz#83e87ca6fa882f63e39dc376b724446c824e4c6d"
+  integrity sha512-YqdYHjqAukh5wbfix6ZqibUX5wYLm4SyyhibPiTthAV6SXHbTMu952jqf6Fa+asJRSf+QlNVwsizxH0zUGPAtw==
   dependencies:
     "@types/cookie" "^0.4.0"
     "@web3-storage/multipart-parser" "^1.0.0"
