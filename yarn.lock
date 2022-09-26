@@ -1797,14 +1797,13 @@
     eslint-plugin-react-hooks "^4.3.0"
     eslint-plugin-testing-library "^5.0.5"
 
-"@remix-run/react@^1.7.1":
-  version "1.7.1"
-  resolved "https://registry.yarnpkg.com/@remix-run/react/-/react-1.7.1.tgz#ba93b99bffde73ca4e5ce44d625f4e6acf1d9df9"
-  integrity sha512-RraUPjLZc4vSgT51uloamOn1Gm/YCohL1jDTBbiWuDgnTwBu741vC0zoulzoD+eV2svfKijOHL0tXc8kEAWPdg==
+"@remix-run/react@^1.7.2":
+  version "1.7.2"
+  resolved "https://registry.yarnpkg.com/@remix-run/react/-/react-1.7.2.tgz#8d2405961147bb7692dc26c0f282c8cb54301265"
+  integrity sha512-019y9WGdMA2i7/grLwpH1xqK3QxSmzNoMAwZ2ytnM/if6AHXrSz9BCn4urt6jYrDEuSOAwzOm65xd/fKNU45aQ==
   dependencies:
     history "^5.3.0"
     react-router-dom "6.3.0"
-    type-fest "^2.17.0"
 
 "@remix-run/server-runtime@1.7.1":
   version "1.7.1"
@@ -9864,7 +9863,7 @@ type-fest@^1.0.1, type-fest@^1.2.1, type-fest@^1.2.2:
   resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-1.4.0.tgz#e9fb813fe3bf1744ec359d55d1affefa76f14be1"
   integrity sha512-yGSza74xk0UG8k+pLh5oeoYirvIiWo5t0/o3zHHAO2tRDiZcxWP7fywNlXhqb6/r6sWvwi+RsyQMWhVLe4BVuA==
 
-type-fest@^2.0.0, type-fest@^2.17.0:
+type-fest@^2.0.0:
   version "2.19.0"
   resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-2.19.0.tgz#88068015bb33036a598b952e55e9311a60fd3a9b"
   integrity sha512-RAH822pAdBgcNMAfWnCBU3CFZcfZ/i1eZjwFU/dsLKumyuuP3niueg2UAukXYF0E2AAoc82ZSSf9J0WQBinzHA==
