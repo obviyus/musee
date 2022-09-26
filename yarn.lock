@@ -1722,13 +1722,21 @@
   dependencies:
     "@remix-run/cloudflare" "1.7.1"
 
-"@remix-run/cloudflare@1.7.1", "@remix-run/cloudflare@^1.7.1":
+"@remix-run/cloudflare@1.7.1":
   version "1.7.1"
   resolved "https://registry.yarnpkg.com/@remix-run/cloudflare/-/cloudflare-1.7.1.tgz#80248a01b1e703fddb1a7e3b6ff7999b16aed540"
   integrity sha512-L51Y8IgjzJcwSiv3qHoLwiJs34ARXeFuqBogMi+DYQBtzVam1mZWaQnfEP/nVhIXR4zFUJ0TAx362whhuewn9w==
   dependencies:
     "@cloudflare/kv-asset-handler" "^0.1.3"
     "@remix-run/server-runtime" "1.7.1"
+
+"@remix-run/cloudflare@^1.7.2":
+  version "1.7.2"
+  resolved "https://registry.yarnpkg.com/@remix-run/cloudflare/-/cloudflare-1.7.2.tgz#b1be0f64b97d6b228b1cfc0f78986e404d3e9124"
+  integrity sha512-xzZegk1zC+Bx+f7nOZ2UdMHeatc0wSURHrH3h/BWchAoWptilNPci1wSQjSw1xEWeTQyaSkMlVqCg4RVXpNMHA==
+  dependencies:
+    "@cloudflare/kv-asset-handler" "^0.1.3"
+    "@remix-run/server-runtime" "1.7.2"
 
 "@remix-run/dev@^1.7.1":
   version "1.7.1"
@@ -1810,6 +1818,18 @@
   version "1.7.1"
   resolved "https://registry.yarnpkg.com/@remix-run/server-runtime/-/server-runtime-1.7.1.tgz#95c47699907d531324fc85615ea266cdfff6ef2b"
   integrity sha512-bvKuESSf7cW5ORlXayVPWHDpU8xiglKu7PQtiyKi+Gwjasp/GnUO6Xwqpy2HqHtoC7RNQYt2oRkWc/pRhpe55g==
+  dependencies:
+    "@types/cookie" "^0.4.0"
+    "@web3-storage/multipart-parser" "^1.0.0"
+    cookie "^0.4.1"
+    react-router-dom "6.3.0"
+    set-cookie-parser "^2.4.8"
+    source-map "^0.7.3"
+
+"@remix-run/server-runtime@1.7.2":
+  version "1.7.2"
+  resolved "https://registry.yarnpkg.com/@remix-run/server-runtime/-/server-runtime-1.7.2.tgz#83e87ca6fa882f63e39dc376b724446c824e4c6d"
+  integrity sha512-YqdYHjqAukh5wbfix6ZqibUX5wYLm4SyyhibPiTthAV6SXHbTMu952jqf6Fa+asJRSf+QlNVwsizxH0zUGPAtw==
   dependencies:
     "@types/cookie" "^0.4.0"
     "@web3-storage/multipart-parser" "^1.0.0"
