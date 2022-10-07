@@ -1,3 +1,12 @@
+## [1.5.5](https://github.com/obviyus/musee/compare/v1.5.4...v1.5.5) (2022-09-21)
+
+
+### Bug Fixes
+
+* **component:** remove deprecated prop ([d5a3421](https://github.com/obviyus/musee/commit/d5a3421b320e33f5695b7e09cc5b0fc3c97e953d))
+* **img:** remove auto-generated files ([d0b610d](https://github.com/obviyus/musee/commit/d0b610dac051bad1b236ba275e5ebcb4942f3bea))
+* **importer:** handle `.JPG` files ([b316dba](https://github.com/obviyus/musee/commit/b316dbae89dfd7df3d7410c0e9cfdadd7679a9eb))
+
 ## [1.5.4](https://github.com/obviyus/musee/compare/v1.5.3...v1.5.4) (2022-09-11)
 
 
