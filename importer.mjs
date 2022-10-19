@@ -5,7 +5,11 @@ import ExifReader from 'exifreader';
 import {parse} from 'fecha';
 
 function imageLister() {
-	return fs.readdirSync('images/original').filter(file => ['.jpg', '.jpeg', '.JPG', '.png', '.webp'].includes(path.extname(file)));
+	return fs
+		.readdirSync('images/original')
+		.filter((file) =>
+			['.jpg', '.jpeg', '.JPG', '.png', '.webp'].includes(path.extname(file)),
+		);
 }
 
 function importStatementBuilder(images) {
@@ -41,9 +45,11 @@ function getReadableDate(date) {
 	const mm = date.getMonth() + 1; // GetMonth() is zero-based
 	const dd = date.getDate();
 
-	return [date.getFullYear(),
+	return [
+		date.getFullYear(),
 		(mm > 9 ? '' : '0') + mm,
-		(dd > 9 ? '' : '0') + dd].join('/');
+		(dd > 9 ? '' : '0') + dd,
+	].join('/');
 }
 
 export default async function imageImporter() {
@@ -55,11 +61,11 @@ export default async function imageImporter() {
 		await fs.mkdirSync('images/compressed');
 	}
 
-	let original_size = 0;
-	let compressed_size = 0;
+	let originalSize = 0;
+	let compressedSize = 0;
 
-	const image_names = await Promise.all(imageLister().map(
-		async (image, index) => {
+	const imageNames = await Promise.all(
+		imageLister().map(async (image, index) => {
 			const filename = `IMG_${index + 1}`;
 
 			await Promise.all([
@@ -76,13 +82,17 @@ export default async function imageImporter() {
 
 			const exifTags = await ExifReader.load(`images/original/${image}`);
 
-			let date;
-			date = 'DateTimeOriginal' in exifTags ? parse(exifTags.DateTimeOriginal.description, 'YYYY:MM:DD HH:mm:ss') : fs.statSync(`images/original/${image}`).birthtime;
+			const date =
+				'DateTimeOriginal' in exifTags
+					? parse(exifTags.DateTimeOriginal.description, 'YYYY:MM:DD HH:mm:ss')
+					: fs.statSync(`images/original/${image}`).birthtime;
 
-			const thumbnailMetadata = await sharp(`images/thumbnail/${filename}.webp`).metadata();
+			const thumbnailMetadata = await sharp(
+				`images/thumbnail/${filename}.webp`,
+			).metadata();
 
-			original_size += fs.statSync(`images/original/${image}`).size;
-			compressed_size += fs.statSync(`images/compressed/${filename}.jpeg`).size;
+			originalSize += fs.statSync(`images/original/${image}`).size;
+			compressedSize += fs.statSync(`images/compressed/${filename}.jpeg`).size;
 
 			return {
 				name: filename,
@@ -93,20 +103,26 @@ export default async function imageImporter() {
 				width: thumbnailMetadata.width,
 				height: thumbnailMetadata.height,
 			};
-		},
-	));
+		}),
+	);
 
-	console.log(`Original size: ${(original_size / 1024 / 1024).toFixed(2)} MB`);
-	console.log(`Compressed size: ${(compressed_size / 1024 / 1024).toFixed(2)} MB`);
-	console.log(`Reduced by: ${(compressed_size / original_size * 100).toFixed(2)}% [ ${(original_size - compressed_size) / 1024 / 1024} MB ]`);
+	console.log(`Original size: ${(originalSize / 1024 / 1024).toFixed(2)} MB`);
+	console.log(
+		`Compressed size: ${(compressedSize / 1024 / 1024).toFixed(2)} MB`,
+	);
+	console.log(
+		`Reduced by: ${((compressedSize / originalSize) * 100).toFixed(2)}% [ ${
+			(originalSize - compressedSize) / 1024 / 1024
+		} MB ]`,
+	);
 
-	image_names.sort((a, b) => new Date(b.date) - new Date(a.date));
+	imageNames.sort((a, b) => new Date(b.date) - new Date(a.date));
 
 	/**
-     * Write all imports to the index.js file
-     */
-	fs.writeFileSync('./app/images.ts', importStatementBuilder(image_names));
-	fs.appendFileSync('./app/images.ts', imageExportListBuilder(image_names));
+	 * Write all imports to the index.js file
+	 */
+	fs.writeFileSync('./app/images.ts', importStatementBuilder(imageNames));
+	fs.appendFileSync('./app/images.ts', imageExportListBuilder(imageNames));
 }
 
 await imageImporter();
