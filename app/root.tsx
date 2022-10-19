@@ -1,5 +1,12 @@
 import type {LinksFunction, MetaFunction} from '@remix-run/cloudflare';
-import {Links, LiveReload, Meta, Scripts, ScrollRestoration, useOutlet} from '@remix-run/react';
+import {
+	Links,
+	LiveReload,
+	Meta,
+	Scripts,
+	ScrollRestoration,
+	useOutlet,
+} from '@remix-run/react';
 import {AnimatePresence} from 'framer-motion';
 import favicon from '../public/favicon.svg';
 import {config} from '../config';
@@ -8,7 +15,8 @@ import styles from '~/styles/app.css';
 export const meta: MetaFunction = () => ({
 	charset: 'utf-8',
 	title: config.title,
-	viewport: 'width=device-width,initial-scale=1, shrink-to-fit=no, viewport-fit=cover',
+	viewport:
+		'width=device-width,initial-scale=1, shrink-to-fit=no, viewport-fit=cover',
 	description: config.description,
 	keywords: config.keywords,
 	'og:title': config.title,
@@ -21,7 +29,6 @@ export const meta: MetaFunction = () => ({
 	'twitter:card': 'summary_large_image',
 	'twitter:title': config.title,
 	'twitter:image': `${config.url}${config.socialPreviewImage}`,
-
 });
 
 export const links: LinksFunction = () => [
@@ -33,19 +40,17 @@ export default function App() {
 	const outlet = useOutlet();
 
 	return (
-		<html lang='en'>
+		<html lang="en">
 			<head>
-				<title>{ config.title }</title>
-				<Meta/>
-				<Links/>
+				<title>{config.title}</title>
+				<Meta />
+				<Links />
 			</head>
 			<body>
-				<AnimatePresence mode='wait'>
-					{ outlet }
-				</AnimatePresence>
-				<Scripts/>
-				<ScrollRestoration/>
-				<LiveReload/>
+				<AnimatePresence mode="wait">{outlet}</AnimatePresence>
+				<Scripts />
+				<ScrollRestoration />
+				<LiveReload />
 			</body>
 		</html>
 	);
