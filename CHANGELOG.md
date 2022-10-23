@@ -1,3 +1,15 @@
+# [1.6.0](https://github.com/obviyus/musee/compare/v1.5.5...v1.6.0) (2022-10-23)
+
+
+### Bug Fixes
+
+* **CDN:** remove statically CDN ([a4936ef](https://github.com/obviyus/musee/commit/a4936ef68ad7bdaed507bd1dc7b4253b24e61cf8))
+
+
+### Features
+
+* **image:** upload new image ([ab52e25](https://github.com/obviyus/musee/commit/ab52e25903f9bbbdd83fd17ccb1162d81d69b522))
+
 ## [1.5.5](https://github.com/obviyus/musee/compare/v1.5.4...v1.5.5) (2022-09-21)
 
 
