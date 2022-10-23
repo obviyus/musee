@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import type {LoaderFunction, MetaFunction} from '@remix-run/cloudflare';
 import {redirect} from '@remix-run/cloudflare';
 import {useLoaderData} from '@remix-run/react';
@@ -5,7 +6,7 @@ import {motion} from 'framer-motion';
 import {config} from '../../../config';
 import images from '~/images';
 
-export const meta: MetaFunction = ({data}) => ({
+export const meta: MetaFunction = ({data}: {data: Image}) => ({
 	title: data.title,
 	description: data.title,
 	viewport:
@@ -13,12 +14,20 @@ export const meta: MetaFunction = ({data}) => ({
 	'og:title': data.title,
 	'og:description': data.title,
 	'og:type': 'image',
-	'og:url': `${config.url}/image/${data.name}`,
+	'og:url': `${config.url}/image/${data.title}`,
 	'og:image': `${config.url}${data.image}`,
 	'twitter:card': 'summary_large_image',
 	'twitter:title': data.title,
 	'twitter:image': `${config.url}${data.image}`,
 });
+
+type Image = {
+	title: string;
+	image: string;
+	width: number;
+	height: number;
+	date: string;
+};
 
 export const loader: LoaderFunction = async ({params}) => {
 	const {name} = params;
@@ -27,18 +36,20 @@ export const loader: LoaderFunction = async ({params}) => {
 		return;
 	}
 
-	const image = images[name];
-	return {
-		title: name,
-		image: image.original,
-		width: image.width,
-		date: image.readableDate,
-		height: image.height,
+	const image = images[name!] as Record<string, string | number>;
+	const processedImage: Image = {
+		title: name!,
+		image: image.original as string,
+		width: image.width as number,
+		date: image.readableDate as string,
+		height: image.height as number,
 	};
+
+	return processedImage;
 };
 
 export default function ImageRoute() {
-	const data = useLoaderData();
+	const data: Image = useLoaderData();
 
 	return (
 		<div
@@ -58,7 +69,7 @@ export default function ImageRoute() {
 			>
 				<a href={data.image}>
 					<img
-						src={`https://cdn.statically.io/img/gallery.obviy.us/f=auto,q=80${data.image}`}
+						src={`${data.image}`}
 						alt={data.title}
 						title={data.title}
 						width={data.width}
