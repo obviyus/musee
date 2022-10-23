@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import Masonry from 'react-masonry-css';
 import {Link} from '@remix-run/react';
 import {motion} from 'framer-motion';
@@ -35,7 +36,7 @@ export default function Index() {
 				>
 					<Link prefetch={'intent'} to={`/image/${name}`} key={name}>
 						<img
-							src={`https://cdn.statically.io/img/gallery.obviy.us${image.thumbnail}`}
+							src={`${image.thumbnail}`}
 							key={name}
 							alt={name}
 							title={name}
