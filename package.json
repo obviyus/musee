@@ -36,7 +36,8 @@
 		"prettier": true,
 		"rules": {
 			"capitalized-comments": "off",
-			"import/extensions": "off"
+			"import/extensions": "off",
+			"n/file-extension-in-import": "off"
 		}
 	},
 	"devDependencies": {
