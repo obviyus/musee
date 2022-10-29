@@ -46,7 +46,7 @@ await Promise.all(
 
 		insertSorted(sortedImages, {
 			original: await getImage({ ...image.default }),
-			thumbnail: await getImage({ ...image.default, quality: 50 }),
+			thumbnail: await getImage({ ...image.default, quality: 30 }),
 			date: date,
 		});
 	})
