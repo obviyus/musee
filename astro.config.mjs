@@ -9,7 +9,9 @@ import react from '@astrojs/react';
 export default defineConfig({
 	integrations: [
 		tailwind(),
-		image(),
+		image({
+			serviceEntryPoint: '@astrojs/image/sharp',
+		}),
 		critters(),
 		purgecss(),
 		prefetch(),
