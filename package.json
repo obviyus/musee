@@ -17,11 +17,11 @@
 	"dependencies": {
 		"@astrojs/image": "^0.11.0",
 		"@astrojs/prefetch": "^0.1.0",
-		"@astrojs/react": "^1.2.1",
+		"@astrojs/react": "^1.2.2",
 		"@astrojs/tailwind": "^2.1.1",
 		"@types/react": "^18.0.21",
 		"@types/react-dom": "^18.0.6",
-		"astro": "^1.6.0",
+		"astro": "^1.6.1",
 		"astro-critters": "^1.1.0",
 		"astro-purgecss": "^1.2.2",
 		"fecha": "^4.2.3",
