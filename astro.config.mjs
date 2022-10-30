@@ -3,7 +3,6 @@ import tailwind from '@astrojs/tailwind';
 import image from '@astrojs/image';
 import critters from 'astro-critters';
 import purgecss from 'astro-purgecss';
-import prefetch from '@astrojs/prefetch';
 import react from '@astrojs/react';
 
 export default defineConfig({
@@ -14,7 +13,6 @@ export default defineConfig({
 		}),
 		critters(),
 		purgecss(),
-		prefetch(),
 		react(),
 	],
 });
