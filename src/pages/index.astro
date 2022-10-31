@@ -6,9 +6,7 @@ import fs from 'node:fs';
 import ExifReader from 'exifreader';
 import { parse } from 'fecha';
 
-const images = await Astro.glob('../assets/images/original/*.jpg');
-images.push(...(await Astro.glob('../assets/images/original/*.jpeg')));
-
+const images = await Astro.glob('../assets/images/original/*.{jpg,jpeg,png}');
 const sortedImages: sortedImage[] = [];
 
 function compareByDate(a: sortedImage, b: sortedImage) {
@@ -24,25 +22,32 @@ function insertSorted(array: any[], element: sortedImage) {
 	array.splice(i, 0, element);
 }
 
+export async function getImageSlug(filepath: string) {
+	return filepath.split('/').pop().split('.').shift();
+}
+
+export async function getImageDate(image: Record<string, any>): Promise<Date> {
+	let { src: filepath } = image.default;
+	filepath = filepath.replace('/@astroimage/', 'src/');
+
+	// Hack to check if file exists, if not, probably running build
+	if (!fs.existsSync(filepath)) {
+		filepath = filepath.replace('src/', '');
+		filepath = 'dist/' + filepath;
+	}
+
+	const exifTags = (await ExifReader.load(filepath)) as Record<string, any>;
+	return 'DateTimeOriginal' in exifTags
+		? (parse(
+				exifTags.DateTimeOriginal.description,
+				'YYYY:MM:DD HH:mm:ss'
+		  ) as Date)
+		: fs.statSync(`images/original/${image}`).birthtime;
+}
+
 await Promise.all(
 	images.map(async (image) => {
-		let { src: filepath } = image.default;
-		filepath = filepath.replace('/@astroimage/', 'src/');
-
-		// Hack to check if file exists, if not, probably running build
-		if (!fs.existsSync(filepath)) {
-			filepath = filepath.replace('src/', '');
-			filepath = 'dist/' + filepath;
-		}
-
-		const exifTags = (await ExifReader.load(filepath)) as Record<string, any>;
-		const date =
-			'DateTimeOriginal' in exifTags
-				? (parse(
-						exifTags.DateTimeOriginal.description,
-						'YYYY:MM:DD HH:mm:ss'
-				  ) as Date)
-				: fs.statSync(`images/original/${image}`).birthtime;
+		const date = await getImageDate(image);
 
 		insertSorted(sortedImages, {
 			original: await getImage({ ...image.default }),
@@ -53,14 +58,15 @@ await Promise.all(
 				quality: 80,
 			}),
 			date: date,
+			slug: `image/${await getImageSlug(image.default.src)}`,
 		});
 	})
 );
 ---
 
 <BaseIndex
-	title='Galerie dAyaan'
-	description='Ayaan Zaidis personal image feed. Mild obsession with aircrafts and shiny things. Mostly shot on a mobile camera.'
-	permalink='https://gallery.obviy.us/'>
+	title="Galerie d'Ayaan"
+	description="Ayaan Zaidi's personal image feed. Mild obsession with aircrafts and shiny things. Mostly shot on a mobile camera."
+	permalink="https://gallery.obviy.us/">
 	<MasonryGrid images={sortedImages} client:load />
 </BaseIndex>
