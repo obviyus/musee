@@ -5,7 +5,7 @@ module.exports = {
 	embeddedLanguageFormatting: 'auto',
 	htmlWhitespaceSensitivity: 'css',
 	insertPragma: false,
-	jsxSingleQuote: true,
+	jsxSingleQuote: false,
 	printWidth: 80,
 	proseWrap: 'never',
 	quoteProps: 'consistent',
