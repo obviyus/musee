@@ -16,6 +16,7 @@ export type sortedImage = {
 	original: any;
 	thumbnail: any;
 	date: Date;
+	slug: string;
 };
 
 export function MasonryGrid(props: { images: sortedImage[] }) {
@@ -36,7 +37,7 @@ export function MasonryGrid(props: { images: sortedImage[] }) {
 							damping: 20,
 							delay: (index % 5) * 0.05,
 						}}>
-						<a href={image[1].original.src as string}>
+						<a href={`/${image[1].slug}`}>
 							<img
 								src={image[1].thumbnail.src as string}
 								width={image[1].thumbnail.width as number}

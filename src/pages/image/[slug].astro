@@ -1,0 +1,42 @@
+---
+// Layout Import
+import { BaseImage } from '../../components/image';
+import BaseIndex from '../../layouts/BaseIndex.astro';
+import { getImageDate, getImageSlug } from '../index.astro';
+
+export async function getStaticPaths() {
+	const images = await Astro.glob(
+		'../../assets/images/original/*.{jpg,jpeg,png}'
+	);
+
+	const staticPaths = await Promise.all(
+		images.map(async (image) => {
+			const date = await getImageDate(image);
+			const src = image.default.src;
+			const slug = await getImageSlug(src);
+
+			return {
+				params: {
+					slug,
+				},
+				props: {
+					...image.default,
+					date,
+				},
+			};
+		})
+	);
+
+	return staticPaths;
+}
+
+const props = Astro.props;
+---
+
+<BaseIndex
+	title="Galerie dAyaan"
+	description="Ayaan Zaidis personal image feed. Mild obsession with aircrafts and shiny things. Mostly shot on a mobile camera."
+	permalink={`https://gallery.obviy.us/image/${props.slug}`}
+	previewImage={props.src}>
+	<BaseImage {...props} client:load />
+</BaseIndex>
