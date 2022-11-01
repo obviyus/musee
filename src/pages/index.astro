@@ -50,12 +50,13 @@ await Promise.all(
 		const date = await getImageDate(image);
 
 		insertSorted(sortedImages, {
-			original: await getImage({ ...image.default }),
+			original: await getImage({ ...image.default, format: 'webp' }),
 			thumbnail: await getImage({
 				src: image.default.src,
 				width: 640,
 				aspectRatio: image.default.width / image.default.height,
 				quality: 80,
+				format: 'webp',
 			}),
 			date: date,
 			slug: `image/${await getImageSlug(image.default.src)}`,
