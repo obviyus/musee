@@ -42,6 +42,7 @@ export function MasonryGrid(props: { images: sortedImage[] }) {
 								src={image[1].thumbnail.src as string}
 								width={image[1].thumbnail.width as number}
 								height={image[1].thumbnail.height as number}
+								alt={image[1].slug}
 								loading={index > 4 ? 'lazy' : 'eager'}
 								className={
 									'transition ease-in-out delay-75 hover:-translate-y-1 hover:scale-110 duration-300'
