@@ -2518,10 +2518,10 @@ execa@^6.1.0:
     signal-exit "^3.0.7"
     strip-final-newline "^3.0.0"
 
-exifreader@^4.7.0:
-  version "4.7.0"
-  resolved "https://registry.yarnpkg.com/exifreader/-/exifreader-4.7.0.tgz#36346453f394baf9fe83c6e68e5c4e39d98b87a1"
-  integrity sha512-+a3HzUhAzL5Yy2HYi0Oq9Wb4dajIkIymn4MIGBmOkSctrVG50Ye7NzIycHiXH1ZPGueAK7r8rMxVIdltTP6ULg==
+exifreader@^4.8.1:
+  version "4.8.1"
+  resolved "https://registry.yarnpkg.com/exifreader/-/exifreader-4.8.1.tgz#2d677b24269ae3189e2724947e262938cf9d33b4"
+  integrity sha512-7x7mVQMa1Xw7nMw2p77nf2/5rcOwdujNUBx3zeRJF83YJhTP5tuPa5c6z+PXLRqzlX3FNB9Ah60u3lW+Y4lNTg==
   optionalDependencies:
     "@xmldom/xmldom" "^0.7.8"
 
