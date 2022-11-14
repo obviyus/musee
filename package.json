@@ -21,7 +21,7 @@
 		"@astrojs/tailwind": "^2.1.2",
 		"@types/react": "^18.0.25",
 		"@types/react-dom": "^18.0.6",
-		"astro": "^1.6.3",
+		"astro": "^1.6.7",
 		"astro-critters": "^1.1.0",
 		"astro-purgecss": "^1.2.2",
 		"fecha": "^4.2.3",
