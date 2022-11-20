@@ -42,7 +42,7 @@ export async function getImageDate(image: Record<string, any>): Promise<Date> {
 				exifTags.DateTimeOriginal.description,
 				'YYYY:MM:DD HH:mm:ss'
 		  ) as Date)
-		: fs.statSync(`images/original/${image}`).birthtime;
+		: fs.statSync(filepath).birthtime;
 }
 
 await Promise.all(
