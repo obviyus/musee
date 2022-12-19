@@ -57,6 +57,7 @@ await Promise.all(
 				aspectRatio: image.default.width / image.default.height,
 				quality: 80,
 				format: 'webp',
+				alt: 'Gallery Image',
 			}),
 			date: date,
 			slug: `image/${await getImageSlug(image.default.src)}`,
