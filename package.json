@@ -40,7 +40,7 @@
 		}
 	},
 	"devDependencies": {
-		"@types/node": "^18.11.17",
+		"@types/node": "^18.11.18",
 		"exifreader": "^4.9.1",
 		"xo": "^0.53.1"
 	}
