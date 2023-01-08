@@ -715,10 +715,10 @@
   dependencies:
     "@types/unist" "*"
 
-"@types/node@^18.11.17":
-  version "18.11.17"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.11.17.tgz#5c009e1d9c38f4a2a9d45c0b0c493fe6cdb4bcb5"
-  integrity sha512-HJSUJmni4BeDHhfzn6nF0sVmd1SMezP7/4F0Lq+aXzmp2xm9O7WXrUtHW/CHlYVtZUbByEvWidHqRtcJXGF2Ng==
+"@types/node@^18.11.18":
+  version "18.11.18"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.11.18.tgz#8dfb97f0da23c2293e554c5a50d61ef134d7697f"
+  integrity sha512-DHQpWGjyQKSHj3ebjFI/wRKcqQcdR+MoFBygntYOZytCqNfkd2ZC4ARDJ2DQqhjH5p85Nnd3jhUJIXrszFX/JA==
 
 "@types/normalize-package-data@^2.4.0", "@types/normalize-package-data@^2.4.1":
   version "2.4.1"
@@ -1046,10 +1046,10 @@ ast-types@0.14.2:
   dependencies:
     tslib "^2.0.1"
 
-astro-critters@^1.1.24:
-  version "1.1.24"
-  resolved "https://registry.yarnpkg.com/astro-critters/-/astro-critters-1.1.24.tgz#1fa016e40c4bdceefd06ee431307d270acf06e34"
-  integrity sha512-yyvAka+LeWO0LToHSc53yTjI1eUQqBDBg6uDbjEJ4vvaKegF6z122VPCFQzLe2dPeJiyYLUMUs3W5CIErZEBqQ==
+astro-critters@^1.1.25:
+  version "1.1.25"
+  resolved "https://registry.yarnpkg.com/astro-critters/-/astro-critters-1.1.25.tgz#0dce36d46b52082789a5a766771b306dec6a1d28"
+  integrity sha512-jh730RIphX6PChbstzgc0N5v8qHidwYdv+WfywHILkbL1if1lBadA3s70AMSbEItAPcBnwS5fkhN+FMoLA8NGA==
   dependencies:
     critters "0.0.16"
     files-pipeline "0.0.2"
@@ -1061,10 +1061,10 @@ astro-purgecss@^1.3.2:
   dependencies:
     purgecss "^5.0.0"
 
-astro@1.8.0:
-  version "1.8.0"
-  resolved "https://registry.yarnpkg.com/astro/-/astro-1.8.0.tgz#bfb23d7d64a1111e05576b70a5d90fdb6dbc89de"
-  integrity sha512-MZIJveOC1OCIA0w2XmxjDtKviAEuYdF142DVq0VApInE1lm+CvAoyMgJs0a1h4mydD2vgQZpTjPhYKJIdxDjOA==
+astro@1.9.1:
+  version "1.9.1"
+  resolved "https://registry.yarnpkg.com/astro/-/astro-1.9.1.tgz#77b4786da633e1b9b579299db54c28eb6bb33de2"
+  integrity sha512-aQ6rvAP4w4VCgipVYA/zPmnkuTbFrMZ/+x/sAv2W1uJHWU2iQmrVRrrjUFJl+i1TuYYlHAuC2vKK7aRyXCjD4A==
   dependencies:
     "@astrojs/compiler" "^0.31.0"
     "@astrojs/language-server" "^0.28.3"
@@ -1095,7 +1095,7 @@ astro@1.8.0:
     estree-walker "^3.0.1"
     execa "^6.1.0"
     fast-glob "^3.2.11"
-    github-slugger "^1.4.0"
+    github-slugger "^2.0.0"
     gray-matter "^4.0.3"
     html-entities "^2.3.3"
     html-escaper "^3.0.3"
@@ -2560,14 +2560,14 @@ fraction.js@^4.2.0:
   resolved "https://registry.yarnpkg.com/fraction.js/-/fraction.js-4.2.0.tgz#448e5109a313a3527f5a3ab2119ec4cf0e0e2950"
   integrity sha512-MhLuK+2gUcnZe8ZHlaaINnQLl0xRIGRfcGk2yl8xoQAfHrSsL3rYu6FCmBdkdbhc9EPlwyGHewaRsvwRMJtAlA==
 
-framer-motion@^8.0.2:
-  version "8.0.2"
-  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-8.0.2.tgz#212cc4cabfbb90f4eabe5a9e5553ef1b1dc6a598"
-  integrity sha512-xuIiQchVh/cLqUzzu5/8ok4o0nkwYPyIRtkDl8wDvrQUNRhSfRaZu1MMdzN0TjpBtG66oP03PSLO7Qtu1YqPrA==
+framer-motion@^8.2.4:
+  version "8.2.4"
+  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-8.2.4.tgz#24e99707b4d98567ce233b4f5a8894470d2da91d"
+  integrity sha512-bd2g3kgb8m0jBi+OOzsKPW4rQCn5gOOlbAlT0iMX6ruQPZ9qzIIABrRj2DFhwW6EcFvfJSP6EVVHSI8SQYBBOw==
   dependencies:
     "@motionone/dom" "^10.15.3"
     hey-listen "^1.0.8"
-    tslib "2.4.0"
+    tslib "^2.4.0"
   optionalDependencies:
     "@emotion/is-prop-valid" "^0.8.2"
 
@@ -2652,6 +2652,11 @@ github-slugger@^1.4.0:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/github-slugger/-/github-slugger-1.5.0.tgz#17891bbc73232051474d68bd867a34625c955f7d"
   integrity sha512-wIh+gKBI9Nshz2o46B0B3f5k/W+WI9ZAv6y5Dn5WJ5SK1t0TnDimB4WE5rmTD05ZAIn8HALCZVmCsvj0w0v0lw==
+
+github-slugger@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/github-slugger/-/github-slugger-2.0.0.tgz#52cf2f9279a21eb6c59dd385b410f0c0adda8f1a"
+  integrity sha512-IaOQ9puYtjrkq7Y0Ygl9KDZnrf/aiUJYUpVf89y8kyaxbRG7Y1SrX/jaumrv81vc61+kiMempujsM3Yw7w5qcw==
 
 glob-parent@^5.1.2, glob-parent@~5.1.2:
   version "5.1.2"
@@ -5668,11 +5673,6 @@ tsconfig-resolver@^3.0.1:
     resolve "^1.17.0"
     strip-bom "^4.0.0"
     type-fest "^0.13.1"
-
-tslib@2.4.0:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.4.0.tgz#7cecaa7f073ce680a05847aa77be941098f36dc3"
-  integrity sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==
 
 tslib@^1.8.1:
   version "1.14.1"
