@@ -1,5 +1,5 @@
 ---
-// Layout Import
+import { getImage } from '@astrojs/image';
 import { BaseImage } from '../../components/image';
 import BaseIndex from '../../layouts/BaseIndex.astro';
 import { getImageDate, getImageSlug } from '../index.astro';
@@ -12,8 +12,18 @@ export async function getStaticPaths() {
 	const staticPaths = await Promise.all(
 		images.map(async (image) => {
 			const date = await getImageDate(image);
+
 			const src = image.default.src;
 			const slug = await getImageSlug(src);
+
+			const thumbnail = await getImage({
+				src: image.default.src,
+				width: 640,
+				aspectRatio: image.default.width / image.default.height,
+				quality: 80,
+				format: 'jpeg',
+				alt: 'Gallery Image',
+			});
 
 			return {
 				params: {
@@ -22,6 +32,7 @@ export async function getStaticPaths() {
 				props: {
 					...image.default,
 					date,
+					thumbnail: thumbnail.src,
 				},
 			};
 		})
@@ -34,9 +45,9 @@ const props = Astro.props;
 ---
 
 <BaseIndex
-	title="Galerie dAyaan"
-	description="Ayaan Zaidis personal image feed. Mild obsession with aircrafts and shiny things. Mostly shot on a mobile camera."
+	title="Galerie d'Ayaan"
+	description="Ayaan Zaidi's personal image feed. Mild obsession with aircrafts and shiny things. Mostly shot on a mobile camera."
 	permalink={`https://gallery.obviy.us/image/${props.slug}`}
-	previewImage={props.src}>
+	previewImage={props.thumbnail}>
 	<BaseImage {...props} client:load />
 </BaseIndex>
