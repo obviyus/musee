@@ -56,10 +56,10 @@
     vscode-languageserver-types "^3.17.1"
     vscode-uri "^3.0.3"
 
-"@astrojs/markdown-remark@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@astrojs/markdown-remark/-/markdown-remark-2.0.0.tgz#16fd5a4042f900c9a367d9afdcd7188a70344a46"
-  integrity sha512-PqDxi3L2jsxLWjsWRyn+BkaDtHKq2+ECI7PlW9NsEwu2jKKgl7sXj57s/Wjhyctr4efFdzewFArVFm1Gnb3rtw==
+"@astrojs/markdown-remark@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@astrojs/markdown-remark/-/markdown-remark-2.0.1.tgz#48ecc33dde9231eb20df274e87099552834c4a1f"
+  integrity sha512-xQF1rXGJN18m+zZucwRRtmNehuhPMMhZhi6HWKrtpEAKnHSPk8lqf1GXgKH7/Sypglu8ivdECZ+EGs6kOYVasQ==
   dependencies:
     "@astrojs/prism" "^2.0.0"
     github-slugger "^1.4.0"
@@ -1098,14 +1098,14 @@ astro-purgecss@^1.3.2:
   dependencies:
     purgecss "^5.0.0"
 
-astro@2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/astro/-/astro-2.0.1.tgz#7404ef119db41cdcd1b9e6094b4f87ef060cb6a3"
-  integrity sha512-EXq1lks+ylmArhtUs99PQelK0bQ3VS+698OO9UYkjG08Bd02ficqihsRGBnhEor7U9989hZb+1p4y0rNpgKH8g==
+astro@2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/astro/-/astro-2.0.2.tgz#a465d8ba066e16bd21e3b6d2a7a1b7aa209ba2fa"
+  integrity sha512-47N1jLWNxSri7kWfIfgcEnQJZWTvd0gXhNC3P2ZHiiurl4nOxFC5ULsW5MDDTjTzQ1S7y1RoaL9XxYm+Rury7w==
   dependencies:
     "@astrojs/compiler" "^1.0.1"
     "@astrojs/language-server" "^0.28.3"
-    "@astrojs/markdown-remark" "^2.0.0"
+    "@astrojs/markdown-remark" "^2.0.1"
     "@astrojs/telemetry" "^2.0.0"
     "@astrojs/webapi" "^2.0.0"
     "@babel/core" "^7.18.2"
