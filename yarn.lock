@@ -56,10 +56,10 @@
     vscode-languageserver-types "^3.17.1"
     vscode-uri "^3.0.3"
 
-"@astrojs/markdown-remark@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@astrojs/markdown-remark/-/markdown-remark-2.0.0.tgz#16fd5a4042f900c9a367d9afdcd7188a70344a46"
-  integrity sha512-PqDxi3L2jsxLWjsWRyn+BkaDtHKq2+ECI7PlW9NsEwu2jKKgl7sXj57s/Wjhyctr4efFdzewFArVFm1Gnb3rtw==
+"@astrojs/markdown-remark@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@astrojs/markdown-remark/-/markdown-remark-2.0.1.tgz#48ecc33dde9231eb20df274e87099552834c4a1f"
+  integrity sha512-xQF1rXGJN18m+zZucwRRtmNehuhPMMhZhi6HWKrtpEAKnHSPk8lqf1GXgKH7/Sypglu8ivdECZ+EGs6kOYVasQ==
   dependencies:
     "@astrojs/prism" "^2.0.0"
     github-slugger "^1.4.0"
@@ -89,10 +89,10 @@
   dependencies:
     prismjs "^1.28.0"
 
-"@astrojs/react@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@astrojs/react/-/react-2.0.0.tgz#628d2a293d7187f65ac0be62ee16ce6124666c6c"
-  integrity sha512-drHnCnYH6u6hKN4ObNepw4OQiCvMsRFLeKqRbbGmME5yJyxfdkFw2K4m/8zGah90LgW1xmr9hyPsSVU3PTmd9g==
+"@astrojs/react@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@astrojs/react/-/react-2.0.1.tgz#0d0b6340aa1ed2ac094eade07be4bd3d0ea721c1"
+  integrity sha512-EhpYg6afa3ks0ofc1mBcdbQvcQMt3mn5/O2K98lvg9LbTaYRfSvwnzfgVlc0boSaQYFrzssoeOtCUhNVUb1krg==
   dependencies:
     "@babel/core" ">=7.0.0-0 <8.0.0"
     "@babel/plugin-transform-react-jsx" "^7.17.12"
@@ -1091,21 +1091,21 @@ astro-critters@^1.1.26:
     critters "0.0.16"
     files-pipeline "0.0.2"
 
-astro-purgecss@^1.3.2:
-  version "1.3.2"
-  resolved "https://registry.yarnpkg.com/astro-purgecss/-/astro-purgecss-1.3.2.tgz#2f4402b962acf827e2f40310bc383c777c8d1f4f"
-  integrity sha512-UG4696j19RZkroRsd/CNUiWPu7QmuWuXqVKX/li+2pbGkm49lEQb/UXzVBpVLACQlJgYydUhHbEb4scpOcEjLQ==
+astro-purgecss@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/astro-purgecss/-/astro-purgecss-2.0.0.tgz#d525674fa16ef354c16bced5ca73715e5224a46b"
+  integrity sha512-xt8Wvhkgp3Q3qgwGxtNPZ+KmnO29Rs7K2g2e4imIaWkNnXUMoCG7S0n8/m2ZwXRF9snI5h1DV8N80zZHj7Jx3A==
   dependencies:
     purgecss "^5.0.0"
 
-astro@2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/astro/-/astro-2.0.1.tgz#7404ef119db41cdcd1b9e6094b4f87ef060cb6a3"
-  integrity sha512-EXq1lks+ylmArhtUs99PQelK0bQ3VS+698OO9UYkjG08Bd02ficqihsRGBnhEor7U9989hZb+1p4y0rNpgKH8g==
+astro@2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/astro/-/astro-2.0.2.tgz#a465d8ba066e16bd21e3b6d2a7a1b7aa209ba2fa"
+  integrity sha512-47N1jLWNxSri7kWfIfgcEnQJZWTvd0gXhNC3P2ZHiiurl4nOxFC5ULsW5MDDTjTzQ1S7y1RoaL9XxYm+Rury7w==
   dependencies:
     "@astrojs/compiler" "^1.0.1"
     "@astrojs/language-server" "^0.28.3"
-    "@astrojs/markdown-remark" "^2.0.0"
+    "@astrojs/markdown-remark" "^2.0.1"
     "@astrojs/telemetry" "^2.0.0"
     "@astrojs/webapi" "^2.0.0"
     "@babel/core" "^7.18.2"
@@ -2440,10 +2440,10 @@ fraction.js@^4.2.0:
   resolved "https://registry.yarnpkg.com/fraction.js/-/fraction.js-4.2.0.tgz#448e5109a313a3527f5a3ab2119ec4cf0e0e2950"
   integrity sha512-MhLuK+2gUcnZe8ZHlaaINnQLl0xRIGRfcGk2yl8xoQAfHrSsL3rYu6FCmBdkdbhc9EPlwyGHewaRsvwRMJtAlA==
 
-framer-motion@^8.5.2:
-  version "8.5.2"
-  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-8.5.2.tgz#8f14c5bbbd429e7add5a3098de5f50e32a074d32"
-  integrity sha512-dt1WwCUIlJ24N/PCCayr0BZJcHOfU/L7kO8fgG8SxcAiGufaNg+Xl0oD14z7mRTGLrqRdA1ZlMW5Wr77aO1Xuw==
+framer-motion@^8.5.5:
+  version "8.5.5"
+  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-8.5.5.tgz#e30e9087bfc9b3367459f83b4d9fe7efd5acade6"
+  integrity sha512-5IDx5bxkjWHWUF3CVJoSyUVOtrbAxtzYBBowRE2uYI/6VYhkEBD+rbTHEGuUmbGHRj6YqqSfoG7Aa1cLyWCrBA==
   dependencies:
     "@motionone/dom" "^10.15.3"
     hey-listen "^1.0.8"
