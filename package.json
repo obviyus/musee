@@ -15,13 +15,13 @@
 		"astro": "astro"
 	},
 	"dependencies": {
-		"@astrojs/image": "^0.13.0",
-		"@astrojs/prefetch": "^0.1.1",
-		"@astrojs/react": "^2.0.1",
-		"@astrojs/tailwind": "^3.0.0",
+		"@astrojs/image": "^0.13.1",
+		"@astrojs/prefetch": "^0.1.2",
+		"@astrojs/react": "^2.0.2",
+		"@astrojs/tailwind": "^3.0.1",
 		"@types/react": "^18.0.27",
 		"@types/react-dom": "^18.0.10",
-		"astro": "2.0.2",
+		"astro": "2.0.4",
 		"astro-critters": "^1.1.26",
 		"astro-purgecss": "^2.0.0",
 		"fecha": "^4.2.3",
