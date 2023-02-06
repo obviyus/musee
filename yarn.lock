@@ -1083,13 +1083,13 @@ arrify@^3.0.0:
   resolved "https://registry.yarnpkg.com/arrify/-/arrify-3.0.0.tgz#ccdefb8eaf2a1d2ab0da1ca2ce53118759fd46bc"
   integrity sha512-tLkvA81vQG/XqE2mjDkGQHoOINtMHtysSnemrmoGe6PydDPMRbVugqyk4A6V/WDWEfm3l+0d8anA9r8cv/5Jaw==
 
-astro-critters@^1.1.26:
-  version "1.1.26"
-  resolved "https://registry.yarnpkg.com/astro-critters/-/astro-critters-1.1.26.tgz#3c4b0f6164691ecf0ebb8869229e88c7d7758376"
-  integrity sha512-WW9ab/TokFXjJQuFtc2p+6Ulq80PD5C5XBVtI/Bs8TqOJ8cX/OoPLQIqV1dxgbBdQBr78m/hFDqiyPd1CSQJlg==
+astro-critters@^1.1.28:
+  version "1.1.28"
+  resolved "https://registry.yarnpkg.com/astro-critters/-/astro-critters-1.1.28.tgz#81eccebb101b7dffd422e1cd1ce61584c4ae23fe"
+  integrity sha512-4/rrywc8iKtOohA4FZZ7CrpSapmpj0SEmrG3MsBsqItGKHKtLbh3qbhRujuKbRg/0Q3fjXMpZjwh+lRGST1qLA==
   dependencies:
     critters "0.0.16"
-    files-pipeline "0.0.2"
+    files-pipeline "0.0.3"
 
 astro-purgecss@^2.0.0:
   version "2.0.0"
@@ -2362,10 +2362,10 @@ file-entry-cache@^6.0.1:
   dependencies:
     flat-cache "^3.0.4"
 
-files-pipeline@0.0.2:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/files-pipeline/-/files-pipeline-0.0.2.tgz#431af5755f754d0da18aabeade3aaa5bc5e6846a"
-  integrity sha512-e5BHeSXczwD+6PEy+CLhoYd9NSZkn6gK+QyGwgzdufO4qq0KWKMbVE53lwyw/gKYSbKMe2AgUvVp5N4VrA3OTw==
+files-pipeline@0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/files-pipeline/-/files-pipeline-0.0.3.tgz#d11c53ecfce951a9ed46a8c27d6e83137a740954"
+  integrity sha512-dtHt96Rs0qsNBnIlPuHUP8vd5xPRGbMYgywMfA2Qy83QPz8feoWsoXSuxxLsWYv4vag+vAhNZ4YOHL0pdyGKFA==
   dependencies:
     deepmerge-ts "4.2.2"
     fast-glob "3.2.12"

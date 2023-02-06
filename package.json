@@ -22,7 +22,7 @@
 		"@types/react": "^18.0.27",
 		"@types/react-dom": "^18.0.10",
 		"astro": "2.0.4",
-		"astro-critters": "^1.1.26",
+		"astro-critters": "^1.1.28",
 		"astro-purgecss": "^2.0.0",
 		"fecha": "^4.2.3",
 		"framer-motion": "^8.5.5",
