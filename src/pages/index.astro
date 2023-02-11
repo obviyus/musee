@@ -28,7 +28,7 @@ export async function getImageSlug(filepath: string) {
 
 export async function getImageDate(image: Record<string, any>): Promise<Date> {
 	let { src: filepath } = image.default;
-	filepath = filepath.replace('/@astroimage/', 'src/');
+	filepath = filepath.replace('/@astroimage/', '/');
 
 	// Hack to check if file exists, if not, probably running build
 	if (!fs.existsSync(filepath)) {
