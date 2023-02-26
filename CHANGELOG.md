@@ -1,3 +1,10 @@
+## [1.11.1](https://github.com/obviyus/musee/compare/v1.11.0...v1.11.1) (2023-02-26)
+
+
+### Bug Fixes
+
+* **image:** use sharp for processing images ([f688bd7](https://github.com/obviyus/musee/commit/f688bd7422c3e472ca61a0d6ac83f2055e6802b2))
+
 # [1.11.0](https://github.com/obviyus/musee/compare/v1.10.0...v1.11.0) (2023-02-26)
 
 
