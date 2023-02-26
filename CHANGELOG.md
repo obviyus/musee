@@ -1,3 +1,16 @@
+# [1.11.0](https://github.com/obviyus/musee/compare/v1.10.0...v1.11.0) (2023-02-26)
+
+
+### Bug Fixes
+
+* **node:** return to node 16 and remove semrel ([692b167](https://github.com/obviyus/musee/commit/692b167c38ebdf1b4dd0a8527d36372b47aae714))
+
+
+### Features
+
+* **favicon:** replace SVG favicon ([00e2406](https://github.com/obviyus/musee/commit/00e2406f859c5920512ab1a5043a576f9d85816d))
+* **img:** attempt squoosh ([28759b7](https://github.com/obviyus/musee/commit/28759b70c3e0d11cf088d733ebf08c48054281e4))
+
 # [1.10.0](https://github.com/obviyus/musee/compare/v1.9.3...v1.10.0) (2023-02-26)
 
 
