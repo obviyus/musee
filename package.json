@@ -43,5 +43,17 @@
 		"@types/node": "^18.14.1",
 		"exifreader": "^4.9.1",
 		"xo": "^0.53.1"
+	},
+	"release": {
+		"branches": [
+			"master"
+		],
+		"plugins": [
+			"@semantic-release/release-notes-generator",
+			"@semantic-release/changelog",
+			"@semantic-release/npm",
+			"@semantic-release/git",
+			"@semantic-release/github"
+		]
 	}
 }
