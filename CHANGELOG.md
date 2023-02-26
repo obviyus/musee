@@ -1,3 +1,15 @@
+# [1.10.0](https://github.com/obviyus/musee/compare/v1.9.3...v1.10.0) (2023-02-26)
+
+
+### Bug Fixes
+
+* **image:** fix image building logic ([7b67715](https://github.com/obviyus/musee/commit/7b67715b74d3e8601842c387e547d1914a365ed7))
+
+
+### Features
+
+* **preview:** update preview thumbnail logic ([1e4b5fc](https://github.com/obviyus/musee/commit/1e4b5fca2dfe9c3043a01090885b942fe82abf94))
+
 # [1.6.0](https://github.com/obviyus/musee/compare/v1.5.5...v1.6.0) (2022-10-23)
 
 
