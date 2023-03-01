@@ -106,10 +106,10 @@
     postcss "^8.4.14"
     postcss-load-config "^4.0.1"
 
-"@astrojs/telemetry@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@astrojs/telemetry/-/telemetry-2.0.0.tgz#025961cccca062fe010938441db7d1e607c2253a"
-  integrity sha512-RnWojVMIsql3GGWDP5pNWmhmBQVkCpxGNZ8yPr2cbmUqsUYGSvErhqfkLfro9j2/STi5UDmSpNgjPkQmXpgnKw==
+"@astrojs/telemetry@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@astrojs/telemetry/-/telemetry-2.0.1.tgz#6c21b8697ce683a50124c55cbd4751bc883fe580"
+  integrity sha512-68BLBb9CcvQMkWHE6h6VTgm5g6agm3+xm8eb3cdkmX9nP1LSQ/fiD49Jb1qAgCtWcY8yQJiWQQXwcdyStD+VoA==
   dependencies:
     ci-info "^3.3.1"
     debug "^4.3.4"
@@ -117,15 +117,15 @@
     dset "^3.1.2"
     is-docker "^3.0.0"
     is-wsl "^2.2.0"
-    undici "^5.14.0"
+    undici "^5.20.0"
     which-pm-runs "^1.1.0"
 
-"@astrojs/webapi@^2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@astrojs/webapi/-/webapi-2.0.1.tgz#b8459a2f3ad6d8d8fea0bb45bc41f7aa6436bcea"
-  integrity sha512-aOOHa86W5Ux77A3dS91YrVlSxtBSJsVK4UhvcXHY0gAl0ZrOStSKSBO45gZ6tFi2AiHu3bzpMtZjwrPHtl+cyg==
+"@astrojs/webapi@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@astrojs/webapi/-/webapi-2.0.2.tgz#24afaeed1ee44576c150ac83983a86ef31c6053e"
+  integrity sha512-uSNtxLuvCWOcwy/DdIy30ocIcIUedEZpyhn1MHW3XuZ3PZHg4PMej3EP38Ns6uKgDKqMyEdscca9bMLuf4cO/w==
   dependencies:
-    undici "5.18.0"
+    undici "5.20.0"
 
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.18.6":
   version "7.18.6"
@@ -696,10 +696,10 @@
   dependencies:
     "@types/unist" "*"
 
-"@types/node@^18.14.1":
-  version "18.14.1"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.14.1.tgz#90dad8476f1e42797c49d6f8b69aaf9f876fc69f"
-  integrity sha512-QH+37Qds3E0eDlReeboBxfHbX9omAcBCXEzswCu6jySP642jiM3cYSIkU/REqwhCUqXdonHFuBfJDiAJxMNhaQ==
+"@types/node@^16":
+  version "16.18.13"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.18.13.tgz#c572f8837094c6e3b73918a68674c784f6877fc0"
+  integrity sha512-l0/3XZ153UTlNOnZK8xSNoJlQda9/WnYgiTdcKKPJSZjdjI9MU+A9oMXOesAWLSnqAaaJhj3qfQsU07Dr8OUwg==
 
 "@types/normalize-package-data@^2.4.0", "@types/normalize-package-data@^2.4.1":
   version "2.4.1"
@@ -1044,16 +1044,16 @@ astro-purgecss@^2.0.0:
   dependencies:
     purgecss "^5.0.0"
 
-astro@2.0.15:
-  version "2.0.15"
-  resolved "https://registry.yarnpkg.com/astro/-/astro-2.0.15.tgz#fa4d356d9b3b152f68a9882b094fa487be2be752"
-  integrity sha512-CUJNrcdgcSjASValRNEesTgXSefgQ8Z9GHrZXckmTivatoBlVkYb8G8tmk7dgRt6JF+bwfOsA6cGdv7+G7hCbA==
+astro@2.0.16:
+  version "2.0.16"
+  resolved "https://registry.yarnpkg.com/astro/-/astro-2.0.16.tgz#ebc24390f6b73edd7e55f08d1ba2573028a7129e"
+  integrity sha512-noQL+bbBZaCLbh7wmpVON+e4kDxymDsIQkEUzzuMKLQodYynxr/Sp7RBA/JnEqXz4CRyd7IrgeQBN0cKOuBtzQ==
   dependencies:
     "@astrojs/compiler" "^1.1.0"
     "@astrojs/language-server" "^0.28.3"
     "@astrojs/markdown-remark" "^2.0.1"
-    "@astrojs/telemetry" "^2.0.0"
-    "@astrojs/webapi" "^2.0.1"
+    "@astrojs/telemetry" "^2.0.1"
+    "@astrojs/webapi" "^2.0.2"
     "@babel/core" "^7.18.2"
     "@babel/generator" "^7.18.2"
     "@babel/parser" "^7.18.4"
@@ -2239,10 +2239,10 @@ execa@^6.1.0:
     signal-exit "^3.0.7"
     strip-final-newline "^3.0.0"
 
-exifreader@^4.9.1:
-  version "4.9.1"
-  resolved "https://registry.yarnpkg.com/exifreader/-/exifreader-4.9.1.tgz#e40235845914f42aaf717ffede8367c4f3698e76"
-  integrity sha512-lcVG6VuSkPVHdmM6HybcVWaE8iO4Qq68qFPCRM6U3kz0JODqw4mjMySJ1nZSHfAnrfsIYGfN9A2vh96b3LAF1g==
+exifreader@^4.9.2:
+  version "4.9.2"
+  resolved "https://registry.yarnpkg.com/exifreader/-/exifreader-4.9.2.tgz#6ffebd64c931d9f063e8442025a8e86060afa539"
+  integrity sha512-99c07jrLXYBscf4qKe8i1pRWgo6ptKr+zR//oNFm8gt7qDtlKYsvbvP8RqkfwLFsZjxVF8cu8LG3x7TWUtS8wQ==
   optionalDependencies:
     "@xmldom/xmldom" "^0.7.8"
 
@@ -2391,10 +2391,10 @@ fraction.js@^4.2.0:
   resolved "https://registry.yarnpkg.com/fraction.js/-/fraction.js-4.2.0.tgz#448e5109a313a3527f5a3ab2119ec4cf0e0e2950"
   integrity sha512-MhLuK+2gUcnZe8ZHlaaINnQLl0xRIGRfcGk2yl8xoQAfHrSsL3rYu6FCmBdkdbhc9EPlwyGHewaRsvwRMJtAlA==
 
-framer-motion@^10.0.0:
-  version "10.0.0"
-  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-10.0.0.tgz#56e4cefa2a15cb052576e525f445414bf1ddac56"
-  integrity sha512-qVmndcu4Z3q5ftqcbUCvVewHc5yiw4uIZyM0uvJ0/spj9lza/FnWywUUc8DNIZTG1my6nFsNLRPGDruP4o6eIw==
+framer-motion@^10.0.1:
+  version "10.0.1"
+  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-10.0.1.tgz#62cadfb9ed80599ac9b1c1699dc4e1164c3133c5"
+  integrity sha512-/N7gBA9gH8PkStyNQ67P/lx8UhL/7Y8z9Ku7FfgOF77sSG8wu8781kX7I5ZUgflRRtQXo8qH4Rev23004G1zcQ==
   dependencies:
     tslib "^2.4.0"
   optionalDependencies:
@@ -5386,17 +5386,10 @@ unc-path-regex@^0.1.2:
   resolved "https://registry.yarnpkg.com/unc-path-regex/-/unc-path-regex-0.1.2.tgz#e73dd3d7b0d7c5ed86fbac6b0ae7d8c6a69d50fa"
   integrity sha512-eXL4nmJT7oCpkZsHZUOJo8hcX3GbsiDOa0Qu9F646fi8dT3XuSVopVqAcEiVzSKKH7UoDti23wNX3qGFxcW5Qg==
 
-undici@5.18.0:
-  version "5.18.0"
-  resolved "https://registry.yarnpkg.com/undici/-/undici-5.18.0.tgz#e88a77a74d991a30701e9a6751e4193a26fabda9"
-  integrity sha512-1iVwbhonhFytNdg0P4PqyIAXbdlVZVebtPDvuM36m66mRw4OGrCm2MYynJv/UENFLdP13J1nPVQzVE2zTs1OeA==
-  dependencies:
-    busboy "^1.6.0"
-
-undici@^5.14.0:
-  version "5.16.0"
-  resolved "https://registry.yarnpkg.com/undici/-/undici-5.16.0.tgz#6b64f9b890de85489ac6332bd45ca67e4f7d9943"
-  integrity sha512-KWBOXNv6VX+oJQhchXieUznEmnJMqgXMbs0xxH2t8q/FUAWSJvOSr/rMaZKnX5RIVq7JDn0JbP4BOnKG2SGXLQ==
+undici@5.20.0, undici@^5.20.0:
+  version "5.20.0"
+  resolved "https://registry.yarnpkg.com/undici/-/undici-5.20.0.tgz#6327462f5ce1d3646bcdac99da7317f455bcc263"
+  integrity sha512-J3j60dYzuo6Eevbawwp1sdg16k5Tf768bxYK4TUJRH7cBM4kFCbf3mOnM/0E3vQYXvpxITbbWmBafaDbxLDz3g==
   dependencies:
     busboy "^1.6.0"
 

@@ -19,18 +19,14 @@
 		"@astrojs/prefetch": "^0.1.2",
 		"@astrojs/react": "^2.0.2",
 		"@astrojs/tailwind": "^3.0.1",
-		"@semantic-release/changelog": "^6.0.2",
-		"@semantic-release/git": "^10.0.1",
-		"@semantic-release/github": "^8.0.7",
-		"@semantic-release/npm": "^9.0.2",
-		"@semantic-release/release-notes-generator": "^10.0.3",
 		"@types/react": "^18.0.28",
 		"@types/react-dom": "^18.0.11",
-		"astro": "2.0.15",
+		"astro": "2.0.16",
 		"astro-critters": "^1.1.31",
 		"astro-purgecss": "^2.0.0",
+		"exifreader": "^4.9.2",
 		"fecha": "^4.2.3",
-		"framer-motion": "^10.0.0",
+		"framer-motion": "^10.0.1",
 		"react": "^18.0.0",
 		"react-dom": "^18.0.0",
 		"react-masonry-css": "^1.0.16",
@@ -46,8 +42,7 @@
 		}
 	},
 	"devDependencies": {
-		"@types/node": "^18.14.1",
-		"exifreader": "^4.9.1",
+		"@types/node": "^16",
 		"xo": "^0.53.1"
 	},
 	"release": {
