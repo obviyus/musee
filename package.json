@@ -23,7 +23,7 @@
 		"@types/react-dom": "^18.0.11",
 		"astro": "2.0.16",
 		"astro-critters": "^1.1.31",
-		"astro-purgecss": "^2.0.0",
+		"astro-purgecss": "^2.0.1",
 		"exifreader": "^4.9.2",
 		"fecha": "^4.2.3",
 		"framer-motion": "^10.0.1",

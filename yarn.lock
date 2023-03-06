@@ -1037,10 +1037,10 @@ astro-critters@^1.1.31:
     critters "0.0.16"
     files-pipe "0.0.1"
 
-astro-purgecss@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/astro-purgecss/-/astro-purgecss-2.0.0.tgz#d525674fa16ef354c16bced5ca73715e5224a46b"
-  integrity sha512-xt8Wvhkgp3Q3qgwGxtNPZ+KmnO29Rs7K2g2e4imIaWkNnXUMoCG7S0n8/m2ZwXRF9snI5h1DV8N80zZHj7Jx3A==
+astro-purgecss@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/astro-purgecss/-/astro-purgecss-2.0.1.tgz#3f755cf75a81b01b6d5c52cb22b629ecde55806f"
+  integrity sha512-G1DYu2wvfodPc4fTBcCOaKGuTBosyHZnXEgfKh64e4eCaHupCeaBrrIwBxFUePFZIvm1vciDWYUiPIG7qTKgOg==
   dependencies:
     purgecss "^5.0.0"
 
