@@ -42,7 +42,7 @@
 		}
 	},
 	"devDependencies": {
-		"@types/node": "^16",
+		"@types/node": "^18",
 		"xo": "^0.53.1"
 	},
 	"release": {
