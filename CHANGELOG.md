@@ -1,3 +1,10 @@
+# [1.13.0](https://github.com/obviyus/musee/compare/v1.12.0...v1.13.0) (2023-03-20)
+
+
+### Features
+
+* **dummy:** dummy commit to test CI ([d2ab7a1](https://github.com/obviyus/musee/commit/d2ab7a151c6f9abe846a5d97b7d76191c5adacd5))
+
 # [1.12.0](https://github.com/obviyus/musee/compare/v1.11.1...v1.12.0) (2023-03-01)
 
 
