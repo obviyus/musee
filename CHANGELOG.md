@@ -1,3 +1,10 @@
+## [1.13.1](https://github.com/obviyus/musee/compare/v1.13.0...v1.13.1) (2023-05-07)
+
+
+### Bug Fixes
+
+* **layout:** link to original image on BaseImage ([7d3c7a1](https://github.com/obviyus/musee/commit/7d3c7a11f3fad7da030d0228ccdf13b154b84d7e))
+
 # [1.13.0](https://github.com/obviyus/musee/compare/v1.12.0...v1.13.0) (2023-03-20)
 
 
