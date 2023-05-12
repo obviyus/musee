@@ -1,3 +1,10 @@
+## [1.13.2](https://github.com/obviyus/musee/compare/v1.13.1...v1.13.2) (2023-05-12)
+
+
+### Bug Fixes
+
+* **image:** rename extension ([faac874](https://github.com/obviyus/musee/commit/faac874fa72a321efd374f92bd3238cc634623d0))
+
 ## [1.13.1](https://github.com/obviyus/musee/compare/v1.13.0...v1.13.1) (2023-05-07)
 
 
