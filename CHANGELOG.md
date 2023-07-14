@@ -1,3 +1,11 @@
+## [1.13.3](https://github.com/obviyus/musee/compare/v1.13.2...v1.13.3) (2023-07-14)
+
+
+### Bug Fixes
+
+* **masonry:** use slug as index ([d178ee9](https://github.com/obviyus/musee/commit/d178ee90aa169f6120f4c09f6a997f9d40df709d))
+* **types:** harder types for functions ([909d0d7](https://github.com/obviyus/musee/commit/909d0d7fd8978825fa893838f7a4f130cb615e48))
+
 ## [1.13.2](https://github.com/obviyus/musee/compare/v1.13.1...v1.13.2) (2023-05-12)
 
 
