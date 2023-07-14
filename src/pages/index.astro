@@ -10,7 +10,7 @@ const images = await Astro.glob('../assets/images/original/*.{jpg,jpeg,png}');
 const sortedImages: sortedImage[] = [];
 
 function compareByDate(a: sortedImage, b: sortedImage) {
-	return new Date(b.date) - new Date(a.date);
+	return new Date(b.date).getTime() - new Date(a.date).getTime();
 }
 
 function insertSorted(array: any[], element: sortedImage) {
@@ -23,7 +23,7 @@ function insertSorted(array: any[], element: sortedImage) {
 }
 
 export async function getImageSlug(filepath: string) {
-	return filepath.split('/').pop().split('.').shift();
+	return ((filepath.split('/') as string[]).pop() as string).split('.').shift();
 }
 
 export async function getImageDate(image: Record<string, any>): Promise<Date> {
