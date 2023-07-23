@@ -49,7 +49,7 @@ Feel free to make a PR to add your own.
 1. Install dependencies.
 
 ```bash
-$ yarn install
+$ npm install
 ```
 
 Load your images in the `src/assets/images/original` directory.
@@ -57,7 +57,7 @@ Load your images in the `src/assets/images/original` directory.
 2. Start development server
 
 ```bash
-$ yarn dev
+$ npm run dev
 ```
 
 ## 🚀 Deployment
