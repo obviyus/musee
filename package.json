@@ -21,26 +21,19 @@
 		"@astrojs/tailwind": "^4.0.0",
 		"@types/react": "^18.2.15",
 		"@types/react-dom": "^18.2.7",
-		"astro": "2.8.2",
+		"astro": "2.9.1",
 		"astro-critters": "^1.1.39",
-		"astro-purgecss": "^2.2.0",
+		"astro-purgecss": "^2.3.0",
 		"exifreader": "^4.13.0",
 		"fecha": "^4.2.3",
-		"framer-motion": "^10.12.21",
-		"react": "^18.0.0",
-		"react-dom": "^18.0.0",
+		"framer-motion": "^10.13.0",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
 		"react-masonry-css": "^1.0.16",
-		"sharp": "^0.32.3",
+		"sharp": "^0.32.4",
 		"tailwindcss": "^3.3.3"
 	},
 	"repository": "git@github.com:obviyus/musee.git",
-	"xo": {
-		"prettier": true,
-		"rules": {
-			"capitalized-comments": "off",
-			"n/file-extension-in-import": "off"
-		}
-	},
 	"devDependencies": {
 		"@types/node": "^18",
 		"rome": "^12.1.3"
