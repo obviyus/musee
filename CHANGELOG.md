@@ -1,3 +1,11 @@
+## [1.14.1](https://github.com/obviyus/musee/compare/v1.14.0...v1.14.1) (2023-08-31)
+
+
+### Bug Fixes
+
+* **lazy:** fix lazy loading to reduce initial payload ([b4210fb](https://github.com/obviyus/musee/commit/b4210fb66956329752fc804e9cc54fc8c9219ad4))
+* **misc:** typed import + remove log ([3b5f911](https://github.com/obviyus/musee/commit/3b5f911edbd052c939c849e6bdb2ebbbf0b9f33a))
+
 # [1.14.0](https://github.com/obviyus/musee/compare/v1.13.3...v1.14.0) (2023-08-31)
 
 
