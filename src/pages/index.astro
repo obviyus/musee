@@ -1,6 +1,6 @@
 ---
 import { getImage } from 'astro:assets';
-import { MasonryGrid, sortedImage } from '../components/masonry';
+import { MasonryGrid, type sortedImage } from '../components/masonry';
 import BaseIndex from '../layouts/BaseIndex.astro';
 import fs from 'node:fs';
 import ExifReader from 'exifreader';
@@ -24,16 +24,15 @@ function insertSorted(array: any[], element: sortedImage) {
 
 export async function getImageDate(image: Record<string, any>): Promise<Date> {
 	let { src: filepath } = image;
-	console.log(image);
 
 	// Hack to check if file exists, if not, probably running build
 	if (!fs.existsSync(filepath)) {
 		filepath = filepath.replace('@fs/', '');
 		filepath = filepath.split('?').shift() as string;
+	}
 
-		if (!fs.existsSync(filepath)) {
-			filepath = 'dist/' + filepath;
-		}
+	if (!fs.existsSync(filepath)) {
+		filepath = 'dist/' + filepath;
 	}
 
 	const exifTags = (await ExifReader.load(filepath)) as Record<string, any>;
