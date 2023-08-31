@@ -1,3 +1,10 @@
+# [1.14.0](https://github.com/obviyus/musee/compare/v1.13.3...v1.14.0) (2023-08-31)
+
+
+### Features
+
+* **v3:** migrate to Astro V3 ([6531cd9](https://github.com/obviyus/musee/commit/6531cd9b7225645f84ded06560794c73f4611e67))
+
 ## [1.13.3](https://github.com/obviyus/musee/compare/v1.13.2...v1.13.3) (2023-07-14)
 
 
