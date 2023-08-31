@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/naming-convention */
+import type { GetImageResult } from "astro";
 import { motion } from "framer-motion";
 import Masonry from "react-masonry-css";
 
@@ -13,8 +13,8 @@ const breakpointColumnsObject = {
 };
 
 export type sortedImage = {
-	original: astroHTML.JSX.ImgHTMLAttributes;
-	thumbnail: astroHTML.JSX.ImgHTMLAttributes;
+	original: GetImageResult;
+	thumbnail: GetImageResult;
 	date: Date;
 	slug: string;
 };
@@ -24,10 +24,10 @@ export function MasonryGrid(props: { images: sortedImage[] }) {
 
 	return (
 		<Masonry breakpointCols={breakpointColumnsObject} className={"flex"}>
-			{Object.entries(images).map((image, index) => {
+			{Object.entries(images).map(([_, value], index) => {
 				return (
 					<motion.div
-						key={image[1].slug}
+						key={value.slug}
 						whileInView={{ opacity: 1 }}
 						viewport={{ once: true }}
 						initial={{ opacity: 0 }}
@@ -38,13 +38,13 @@ export function MasonryGrid(props: { images: sortedImage[] }) {
 							delay: (index % 5) * 0.05,
 						}}
 					>
-						<a href={`/${image[1].slug}`}>
+						<a href={`/${value.slug}`}>
 							<img
-								src={image[1].thumbnail.src as string}
-								width={image[1].thumbnail.width as number}
-								height={image[1].thumbnail.height as number}
-								alt={image[1].slug}
-								loading={index > 4 ? "lazy" : "eager"}
+								src={value.thumbnail.src as string}
+								width={value.thumbnail.attributes.width as number}
+								height={value.thumbnail.attributes.height as number}
+								alt={value.slug}
+								loading={"lazy"}
 								className={
 									"transition ease-in-out delay-75 hover:-translate-y-1 hover:scale-110 duration-300"
 								}
