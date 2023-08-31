@@ -1,12 +1,12 @@
 ---
-import { getImage } from '@astrojs/image';
+import { getImage } from 'astro:assets';
 import { MasonryGrid, sortedImage } from '../components/masonry';
 import BaseIndex from '../layouts/BaseIndex.astro';
 import fs from 'node:fs';
 import ExifReader from 'exifreader';
 import { parse } from 'fecha';
+import images from '../assets/images/imageList';
 
-const images = await Astro.glob('../assets/images/original/*.{jpg,jpeg,png}');
 const sortedImages: sortedImage[] = [];
 
 function compareByDate(a: sortedImage, b: sortedImage) {
@@ -22,18 +22,18 @@ function insertSorted(array: any[], element: sortedImage) {
 	array.splice(i, 0, element);
 }
 
-export async function getImageSlug(filepath: string) {
-	return ((filepath.split('/') as string[]).pop() as string).split('.').shift();
-}
-
 export async function getImageDate(image: Record<string, any>): Promise<Date> {
-	let { src: filepath } = image.default;
-	filepath = filepath.replace('/@astroimage/', '/');
+	let { src: filepath } = image;
+	console.log(image);
 
 	// Hack to check if file exists, if not, probably running build
 	if (!fs.existsSync(filepath)) {
-		filepath = filepath.replace('src/', '');
-		filepath = 'dist/' + filepath;
+		filepath = filepath.replace('@fs/', '');
+		filepath = filepath.split('?').shift() as string;
+
+		if (!fs.existsSync(filepath)) {
+			filepath = 'dist/' + filepath;
+		}
 	}
 
 	const exifTags = (await ExifReader.load(filepath)) as Record<string, any>;
@@ -46,21 +46,26 @@ export async function getImageDate(image: Record<string, any>): Promise<Date> {
 }
 
 await Promise.all(
-	images.map(async (image) => {
-		const date = await getImageDate(image);
+	Object.entries(images).map(async ([key, value]) => {
+		const date = await getImageDate(value);
+		const dashedSlug =
+			key.slice(0, 3) + '-' + key.slice(3, -3) + '-' + key.slice(-3);
 
 		insertSorted(sortedImages, {
-			original: await getImage({ ...image.default, format: 'webp' }),
+			original: await getImage({
+				src: value,
+				format: 'webp',
+				alt: `Gallery Image ${dashedSlug}`,
+			}),
 			thumbnail: await getImage({
-				src: image.default.src,
+				src: value,
 				width: 640,
-				aspectRatio: image.default.width / image.default.height,
 				quality: 80,
 				format: 'webp',
-				alt: 'Gallery Image',
+				alt: `Gallery Image ${dashedSlug}`,
 			}),
 			date: date,
-			slug: `image/${await getImageSlug(image.default.src)}`,
+			slug: `image/${dashedSlug}`,
 		});
 	})
 );
