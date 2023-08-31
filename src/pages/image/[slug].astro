@@ -1,25 +1,20 @@
 ---
-import { getImage } from '@astrojs/image';
+import { getImage } from 'astro:assets';
 import { BaseImage } from '../../components/image';
 import BaseIndex from '../../layouts/BaseIndex.astro';
-import { getImageDate, getImageSlug } from '../index.astro';
+import { getImageDate } from '../index.astro';
+import images from '../../assets/images/imageList';
 
 export async function getStaticPaths() {
-	const images = await Astro.glob(
-		'../../assets/images/original/*.{jpg,jpeg,png}'
-	);
-
 	const staticPaths = await Promise.all(
-		images.map(async (image) => {
-			const date = await getImageDate(image);
-
-			const src = image.default.src;
-			const slug = await getImageSlug(src);
+		Object.entries(images).map(async ([key, value]) => {
+			const date = await getImageDate(value);
+			const dashedSlug =
+				key.slice(0, 3) + '-' + key.slice(3, -3) + '-' + key.slice(-3);
 
 			const thumbnail = await getImage({
-				src: image.default.src,
+				src: value,
 				width: 640,
-				aspectRatio: image.default.width / image.default.height,
 				quality: 80,
 				format: 'jpeg',
 				alt: 'Gallery Image',
@@ -27,10 +22,10 @@ export async function getStaticPaths() {
 
 			return {
 				params: {
-					slug,
+					slug: dashedSlug,
 				},
 				props: {
-					...image.default,
+					...value,
 					date,
 					thumbnail: thumbnail.src,
 				},
