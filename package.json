@@ -19,13 +19,13 @@
 	"dependencies": {
 		"@astrojs/prefetch": "^0.4.1",
 		"@astrojs/react": "^3.0.3",
-		"@astrojs/tailwind": "^5.0.1",
-		"@types/react": "^18.2.25",
-		"@types/react-dom": "^18.2.11",
-		"astro": "3.2.3",
+		"@astrojs/tailwind": "^5.0.2",
+		"@types/react": "^18.2.28",
+		"@types/react-dom": "^18.2.13",
+		"astro": "3.3.0",
 		"astro-critters": "^2.0.11",
 		"astro-purgecss": "^3.2.1",
-		"exifreader": "^4.13.1",
+		"exifreader": "^4.13.2",
 		"farmhash": "^3.3.0",
 		"fecha": "^4.2.3",
 		"framer-motion": "^10.16.4",
@@ -39,7 +39,7 @@
 	"repository": "git@github.com:obviyus/musee.git",
 	"devDependencies": {
 		"@biomejs/biome": "^1.2.2",
-		"@types/node": "^18",
+		"@types/node": "^18.18.5",
 		"ts-node": "^10.9.1"
 	},
 	"release": {
