@@ -18,11 +18,11 @@
 	},
 	"dependencies": {
 		"@astrojs/prefetch": "^0.4.1",
-		"@astrojs/react": "^3.0.4",
+		"@astrojs/react": "^3.0.5",
 		"@astrojs/tailwind": "^5.0.2",
 		"@types/react": "^18.2.37",
 		"@types/react-dom": "^18.2.15",
-		"astro": "3.5.4",
+		"astro": "3.5.5",
 		"astro-critters": "^2.0.11",
 		"astro-purgecss": "^3.2.1",
 		"exifreader": "^4.16.0",
