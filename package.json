@@ -8,39 +8,39 @@
 	"license": "GNU GPLv3",
 	"description": "Self hosted gallery written in React + Astro. Ships minimal JS to the client.",
 	"scripts": {
-		"predev": "npx ts-node --esm imageImporter.ts",
+		"predev": "npx tsx imageImporter.ts",
 		"dev": "astro dev",
 		"start": "npm run dev",
-		"prebuild": "npx ts-node --esm imageImporter.ts",
+		"prebuild": "npx tsx imageImporter.ts",
 		"build": "astro build",
 		"preview": "astro preview",
 		"astro": "astro"
 	},
 	"dependencies": {
 		"@astrojs/prefetch": "^0.4.1",
-		"@astrojs/react": "^3.0.7",
-		"@astrojs/tailwind": "^5.0.3",
-		"@types/react": "^18.2.42",
-		"@types/react-dom": "^18.2.17",
-		"astro": "4.0.2",
+		"@astrojs/react": "^3.0.8",
+		"@astrojs/tailwind": "^5.0.4",
+		"@types/react": "^18.2.45",
+		"@types/react-dom": "^18.2.18",
+		"astro": "4.0.7",
 		"astro-critters": "^2.0.11",
 		"astro-purgecss": "^4.0.0",
-		"exifreader": "^4.17.0",
+		"exifreader": "^4.19.1",
 		"farmhash": "^3.3.0",
 		"fecha": "^4.2.3",
-		"framer-motion": "^10.16.14",
+		"framer-motion": "^10.16.16",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
 		"react-masonry-css": "^1.0.16",
-		"sharp": "^0.33.0",
+		"sharp": "^0.33.1",
 		"sqids": "^0.3.0",
-		"tailwindcss": "^3.3.6"
+		"tailwindcss": "^3.4.0"
 	},
 	"repository": "git@github.com:obviyus/musee.git",
 	"devDependencies": {
 		"@biomejs/biome": "^1.4.1",
 		"@types/node": "^18.18.5",
-		"ts-node": "^10.9.1"
+		"tsx": "^4.7.0"
 	},
 	"release": {
 		"branches": [
