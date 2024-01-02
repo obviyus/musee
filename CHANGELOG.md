@@ -1,3 +1,10 @@
+## [1.14.2](https://github.com/obviyus/musee/compare/v1.14.1...v1.14.2) (2024-01-02)
+
+
+### Bug Fixes
+
+* **hash:** use consistent hashing based on filename ([1cd93e4](https://github.com/obviyus/musee/commit/1cd93e44e50c60c108d51dd554b8b6d7cc099df1))
+
 ## [1.14.1](https://github.com/obviyus/musee/compare/v1.14.0...v1.14.1) (2023-08-31)
 
 
