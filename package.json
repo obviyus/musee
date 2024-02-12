@@ -18,12 +18,12 @@
 	},
 	"dependencies": {
 		"@astrojs/prefetch": "^0.4.1",
-		"@astrojs/react": "^3.0.9",
+		"@astrojs/react": "^3.0.10",
 		"@astrojs/tailwind": "^5.1.0",
 		"@types/react": "^18.2.55",
-		"@types/react-dom": "^18.2.18",
-		"astro": "4.3.4",
-		"astro-critters": "^2.0.11",
+		"@types/react-dom": "^18.2.19",
+		"astro": "4.3.5",
+		"astro-critters": "^2.1.1",
 		"astro-purgecss": "^4.1.0",
 		"exifreader": "^4.21.0",
 		"fecha": "^4.2.3",
@@ -39,7 +39,7 @@
 	"devDependencies": {
 		"@biomejs/biome": "^1.5.3",
 		"@types/node": "^18.18.5",
-		"tsx": "^4.7.0"
+		"tsx": "^4.7.1"
 	},
 	"release": {
 		"branches": [
