@@ -13,6 +13,7 @@
 		"start": "npm run dev",
 		"prebuild": "npx tsx imageImporter.ts",
 		"build": "astro build",
+		"postbuild": "npx @divriots/jampack ./dist",
 		"preview": "astro preview",
 		"astro": "astro"
 	},
@@ -20,7 +21,7 @@
 		"@astrojs/prefetch": "^0.4.1",
 		"@astrojs/react": "^3.1.0",
 		"@astrojs/tailwind": "^5.1.0",
-		"@types/react": "^18.2.69",
+		"@types/react": "^18.2.70",
 		"@types/react-dom": "^18.2.22",
 		"astro": "4.5.9",
 		"astro-critters": "^2.1.6",
@@ -37,7 +38,7 @@
 	},
 	"repository": "git@github.com:obviyus/musee.git",
 	"devDependencies": {
-		"@biomejs/biome": "^1.6.2",
+		"@biomejs/biome": "^1.6.3",
 		"@types/node": "^18.18.5",
 		"tsx": "^4.7.1"
 	},
