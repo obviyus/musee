@@ -21,3 +21,6 @@ pnpm-debug.log*
 
 # IDE
 .idea/
+
+# Jampack
+.jampack/
