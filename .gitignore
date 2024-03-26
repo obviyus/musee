@@ -1,5 +1,4 @@
 # build output
-dist/
 .cache/
 .output/
 
@@ -27,3 +26,6 @@ pnpm-debug.log*
 
 # Git LFS
 .git.bfg-report/
+
+# Images
+src/assets/images/
