@@ -1,9 +1,13 @@
-import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
-import critters from 'astro-critters';
-import purgecss from 'astro-purgecss';
-import react from '@astrojs/react';
+import react from "@astrojs/react";
+import tailwindcss from "@tailwindcss/vite";
+import { defineConfig } from "astro/config";
+import critters from "astro-critters";
+import purgecss from "astro-purgecss";
 
 export default defineConfig({
-	integrations: [tailwind(), critters(), purgecss(), react()],
+	integrations: [critters(), purgecss(), react()],
+
+	vite: {
+		plugins: [tailwindcss()],
+	},
 });
