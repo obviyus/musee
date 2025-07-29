@@ -1,5 +1,6 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
+import BaseHead from "../components/BaseHead.astro";
+import "../styles/global.css";
 
 export interface Props {
 	title: string;
@@ -9,12 +10,10 @@ export interface Props {
 	previewImage?: any;
 	datePublished?: Date;
 }
-
-const { title } = Astro.props as Props;
 ---
 
-<!DOCTYPE html>
-<html lang='en'>
+<!doctype html>
+<html lang="en">
 	<head>
 		<BaseHead {...Astro.props} />
 	</head>

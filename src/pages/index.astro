@@ -1,78 +1,55 @@
 ---
-import { getImage } from 'astro:assets';
-import { MasonryGrid, type sortedImage } from '../components/masonry';
-import BaseIndex from '../layouts/BaseIndex.astro';
-import fs from 'node:fs';
-import ExifReader from 'exifreader';
-import { parse } from 'fecha';
-import images from '../assets/images/imageList';
+import { getImage } from "astro:assets";
+import { MasonryGrid, type SortedImage } from "../components/masonry";
+import BaseIndex from "../layouts/BaseIndex.astro";
+import images from "../assets/images/imageList";
+import { getImageDate } from "../utils/imageDate";
 
-const sortedImages: sortedImage[] = [];
+const sortedImages: SortedImage[] = [];
 
-function compareByDate(a: sortedImage, b: sortedImage) {
-	return new Date(b.date).getTime() - new Date(a.date).getTime();
+function compareByDate(a: SortedImage, b: SortedImage): number {
+	return b.date.getTime() - a.date.getTime();
 }
 
-function insertSorted(array: any[], element: sortedImage) {
-	for (
-		var i = 0;
-		i < array.length && compareByDate(array[i], element) < 0;
-		i++
-	) {}
-	array.splice(i, 0, element);
-}
+const imageEntries = Object.entries(images);
 
-export async function getImageDate(image: Record<string, any>): Promise<Date> {
-	let { src: filepath } = image;
-
-	// Hack to check if file exists, if not, probably running build
-	if (!fs.existsSync(filepath)) {
-		filepath = filepath.replace('@fs/', '');
-		filepath = filepath.split('?').shift() as string;
-	}
-
-	if (!fs.existsSync(filepath)) {
-		filepath = 'dist/' + filepath;
-	}
-
-	const exifTags = (await ExifReader.load(filepath)) as Record<string, any>;
-	return 'DateTimeOriginal' in exifTags
-		? (parse(
-				exifTags.DateTimeOriginal.description,
-				'YYYY:MM:DD HH:mm:ss'
-		  ) as Date)
-		: fs.statSync(filepath).birthtime;
-}
-
-await Promise.all(
-	Object.entries(images).map(async ([key, value]) => {
-		const date = await getImageDate(value);
-		const dashedSlug =
-			key.slice(0, 3) + '-' + key.slice(3, -3) + '-' + key.slice(-3);
-
-		insertSorted(sortedImages, {
-			original: await getImage({
+const processedImages = await Promise.all(
+	imageEntries.map(async ([key, value]) => {
+		const [date, original, thumbnail] = await Promise.all([
+			getImageDate(value),
+			getImage({
 				src: value,
-				format: 'webp',
-				alt: `Gallery Image ${dashedSlug}`,
+				format: "webp",
 			}),
-			thumbnail: await getImage({
+			getImage({
 				src: value,
 				width: 640,
 				quality: 80,
-				format: 'webp',
-				alt: `Gallery Image ${dashedSlug}`,
+				format: "webp",
 			}),
-			date: date,
+		]);
+
+		// Format slug with dashes for readability
+		const dashedSlug = `${key.slice(0, 3)}-${key.slice(3, -3)}-${key.slice(-3)}`;
+
+		return {
+			original,
+			thumbnail,
+			date,
 			slug: `image/${dashedSlug}`,
-		});
-	})
+		};
+	}),
 );
+
+// Sort all at once using Bun's optimized sort
+processedImages.sort(compareByDate);
+sortedImages.push(...processedImages);
 ---
 
 <BaseIndex
 	title="Galerie d'Ayaan"
 	description="Ayaan Zaidi's personal image feed. Mild obsession with aircrafts and shiny things. Mostly shot on a mobile camera."
-	permalink="https://gallery.obviy.us/">
+	permalink="https://gallery.obviy.us/"
+>
 	<MasonryGrid images={sortedImages} client:load />
 </BaseIndex>

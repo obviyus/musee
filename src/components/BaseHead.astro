@@ -4,9 +4,20 @@ export interface Props {
 	description: string;
 	permalink: string;
 	previewImage?: string;
+	siteName?: string;
+	locale?: string;
 }
-const { title, description, permalink, previewImage } = Astro.props;
-const preview = previewImage ? previewImage : '/social_preview.jpeg';
+const {
+	title,
+	description,
+	permalink,
+	previewImage,
+	siteName = "Musée",
+	locale = "en_US",
+} = Astro.props;
+const preview = previewImage
+	? new URL(previewImage, permalink).href
+	: new URL("/social_preview.jpeg", permalink).href;
 ---
 
 <!-- Global Metadata -->
@@ -32,6 +43,11 @@ const preview = previewImage ? previewImage : '/social_preview.jpeg';
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={preview} />
+
+<!-- Additional SEO -->
+<meta property="og:site_name" content={siteName} />
+<meta property="og:locale" content={locale} />
+<link rel="canonical" href={permalink} />
 
 <!-- Icons -->
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
