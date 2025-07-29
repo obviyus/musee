@@ -27,3 +27,8 @@ pnpm-debug.log*
 
 # Git LFS
 .git.bfg-report/
+
+# Project specific
+.astro/
+src/assets/images/original/
+src/assets/images/imageList.ts
