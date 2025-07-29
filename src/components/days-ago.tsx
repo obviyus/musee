@@ -1,9 +1,27 @@
-export function daysAgo(startDate: Date) {
-	const daysAgo = startDate
-		? Math.floor(
-				(Date.now() - new Date(startDate).getTime()) / 1000 / 60 / 60 / 24,
-		  )
-		: null;
+export function daysAgo(startDate: Date | null | undefined): string {
+	if (
+		!startDate ||
+		!(startDate instanceof Date) ||
+		Number.isNaN(startDate.getTime())
+	) {
+		return "Unknown date";
+	}
 
-	return daysAgo ? `${daysAgo} day${daysAgo === 1 ? "" : "s"} ago` : "Someday";
+	const now = Date.now();
+	const then = startDate.getTime();
+	const diffInMs = now - then;
+
+	if (diffInMs < 0) {
+		return "In the future";
+	}
+
+	const diffInDays = Math.floor(diffInMs / 1000 / 60 / 60 / 24);
+
+	if (diffInDays === 0) {
+		return "Today";
+	} else if (diffInDays === 1) {
+		return "Yesterday";
+	} else {
+		return `${diffInDays} days ago`;
+	}
 }
