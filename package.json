@@ -38,6 +38,7 @@
 	"repository": "git@github.com:obviyus/musee.git",
 	"devDependencies": {
 		"@types/bun": "^1.2.19",
+		"@types/luxon": "^3.7.0",
 		"tsx": "^4.20.3"
 	},
 	"release": {
