@@ -10,11 +10,11 @@
   <img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/m/obviyus/musee">
 </p>
 
-<p align="center">Fast, responsive, self-hosted image gallery. Ships minimal JS to the client.</p>
+<p align="center">Fast, responsive, self-hosted image gallery. Ships <strong>ZERO</strong> JavaScript to the client.</p>
 
-[Musée](https://www.collinsdictionary.com/dictionary/french-english/mus%C3%A9e) (pronounced myu-zay) was written primarily to experiment around with https://remix.run/ but now re-written using https://astro.build. Until now I had been using the _ excellent_ [`waschinski/photo-stream`](https://github.com/waschinski/photo-stream) gallery for hosting my images but felt limited with having to use Ruby. The eventual goal of Musée is to ship **ZERO** client side JS to the client while maintaining the masonry layout.
+[Musée](https://www.collinsdictionary.com/dictionary/french-english/mus%C3%A9e) (pronounced myu-zay) was written primarily to experiment around with https://remix.run/ but now re-written using https://astro.build. Until now I had been using the _excellent_ [`waschinski/photo-stream`](https://github.com/waschinski/photo-stream) gallery for hosting my images but felt limited with having to use Ruby. 
 
-Unfortunately, a responsive masonry layout is [not possible](https://stackoverflow.com/a/45200955/11940280) without the use of client-side JS to determine the window size (used for calculating the number of columns). At least until [CSS Grid Masonry](https://drafts.csswg.org/css-grid-3/#masonry-layout) becomes available.
+**Mission accomplished!** Musée now ships **ZERO** client-side JavaScript while maintaining a responsive masonry layout with proper horizontal ordering. This is achieved through Astro's build-time static generation, pre-calculating column distributions for each breakpoint and using pure CSS for responsive display.
 
 <a align="center" href="https://gallery.obviy.us/">
     <img src="images/preview.webp" alt="demo" width="100%">
@@ -26,6 +26,8 @@ Unfortunately, a responsive masonry layout is [not possible](https://stackoverfl
 
 ## ✨ Features
 
+- [x] **Zero JavaScript** sent to clients
+- [x] True masonry layout with horizontal ordering
 - [x] Generate image thumbnails
 - [x] Compress original images
 - [x] Strip image metadata before deployment
@@ -33,6 +35,8 @@ Unfortunately, a responsive masonry layout is [not possible](https://stackoverfl
 - [x] Statically Generated
 - [x] Uses TailwindCSS
 - [x] OpenGraph meta tags
+- [x] CSS-only animations
+- [x] Works with JavaScript disabled
 - [ ] Captions for images
 - [ ] Device metadata for images
 - [ ] Image geo-tag map generation
@@ -49,7 +53,7 @@ Feel free to make a PR to add your own.
 1. Install dependencies.
 
 ```bash
-$ npm install
+$ bun install
 ```
 
 Load your images in the `src/assets/images/original` directory.
@@ -57,15 +61,24 @@ Load your images in the `src/assets/images/original` directory.
 2. Start development server
 
 ```bash
-$ npm run dev
+$ bun run dev
 ```
 
 ## 🚀 Deployment
 
 Deployment (for now) is done to Cloudflare Pages. Documentation is available here: https://developers.cloudflare.com/pages/framework-guides/astro/
 
+## 🏛️ Architecture
+
+Musée achieves zero JavaScript by:
+- Pre-calculating masonry column distributions at build time for each breakpoint
+- Using CSS media queries to show/hide the appropriate pre-rendered layout
+- Replacing React components with Astro components
+- Moving all date calculations to build time
+- Using pure CSS animations instead of JavaScript libraries
+
 ## Contributing
 
-I'm relatively inexperienced with React so any and all contributions are welcome.
+Any and all contributions are welcome.
 
 This repository uses the automated [`semantic-release`](https://github.com/semantic-release/semantic-release) suite of tools to generate version numbers. All commit messages **must** conform to the [Angular Commit Message conventions](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#-commit-message-format).
