@@ -12,7 +12,6 @@
 		"dev": "bunx --bun astro dev",
 		"prebuild": "bun run imageImporter.ts",
 		"build": " bunx --bun astro build",
-		"postbuild": "bunx @divriots/jampack ./dist",
 		"preview": "bunx --bun astro preview",
 		"astro": "bunx --bun astro"
 	},
