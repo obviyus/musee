@@ -1,6 +1,6 @@
 ---
 import { getImage } from "astro:assets";
-import { MasonryGrid, type SortedImage } from "../components/masonry";
+import MasonryGrid, { type SortedImage } from "../components/masonry-css.astro";
 import BaseIndex from "../layouts/BaseIndex.astro";
 import images from "../assets/images/imageList";
 import { getImageDate } from "../utils/imageDate";
@@ -51,5 +51,5 @@ sortedImages.push(...processedImages);
 	description="Ayaan Zaidi's personal image feed. Mild obsession with aircrafts and shiny things. Mostly shot on a mobile camera."
 	permalink="https://gallery.obviy.us/"
 >
-	<MasonryGrid images={sortedImages} client:load />
+	<MasonryGrid images={sortedImages} />
 </BaseIndex>

@@ -1,0 +1,328 @@
+---
+import type { GetImageResult } from "astro";
+
+export interface SortedImage {
+	original: GetImageResult;
+	thumbnail: GetImageResult;
+	date: Date;
+	slug: string;
+}
+
+interface Props {
+	images: SortedImage[];
+}
+
+const { images } = Astro.props;
+
+// Helper function to distribute items into columns
+function distributeIntoColumns(items: SortedImage[], columnCount: number) {
+	const columns: SortedImage[][] = Array.from(
+		{ length: columnCount },
+		() => [],
+	);
+
+	// Distribute items horizontally (1,2,3,4 then 5,6,7,8)
+	items.forEach((item, index) => {
+		const columnIndex = index % columnCount;
+		columns[columnIndex].push(item);
+	});
+
+	return columns;
+}
+
+// Create responsive column distributions
+const columnsByBreakpoint = {
+	mobile: distributeIntoColumns(images, 1),
+	sm: distributeIntoColumns(images, 2),
+	md: distributeIntoColumns(images, 3),
+	lg: distributeIntoColumns(images, 4),
+	xl: distributeIntoColumns(images, 5),
+};
+---
+
+<!-- Mobile (1 column) -->
+<div class="masonry-grid masonry-mobile">
+	{
+		columnsByBreakpoint.mobile.map((column, colIndex) => (
+			<div class="masonry-column">
+				{column.map((image, index) => {
+					const thumbnailSrc = image.thumbnail.src as string;
+					const width = image.thumbnail.attributes.width as number;
+					const height = image.thumbnail.attributes.height as number;
+					const globalIndex = index;
+
+					return (
+						<div
+							class="masonry-item opacity-0"
+							style={`animation-delay: ${(globalIndex % 5) * 0.05}s`}
+						>
+							<a
+								href={`/${image.slug}`}
+								aria-label={`View image ${image.slug}`}
+							>
+								<img
+									src={thumbnailSrc}
+									width={width}
+									height={height}
+									alt={`Thumbnail for ${image.slug}`}
+									loading="lazy"
+									decoding="async"
+									class="transition-transform duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 will-change-transform"
+								/>
+							</a>
+						</div>
+					);
+				})}
+			</div>
+		))
+	}
+</div>
+
+<!-- Small (2 columns) -->
+<div class="masonry-grid masonry-sm">
+	{
+		columnsByBreakpoint.sm.map((column, colIndex) => (
+			<div class="masonry-column">
+				{column.map((image, index) => {
+					const thumbnailSrc = image.thumbnail.src as string;
+					const width = image.thumbnail.attributes.width as number;
+					const height = image.thumbnail.attributes.height as number;
+					const globalIndex = colIndex + index * 2;
+
+					return (
+						<div
+							class="masonry-item opacity-0"
+							style={`animation-delay: ${(globalIndex % 5) * 0.05}s`}
+						>
+							<a
+								href={`/${image.slug}`}
+								aria-label={`View image ${image.slug}`}
+							>
+								<img
+									src={thumbnailSrc}
+									width={width}
+									height={height}
+									alt={`Thumbnail for ${image.slug}`}
+									loading="lazy"
+									decoding="async"
+									class="transition-transform duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 will-change-transform"
+								/>
+							</a>
+						</div>
+					);
+				})}
+			</div>
+		))
+	}
+</div>
+
+<!-- Medium (3 columns) -->
+<div class="masonry-grid masonry-md">
+	{
+		columnsByBreakpoint.md.map((column, colIndex) => (
+			<div class="masonry-column">
+				{column.map((image, index) => {
+					const thumbnailSrc = image.thumbnail.src as string;
+					const width = image.thumbnail.attributes.width as number;
+					const height = image.thumbnail.attributes.height as number;
+					const globalIndex = colIndex + index * 3;
+
+					return (
+						<div
+							class="masonry-item opacity-0"
+							style={`animation-delay: ${(globalIndex % 5) * 0.05}s`}
+						>
+							<a
+								href={`/${image.slug}`}
+								aria-label={`View image ${image.slug}`}
+							>
+								<img
+									src={thumbnailSrc}
+									width={width}
+									height={height}
+									alt={`Thumbnail for ${image.slug}`}
+									loading="lazy"
+									decoding="async"
+									class="transition-transform duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 will-change-transform"
+								/>
+							</a>
+						</div>
+					);
+				})}
+			</div>
+		))
+	}
+</div>
+
+<!-- Large (4 columns) -->
+<div class="masonry-grid masonry-lg">
+	{
+		columnsByBreakpoint.lg.map((column, colIndex) => (
+			<div class="masonry-column">
+				{column.map((image, index) => {
+					const thumbnailSrc = image.thumbnail.src as string;
+					const width = image.thumbnail.attributes.width as number;
+					const height = image.thumbnail.attributes.height as number;
+					const globalIndex = colIndex + index * 4;
+
+					return (
+						<div
+							class="masonry-item opacity-0"
+							style={`animation-delay: ${(globalIndex % 5) * 0.05}s`}
+						>
+							<a
+								href={`/${image.slug}`}
+								aria-label={`View image ${image.slug}`}
+							>
+								<img
+									src={thumbnailSrc}
+									width={width}
+									height={height}
+									alt={`Thumbnail for ${image.slug}`}
+									loading="lazy"
+									decoding="async"
+									class="transition-transform duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 will-change-transform"
+								/>
+							</a>
+						</div>
+					);
+				})}
+			</div>
+		))
+	}
+</div>
+
+<!-- Extra Large (5 columns) -->
+<div class="masonry-grid masonry-xl">
+	{
+		columnsByBreakpoint.xl.map((column, colIndex) => (
+			<div class="masonry-column">
+				{column.map((image, index) => {
+					const thumbnailSrc = image.thumbnail.src as string;
+					const width = image.thumbnail.attributes.width as number;
+					const height = image.thumbnail.attributes.height as number;
+					const globalIndex = colIndex + index * 5;
+
+					return (
+						<div
+							class="masonry-item opacity-0"
+							style={`animation-delay: ${(globalIndex % 5) * 0.05}s`}
+						>
+							<a
+								href={`/${image.slug}`}
+								aria-label={`View image ${image.slug}`}
+							>
+								<img
+									src={thumbnailSrc}
+									width={width}
+									height={height}
+									alt={`Thumbnail for ${image.slug}`}
+									loading="lazy"
+									decoding="async"
+									class="transition-transform duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 will-change-transform"
+								/>
+							</a>
+						</div>
+					);
+				})}
+			</div>
+		))
+	}
+</div>
+
+<style>
+	/* Hide all grids by default */
+	.masonry-grid {
+		display: none;
+	}
+
+	/* Flexbox-based masonry layout */
+	.masonry-grid {
+		display: flex;
+		gap: 0;
+	}
+
+	.masonry-column {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		gap: 0;
+	}
+
+	/* Show only the appropriate grid based on viewport */
+	/* Mobile (default) */
+	.masonry-mobile {
+		display: flex;
+	}
+
+	/* Single column on mobile */
+	.masonry-mobile .masonry-column {
+		max-width: 100%;
+	}
+
+	/* Small screens (500px+) */
+	@media (min-width: 500px) {
+		.masonry-mobile {
+			display: none;
+		}
+		.masonry-sm {
+			display: flex;
+		}
+	}
+
+	/* Medium screens (1000px+) */
+	@media (min-width: 1000px) {
+		.masonry-sm {
+			display: none;
+		}
+		.masonry-md {
+			display: flex;
+		}
+	}
+
+	/* Large screens (1500px+) */
+	@media (min-width: 1500px) {
+		.masonry-md {
+			display: none;
+		}
+		.masonry-lg {
+			display: flex;
+		}
+	}
+
+	/* Extra large screens (2000px+) */
+	@media (min-width: 2000px) {
+		.masonry-lg {
+			display: none;
+		}
+		.masonry-xl {
+			display: flex;
+		}
+	}
+
+	/* Masonry item styling */
+	.masonry-item {
+		width: 100%;
+		line-height: 0;
+	}
+
+	.masonry-item img {
+		display: block;
+	}
+
+	/* Animation for fade-in effect */
+	.masonry-item {
+		animation: fadeIn 0.5s ease-out forwards;
+	}
+
+	@keyframes fadeIn {
+		from {
+			opacity: 0;
+			transform: translateY(10px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+</style>
