@@ -1,6 +1,6 @@
 ---
 import { getImage } from "astro:assets";
-import { BaseImage } from "../../components/image";
+import BaseImage from "../../components/BaseImage.astro";
 import BaseIndex from "../../layouts/BaseIndex.astro";
 import images from "../../assets/images/imageList";
 import { getImageDate } from "../../utils/imageDate";
@@ -59,5 +59,5 @@ const props = Astro.props;
 	permalink={`https://gallery.obviy.us/image/${slug}`}
 	previewImage={props.thumbnailSrc}
 >
-	<BaseImage {...props} client:load />
+	<BaseImage {...props} />
 </BaseIndex>

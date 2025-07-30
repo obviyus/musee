@@ -1,0 +1,90 @@
+---
+export interface Props {
+	date: Date;
+	src: string;
+	slug: string;
+	width: number;
+	height: number;
+	alt?: string;
+}
+
+const { date, slug, src, width, height, alt } = Astro.props;
+const imageAlt = alt || `Image ${slug}`;
+
+// Calculate days ago at build time
+function daysAgo(startDate: Date | null | undefined): string {
+	if (
+		!startDate ||
+		!(startDate instanceof Date) ||
+		Number.isNaN(startDate.getTime())
+	) {
+		return "Unknown date";
+	}
+
+	const now = Date.now();
+	const then = startDate.getTime();
+	const diffInMs = now - then;
+
+	if (diffInMs < 0) {
+		return "In the future";
+	}
+
+	const diffInDays = Math.floor(diffInMs / 1000 / 60 / 60 / 24);
+
+	if (diffInDays === 0) {
+		return "Today";
+	} else if (diffInDays === 1) {
+		return "Yesterday";
+	} else {
+		return `${diffInDays} days ago`;
+	}
+}
+
+const timeAgo = daysAgo(date);
+---
+
+<div class="flex flex-col min-h-screen max-h-screen w-full overflow-hidden">
+	<div class="flex-1 flex items-center justify-center p-4 sm:p-8 md:p-10">
+		<div
+			class="image-container relative w-full h-full flex items-center justify-center"
+		>
+			<a
+				href={src}
+				target="_blank"
+				rel="noopener noreferrer"
+				aria-label={`View full size image: ${imageAlt}`}
+				class="block max-w-full max-h-full"
+			>
+				<img
+					src={src}
+					alt={imageAlt}
+					width={width}
+					height={height}
+					loading="eager"
+					decoding="async"
+					class="max-w-full max-h-[calc(100vh-12rem)] w-auto h-auto object-contain rounded-xl border-2 border-slate-50 shadow-2xl transition-all duration-300 ease-in-out hover:-translate-y-1 hover:scale-105 hover:shadow-3xl"
+				/>
+			</a>
+		</div>
+	</div>
+	<div class="flex justify-center pb-8">
+		<time datetime={date.toISOString()} class="font-bold text-slate-700">
+			{timeAgo}
+		</time>
+	</div>
+</div>
+
+<style>
+	.image-container {
+		opacity: 0;
+		transform: translateY(20px);
+		animation: fadeInUp 0.5s ease-out forwards;
+	}
+
+	@keyframes fadeInUp {
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+</style>
