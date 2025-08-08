@@ -1,7 +1,8 @@
 import ExifReader from "exifreader";
 import { DateTime } from "luxon";
+import type { ImageMetadata } from "astro";
 
-export async function getImageDate(image: any): Promise<Date> {
+export async function getImageDate(image: ImageMetadata): Promise<Date> {
 	let filepath = image.src;
 
 	// Handle different build environments
