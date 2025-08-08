@@ -20,7 +20,6 @@
 		"@tailwindcss/vite": "^4.1.11",
 		"astro": "5.12.4",
 		"astro-critters": "^2.2.1",
-		"astro-purgecss": "^5.3.0",
 		"exifreader": "^4.31.1",
 		"luxon": "^3.7.1",
 		"sharp": "^0.34.3",
