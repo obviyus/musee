@@ -8,9 +8,7 @@
 	"license": "GNU GPLv3",
 	"description": "Self hosted gallery written in React + Astro. Ships minimal JS to the client.",
 	"scripts": {
-		"predev": "bun run imageImporter.ts",
 		"dev": "bunx --bun astro dev",
-		"prebuild": "bun run imageImporter.ts",
 		"build": " bunx --bun astro build",
 		"preview": "bunx --bun astro preview",
 		"astro": "bunx --bun astro"
