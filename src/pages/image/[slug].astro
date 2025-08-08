@@ -4,6 +4,7 @@ import BaseImage from "../../components/BaseImage.astro";
 import BaseIndex from "../../layouts/BaseIndex.astro";
 import images from "../../assets/images/imageList";
 import { getImageDate } from "../../utils/imageDate";
+import { dashify } from "../../utils/slug";
 
 export async function getStaticPaths() {
 	const imageEntries = Object.entries(images);
@@ -12,7 +13,7 @@ export async function getStaticPaths() {
 	const staticPaths = await Promise.all(
 		imageEntries.map(async ([key, value]) => {
 			// Format slug with dashes for readability
-			const dashedSlug = `${key.slice(0, 3)}-${key.slice(3, -3)}-${key.slice(-3)}`;
+			const dashedSlug = dashify(key);
 
 			// Get date and images in parallel
 			const [date, original, thumbnail] = await Promise.all([
@@ -56,7 +57,6 @@ const props = Astro.props;
 <BaseIndex
 	title={`Image ${slug} - Galerie d'Ayaan`}
 	description="Ayaan Zaidi's personal image feed. Mild obsession with aircrafts and shiny things. Mostly shot on a mobile camera."
-	permalink={`https://gallery.obviy.us/image/${slug}`}
 	previewImage={props.thumbnailSrc}
 >
 	<BaseImage {...props} />

@@ -4,6 +4,7 @@ import MasonryGrid, { type SortedImage } from "../components/masonry-css.astro";
 import BaseIndex from "../layouts/BaseIndex.astro";
 import images from "../assets/images/imageList";
 import { getImageDate } from "../utils/imageDate";
+import { dashify } from "../utils/slug";
 
 const sortedImages: SortedImage[] = [];
 
@@ -30,7 +31,7 @@ const processedImages = await Promise.all(
 		]);
 
 		// Format slug with dashes for readability
-		const dashedSlug = `${key.slice(0, 3)}-${key.slice(3, -3)}-${key.slice(-3)}`;
+		const dashedSlug = dashify(key);
 
 		return {
 			original,
@@ -49,7 +50,6 @@ sortedImages.push(...processedImages);
 <BaseIndex
 	title="Galerie d'Ayaan"
 	description="Ayaan Zaidi's personal image feed. Mild obsession with aircrafts and shiny things. Mostly shot on a mobile camera."
-	permalink="https://gallery.obviy.us/"
 >
 	<MasonryGrid images={sortedImages} />
 </BaseIndex>
