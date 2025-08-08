@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://gallery.obviy.us/sitemap-index.xml
