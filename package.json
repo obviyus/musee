@@ -16,7 +16,7 @@
 		"astro": "bunx --bun astro"
 	},
 	"dependencies": {
-		"@astrojs/prefetch": "^0.4.1",
+		"@astrojs/sitemap": "^3.2.1",
 		"@tailwindcss/vite": "^4.1.11",
 		"astro": "5.12.4",
 		"astro-critters": "^2.2.1",
@@ -30,7 +30,7 @@
 	"repository": "git@github.com:obviyus/musee.git",
 	"devDependencies": {
 		"@types/bun": "^1.2.19",
-		"@types/luxon": "^3.7.0",
+		"@types/luxon": "^3.7.1",
 		"tsx": "^4.20.3"
 	},
 	"release": {
