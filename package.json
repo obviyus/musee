@@ -14,21 +14,21 @@
 		"astro": "bunx --bun astro"
 	},
 	"dependencies": {
-		"@astrojs/sitemap": "^3.2.1",
-		"@tailwindcss/vite": "^4.1.11",
-		"astro": "5.12.4",
+		"@astrojs/sitemap": "^3.5.1",
+		"@tailwindcss/vite": "^4.1.13",
+		"astro": "5.13.7",
 		"astro-critters": "^2.2.1",
-		"exifreader": "^4.31.1",
-		"luxon": "^3.7.1",
+		"exifreader": "^4.31.2",
+		"luxon": "^3.7.2",
 		"sharp": "^0.34.3",
 		"sqids": "^0.3.0",
-		"tailwindcss": "^4.1.11"
+		"tailwindcss": "^4.1.13"
 	},
 	"repository": "git@github.com:obviyus/musee.git",
 	"devDependencies": {
-		"@types/bun": "^1.2.19",
+		"@types/bun": "^1.2.21",
 		"@types/luxon": "^3.7.1",
-		"tsx": "^4.20.3"
+		"tsx": "^4.20.5"
 	},
 	"release": {
 		"branches": [
