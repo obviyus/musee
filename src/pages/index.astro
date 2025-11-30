@@ -1,50 +1,9 @@
 ---
-import { getImage } from "astro:assets";
-import MasonryGrid, { type SortedImage } from "../components/masonry-css.astro";
+import MasonryGrid from "../components/masonry-css.astro";
 import BaseIndex from "../layouts/BaseIndex.astro";
-import images from "../utils/allImages";
-import { getImageDate } from "../utils/imageDate";
-import { dashify } from "../utils/slug";
+import { getProcessedImages } from "../utils/processedImages";
 
-const sortedImages: SortedImage[] = [];
-
-function compareByDate(a: SortedImage, b: SortedImage): number {
-	return b.date.getTime() - a.date.getTime();
-}
-
-const imageEntries = Object.entries(images);
-
-const processedImages = await Promise.all(
-	imageEntries.map(async ([key, value]) => {
-		const [date, original, thumbnail] = await Promise.all([
-			getImageDate(value),
-			getImage({
-				src: value,
-				format: "webp",
-			}),
-			getImage({
-				src: value,
-				width: 640,
-				quality: 80,
-				format: "webp",
-			}),
-		]);
-
-		// Format slug with dashes for readability
-		const dashedSlug = dashify(key);
-
-		return {
-			original,
-			thumbnail,
-			date,
-			slug: `image/${dashedSlug}`,
-		};
-	}),
-);
-
-// Sort all at once using Bun's optimized sort
-processedImages.sort(compareByDate);
-sortedImages.push(...processedImages);
+const sortedImages = await getProcessedImages();
 ---
 
 <BaseIndex
