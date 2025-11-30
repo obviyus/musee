@@ -1,37 +1,26 @@
 ---
-import type { GetImageResult } from "astro";
-
-export interface SortedImage {
-	original: GetImageResult;
-	thumbnail: GetImageResult;
-	date: Date;
-	slug: string;
-}
+import type { ProcessedImage } from "../utils/processedImages";
 
 interface Props {
-	images: SortedImage[];
+	images: ProcessedImage[];
 }
 
 const { images } = Astro.props;
 
-// Helper function to distribute items into columns
-function distributeIntoColumns(items: SortedImage[], columnCount: number) {
-	const columns: SortedImage[][] = Array.from(
+// Pre-calculate column distributions for each breakpoint
+function distributeIntoColumns(items: ProcessedImage[], columnCount: number) {
+	const columns: ProcessedImage[][] = Array.from(
 		{ length: columnCount },
 		() => [],
 	);
-
-	// Distribute items horizontally (1,2,3,4 then 5,6,7,8)
-	items.forEach((item, index) => {
-		const columnIndex = index % columnCount;
-		columns[columnIndex].push(item);
-	});
-
+	// Distribute horizontally: 1,2,3,4 then 5,6,7,8
+	for (let i = 0; i < items.length; i++) {
+		columns[i % columnCount].push(items[i]);
+	}
 	return columns;
 }
 
-// Create responsive column distributions
-const breakpoints: ReadonlyArray<{ key: string; columns: number }> = [
+const breakpoints = [
 	{ key: "mobile", columns: 1 },
 	{ key: "sm", columns: 2 },
 	{ key: "md", columns: 3 },
@@ -44,59 +33,53 @@ const columnsByBreakpoint = Object.fromEntries(
 		key,
 		distributeIntoColumns(images, columns),
 	]),
-);
+) as Record<string, ProcessedImage[][]>;
 ---
 
 {
 	breakpoints.map(({ key, columns }) => (
 		<div class={`masonry-grid masonry-${key}`}>
-			{(columnsByBreakpoint as any)[key].map(
-				(column: SortedImage[], colIndex: number) => (
-					<div class="masonry-column">
-						{column.map((image, index) => {
-							const thumbnailSrc = image.thumbnail.src as string;
-							const width = image.thumbnail.attributes.width as number;
-							const height = image.thumbnail.attributes.height as number;
-							const globalIndex = colIndex + index * columns;
-
-							return (
-								<div
-									class="masonry-item opacity-0"
-									style={`animation-delay: ${(globalIndex % 5) * 0.05}s`}
+			{columnsByBreakpoint[key].map((column, colIndex) => (
+				<div class="masonry-column">
+					{column.map((image, index) => {
+						const globalIndex = colIndex + index * columns;
+						return (
+							<div
+								class="masonry-item opacity-0"
+								style={`animation-delay: ${(globalIndex % 5) * 0.05}s`}
+							>
+								<a
+									href={`/image/${image.slug}`}
+									aria-label={`View image ${image.slug}`}
 								>
-									<a
-										href={`/${image.slug}`}
-										aria-label={`View image ${image.slug}`}
-									>
-										<img
-											src={thumbnailSrc}
-											width={width}
-											height={height}
-											alt={`Thumbnail for ${image.slug}`}
-											loading="lazy"
-											decoding="async"
-											class="transition-transform duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 will-change-transform"
-										/>
-									</a>
-								</div>
-							);
-						})}
-					</div>
-				),
-			)}
+									<img
+										src={image.thumbnail.src as string}
+										width={
+											image.thumbnail.attributes
+												.width as number
+										}
+										height={
+											image.thumbnail.attributes
+												.height as number
+										}
+										alt={`Thumbnail for ${image.slug}`}
+										loading="lazy"
+										decoding="async"
+										class="transition-transform duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 will-change-transform"
+									/>
+								</a>
+							</div>
+						);
+					})}
+				</div>
+			))}
 		</div>
 	))
 }
 
 <style>
-	/* Hide all grids by default */
 	.masonry-grid {
 		display: none;
-	}
-
-	/* Flexbox-based masonry layout */
-	.masonry-grid {
-		display: flex;
 		gap: 0;
 	}
 
@@ -107,18 +90,11 @@ const columnsByBreakpoint = Object.fromEntries(
 		gap: 0;
 	}
 
-	/* Show only the appropriate grid based on viewport */
 	/* Mobile (default) */
 	.masonry-mobile {
 		display: flex;
 	}
 
-	/* Single column on mobile */
-	.masonry-mobile .masonry-column {
-		max-width: 100%;
-	}
-
-	/* Small screens (500px+) */
 	@media (min-width: 500px) {
 		.masonry-mobile {
 			display: none;
@@ -128,7 +104,6 @@ const columnsByBreakpoint = Object.fromEntries(
 		}
 	}
 
-	/* Medium screens (1000px+) */
 	@media (min-width: 1000px) {
 		.masonry-sm {
 			display: none;
@@ -138,7 +113,6 @@ const columnsByBreakpoint = Object.fromEntries(
 		}
 	}
 
-	/* Large screens (1500px+) */
 	@media (min-width: 1500px) {
 		.masonry-md {
 			display: none;
@@ -148,7 +122,6 @@ const columnsByBreakpoint = Object.fromEntries(
 		}
 	}
 
-	/* Extra large screens (2000px+) */
 	@media (min-width: 2000px) {
 		.masonry-lg {
 			display: none;
@@ -158,19 +131,16 @@ const columnsByBreakpoint = Object.fromEntries(
 		}
 	}
 
-	/* Masonry item styling */
 	.masonry-item {
 		width: 100%;
 		line-height: 0;
+		animation: fadeIn 0.5s ease-out forwards;
 	}
 
 	.masonry-item img {
 		display: block;
-	}
-
-	/* Animation for fade-in effect */
-	.masonry-item {
-		animation: fadeIn 0.5s ease-out forwards;
+		width: 100%;
+		height: auto;
 	}
 
 	@keyframes fadeIn {
