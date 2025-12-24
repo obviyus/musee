@@ -80,14 +80,14 @@ const columnsByBreakpoint = Object.fromEntries(
 <style>
 	.masonry-grid {
 		display: none;
-		gap: 0;
+		overflow: hidden;
 	}
 
 	.masonry-column {
 		flex: 1;
 		display: flex;
 		flex-direction: column;
-		gap: 0;
+		margin-right: -1px;
 	}
 
 	/* Mobile (default) */
@@ -134,7 +134,16 @@ const columnsByBreakpoint = Object.fromEntries(
 	.masonry-item {
 		width: 100%;
 		line-height: 0;
+		margin-top: -1px;
 		animation: fadeIn 0.5s ease-out forwards;
+	}
+
+	.masonry-item:first-child {
+		margin-top: 0;
+	}
+
+	.masonry-item a {
+		display: block;
 	}
 
 	.masonry-item img {
