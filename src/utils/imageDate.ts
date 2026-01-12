@@ -23,14 +23,24 @@ const EXIF_DATE_FIELDS = [
 	"CreateDate",
 ] as const;
 
-export async function getImageDate(image: ImageMetadata): Promise<Date> {
-	let filepath = image.src;
+// AIDEV-NOTE: Prefer sourcePath to keep EXIF from original files in build (dist images strip EXIF).
+export async function getImageDate(image: ImageMetadata, sourcePath?: string): Promise<Date> {
+	let filepath = sourcePath ?? image.src;
 
 	// Handle Vite's @fs prefix and query strings
 	filepath = filepath.replace(/^.*@fs/, "");
 	const queryIndex = filepath.indexOf("?");
 	if (queryIndex !== -1) {
 		filepath = filepath.substring(0, queryIndex);
+	}
+
+	if (!existsSync(filepath) && sourcePath) {
+		filepath = image.src;
+		filepath = filepath.replace(/^.*@fs/, "");
+		const imageQueryIndex = filepath.indexOf("?");
+		if (imageQueryIndex !== -1) {
+			filepath = filepath.substring(0, imageQueryIndex);
+		}
 	}
 
 	// Try dist/ prefix if file doesn't exist

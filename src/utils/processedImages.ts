@@ -32,14 +32,15 @@ export async function getProcessedImages(): Promise<ProcessedImage[]> {
 
 		const processed = await Promise.all(
 			imageEntries.map(async ([key, value]) => {
+				const { metadata, sourcePath } = value;
 				const [date, original, thumbnail] = await Promise.all([
-					getImageDate(value),
+					getImageDate(metadata, sourcePath),
 					getImage({
-						src: value,
+						src: metadata,
 						format: "webp",
 					}),
 					getImage({
-						src: value,
+						src: metadata,
 						width: 640,
 						quality: 80,
 						format: "webp",

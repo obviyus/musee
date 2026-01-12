@@ -1,4 +1,6 @@
 import { createHash } from "node:crypto";
+import { existsSync } from "node:fs";
+import { resolve } from "node:path";
 import type { ImageMetadata } from "astro";
 import Sqids from "sqids";
 
@@ -20,7 +22,18 @@ function generateStableIdFromPath(absolutePath: string): string {
 	return sqids.encode([firstUint32]);
 }
 
-const images: Record<string, ImageMetadata> = {};
+export interface ImageSource {
+	metadata: ImageMetadata;
+	sourcePath: string;
+}
+
+function resolveSourcePath(importPath: string): string {
+	if (existsSync(importPath)) return importPath;
+	const normalized = importPath.replace(/^\/+/, "");
+	return resolve(process.cwd(), normalized);
+}
+
+const images: Record<string, ImageSource> = {};
 const seenIds = new Set<string>();
 
 Object.keys(modules)
@@ -35,7 +48,11 @@ Object.keys(modules)
 		if (!mod) {
 			throw new Error(`Failed to import image module for path: ${path}`);
 		}
-		images[id] = mod.default;
+		const sourcePath = resolveSourcePath(path);
+		images[id] = {
+			metadata: mod.default,
+			sourcePath,
+		};
 	});
 
 export default images;
