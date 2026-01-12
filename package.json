@@ -15,8 +15,8 @@
 	},
 	"dependencies": {
 		"@tailwindcss/vite": "^4.1.18",
-		"astro": "5.16.6",
-		"exifreader": "^4.33.1",
+		"astro": "5.16.8",
+		"exifreader": "^4.36.0",
 		"sharp": "^0.34.5",
 		"sqids": "^0.3.0",
 		"tailwindcss": "^4.1.18"
