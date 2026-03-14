@@ -45,8 +45,7 @@ const columnsByBreakpoint = Object.fromEntries(
 						const globalIndex = colIndex + index * columns;
 						return (
 							<div
-								class="masonry-item opacity-0"
-								style={`animation-delay: ${(globalIndex % 5) * 0.05}s`}
+								class={`masonry-item opacity-0 delay-${globalIndex % 5}`}
 							>
 								<a
 									href={`/image/${image.slug}`}
@@ -136,6 +135,26 @@ const columnsByBreakpoint = Object.fromEntries(
 		line-height: 0;
 		margin-top: -1px;
 		animation: fadeIn 0.5s ease-out forwards;
+	}
+
+	.delay-0 {
+		animation-delay: 0s;
+	}
+
+	.delay-1 {
+		animation-delay: 0.05s;
+	}
+
+	.delay-2 {
+		animation-delay: 0.1s;
+	}
+
+	.delay-3 {
+		animation-delay: 0.15s;
+	}
+
+	.delay-4 {
+		animation-delay: 0.2s;
 	}
 
 	.masonry-item:first-child {

@@ -73,7 +73,9 @@ export async function getImageDate(image: ImageMetadata, sourcePath?: string): P
 	} catch (error) {
 		// AIDEV-NOTE: EXIF parsing failed, fall back to file stats
 		if (DEBUG_DATE_EXTRACTION) {
-			console.warn(`[EXIF] ${filepath}: parsing failed (${error instanceof Error ? error.message : "unknown error"}), using mtime`);
+			console.warn(
+				`[EXIF] ${filepath}: parsing failed (${error instanceof Error ? error.message : "unknown error"}), using mtime`,
+			);
 		}
 	}
 
