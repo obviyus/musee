@@ -12,7 +12,7 @@
 		"dev": "bunx --bun astro dev",
 		"build": " bunx --bun astro build",
 		"check": "bunx --bun astro check",
-		"deploy:personal": "bun run build && bunx wrangler pages deploy dist/",
+		"deploy:personal": "bun run build && bunx wrangler pages deploy dist/ --project-name musee",
 		"format": "oxfmt --check .oxfmtrc.json astro.config.mjs package.json public/site.webmanifest src tsconfig.json",
 		"format:write": "oxfmt --write .oxfmtrc.json astro.config.mjs package.json public/site.webmanifest src tsconfig.json",
 		"preview": "bunx --bun astro preview",
