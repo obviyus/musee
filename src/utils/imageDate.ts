@@ -4,7 +4,7 @@ import ExifReader from "exifreader";
 import type { ImageMetadata } from "astro";
 
 // Set to true to log which images fall back to file stats
-const DEBUG_DATE_EXTRACTION = true;
+const DEBUG_DATE_EXTRACTION = false;
 
 // AIDEV-NOTE: Parse EXIF datetime format "YYYY:MM:DD HH:MM:SS" without Luxon
 function parseExifDate(str: string): Date | null {

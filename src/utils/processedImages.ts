@@ -26,13 +26,12 @@ export async function getProcessedImages(): Promise<ProcessedImage[]> {
 		const { getImage } = await import("astro:assets");
 		const { default: images } = await import("./allImages");
 		const { getImageDate } = await import("./imageDate");
-		const { dashify } = await import("./slug");
 
 		const imageEntries = Object.entries(images);
 
 		const processed = await Promise.all(
 			imageEntries.map(async ([key, value]) => {
-				const { metadata, sourcePath } = value;
+				const { metadata, sourcePath, slug } = value;
 				const [date, original, thumbnail] = await Promise.all([
 					getImageDate(metadata, sourcePath),
 					getImage({
@@ -46,8 +45,6 @@ export async function getProcessedImages(): Promise<ProcessedImage[]> {
 						format: "webp",
 					}),
 				]);
-
-				const slug = dashify(key);
 
 				return {
 					key,

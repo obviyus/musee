@@ -64,9 +64,19 @@ Load your images in the `src/assets/images/original` directory.
 $ bun run dev
 ```
 
+### Private image store
+
+`src/assets/images/original/` is gitignored. Keep personal images there, build locally, and push only code changes.
+
+Recovered images named `slug__filename.webp` keep `slug` as the public route. Other images get generated stable slugs.
+
 ## 🚀 Deployment
 
 Deployment (for now) is done to Cloudflare Pages. Documentation is available here: https://developers.cloudflare.com/pages/framework-guides/astro/
+
+```bash
+$ bun run deploy:personal
+```
 
 ## 🏛️ Architecture
 

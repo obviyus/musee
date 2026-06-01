@@ -1,8 +1,9 @@
 import { createHash } from "node:crypto";
 import { existsSync } from "node:fs";
-import { resolve } from "node:path";
+import { basename, extname, resolve } from "node:path";
 import type { ImageMetadata } from "astro";
 import Sqids from "sqids";
+import { dashify } from "./slug";
 
 // Eagerly import all original images under the gallery
 const modules = import.meta.glob<{ default: ImageMetadata }>(
@@ -25,6 +26,7 @@ function generateStableIdFromPath(absolutePath: string): string {
 export interface ImageSource {
 	metadata: ImageMetadata;
 	sourcePath: string;
+	slug: string;
 }
 
 function resolveSourcePath(importPath: string): string {
@@ -33,13 +35,19 @@ function resolveSourcePath(importPath: string): string {
 	return resolve(process.cwd(), normalized);
 }
 
+function getSlugFromPath(path: string): string {
+	const filename = basename(path, extname(path));
+	const explicitSlug = filename.match(/^([a-z0-9]+(?:-[a-z0-9]+)+)__/);
+	return explicitSlug?.[1] ?? dashify(generateStableIdFromPath(path));
+}
+
 const images: Record<string, ImageSource> = {};
 const seenIds = new Set<string>();
 
 Object.keys(modules)
 	.sort((a, b) => a.localeCompare(b))
 	.forEach((path) => {
-		const id = generateStableIdFromPath(path);
+		const id = getSlugFromPath(path);
 		if (seenIds.has(id)) {
 			throw new Error(`Duplicate image id generated: ${id} for ${path}`);
 		}
@@ -52,6 +60,7 @@ Object.keys(modules)
 		images[id] = {
 			metadata: mod.default,
 			sourcePath,
+			slug: id,
 		};
 	});
 

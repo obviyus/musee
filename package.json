@@ -12,6 +12,7 @@
 		"dev": "bunx --bun astro dev",
 		"build": " bunx --bun astro build",
 		"check": "bunx --bun astro check",
+		"deploy:personal": "bun run build && bunx wrangler pages deploy dist/",
 		"format": "oxfmt --check .oxfmtrc.json astro.config.mjs package.json public/site.webmanifest src tsconfig.json",
 		"format:write": "oxfmt --write .oxfmtrc.json astro.config.mjs package.json public/site.webmanifest src tsconfig.json",
 		"preview": "bunx --bun astro preview",
@@ -28,7 +29,7 @@
 	"devDependencies": {
 		"@astrojs/check": "^0.9.9",
 		"@types/bun": "^1.3.14",
-		"oxfmt": "^0.52.0",
+		"oxfmt": "^0.53.0",
 		"typescript": "^6.0.3"
 	},
 	"release": {
