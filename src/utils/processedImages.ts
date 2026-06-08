@@ -11,6 +11,7 @@ export interface ProcessedImage {
 let processedImages: Promise<ProcessedImage[]> | undefined;
 
 export async function getProcessedImages(): Promise<ProcessedImage[]> {
+	if (import.meta.env.DEV) return loadProcessedImages();
 	processedImages ??= loadProcessedImages();
 	return processedImages;
 }
