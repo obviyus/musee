@@ -12,9 +12,9 @@
 
 <p align="center">Fast, responsive, self-hosted image gallery. Ships <strong>ZERO</strong> JavaScript to the client.</p>
 
-[Musée](https://www.collinsdictionary.com/dictionary/french-english/mus%C3%A9e) (pronounced myu-zay) was written primarily to experiment around with https://remix.run/ but now re-written using https://astro.build. Until now I had been using the _excellent_ [`waschinski/photo-stream`](https://github.com/waschinski/photo-stream) gallery for hosting my images but felt limited with having to use Ruby. 
+[Musée](https://www.collinsdictionary.com/dictionary/french-english/mus%C3%A9e) (pronounced *myu-zay*) is a self-hosted photo gallery that ships **ZERO** client-side JavaScript — and still keeps a true masonry layout with correct horizontal ordering, fully responsive, working even with JS disabled.
 
-**Mission accomplished!** Musée now ships **ZERO** client-side JavaScript while maintaining a responsive masonry layout with proper horizontal ordering. This is achieved through Astro's build-time static generation, pre-calculating column distributions for each breakpoint and using pure CSS for responsive display.
+The trick: Astro pre-computes the column distribution for every breakpoint at build time, and CSS media queries swap between the pre-rendered layouts. Even the animations are pure CSS. (It started life as a Remix experiment, then got rewritten on Astro — replacing the _excellent_ but Ruby-bound [`waschinski/photo-stream`](https://github.com/waschinski/photo-stream) I used to run.)
 
 <a align="center" href="https://gallery.obviy.us/">
     <img src="images/preview.webp" alt="demo" width="100%">
