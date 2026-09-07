@@ -35,7 +35,8 @@ export async function importPhotos(paths: string[], root: string): Promise<strin
 		if (catalog.photos.some((photo) => photo.id === existingId)) {
 			throw new Error(`Photo is already registered: ${existingId}`);
 		}
-		if (![".jpg", ".jpeg", ".png", ".webp"].includes(extname(source).toLowerCase())) {
+		const extension = extname(source).toLowerCase();
+		if (![".jpg", ".jpeg", ".png", ".webp", ".heic", ".heif"].includes(extension)) {
 			throw new Error(`Unsupported photo format: ${basename(source)}`);
 		}
 		const date = await getImageDate(source);
@@ -47,9 +48,14 @@ export async function importPhotos(paths: string[], root: string): Promise<strin
 				aliases: [],
 			},
 			source,
-			filename: `${id}__${basename(source, extname(source))}${extname(source).toLowerCase()}`,
+			filename: `${id}__${basename(source, extname(source))}${[".heic", ".heif"].includes(extension) ? ".png" : extension}`,
 		});
 	}
+	additions.sort((a, b) => {
+		if (a.photo.capturedAt === null) return b.photo.capturedAt === null ? 0 : 1;
+		if (b.photo.capturedAt === null) return -1;
+		return Date.parse(b.photo.capturedAt) - Date.parse(a.photo.capturedAt);
+	});
 	const updated = parsePhotoCatalog({
 		version: 1,
 		photos: [...additions.map(({ photo }) => photo), ...catalog.photos],
@@ -57,7 +63,10 @@ export async function importPhotos(paths: string[], root: string): Promise<strin
 	await mkdir(imageDirectory(root), { recursive: true });
 	for (const { source, filename } of additions) {
 		const destination = join(imageDirectory(root), filename);
-		if (source.startsWith(resolve(imageDirectory(root)) + sep)) await rename(source, destination);
+		if ([".heic", ".heif"].includes(extname(source).toLowerCase())) {
+			await new Bun.Image(source).png().write(destination);
+		} else if (source.startsWith(resolve(imageDirectory(root)) + sep))
+			await rename(source, destination);
 		else await copyFile(source, destination, constants.COPYFILE_EXCL);
 	}
 	await writeCatalog(root, updated);

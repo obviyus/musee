@@ -34,3 +34,16 @@ test("a photo with a capture date retains that date and its provenance", async (
 	expect(result.date.getMonth()).toBe(6);
 	expect(result.date.getDate()).toBe(8);
 });
+
+test("capture dates use the matching camera time-zone offset", async () => {
+	for (const offset of ["+09:00", "-07:00"]) {
+		const file = join(directory, `offset-${offset}.jpg`);
+		await sharp({ create: { width: 2, height: 2, channels: 3, background: "white" } })
+			.jpeg()
+			.withExif({ IFD2: { DateTimeOriginal: "2026:07:20 20:01:50", OffsetTimeOriginal: offset } })
+			.toFile(file);
+		const result = await getImageDate(file);
+		expect(result.kind).toBe("captured");
+		expect(result.date.toISOString()).toBe(new Date(`2026-07-20T20:01:50${offset}`).toISOString());
+	}
+});

@@ -78,3 +78,49 @@ test("a failed download cannot install a partial gallery", async () => {
 	expect(existsSync(catalogPath(root))).toBe(false);
 	expect(existsSync(join(root, "src/assets/images/original"))).toBe(false);
 });
+
+test("an import sorts capture instants descending, puts undated photos last, and preserves existing records", async () => {
+	const root = join(directory, "sorted");
+	await restorePhotos(server.url, root);
+	const sources = [];
+	for (const [name, offset] of [
+		["earlier", "+09:00"],
+		["later", "-07:00"],
+	]) {
+		const source = join(directory, `${name}.jpg`);
+		await sharp(image)
+			.jpeg()
+			.withExif({
+				IFD2: { DateTimeOriginal: "2026:07:20 20:01:50", OffsetTimeOriginal: offset },
+			})
+			.toFile(source);
+		sources.push(source);
+	}
+	const undated = join(directory, "undated.webp");
+	await Bun.write(undated, image);
+	await importPhotos([undated, ...sources], root);
+	const catalog = await readPhotoCatalog(root);
+	expect(catalog.photos.slice(0, 3).map((photo) => photo.capturedAt)).toEqual([
+		"2026-07-21T03:01:50.000Z",
+		"2026-07-20T11:01:50.000Z",
+		null,
+	]);
+	expect(catalog.photos.slice(3)).toEqual(records);
+});
+
+test.skipIf(process.platform !== "darwin" && process.platform !== "win32")(
+	"HEIC imports produce a readable PNG and keep the source",
+	async () => {
+		const source = join(directory, "native.HEIC");
+		await new Bun.Image(image).heic().write(source);
+		const root = join(directory, "heic");
+		const [id] = await importPhotos([source], root);
+		const metadata = await sharp(
+			join(root, "src/assets/images/original", `${id}__native.png`),
+		).metadata();
+		expect(metadata.format).toBe("png");
+		expect(metadata.width).toBe(2);
+		expect(metadata.height).toBe(2);
+		expect(await Bun.file(source).exists()).toBe(true);
+	},
+);

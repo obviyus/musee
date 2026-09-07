@@ -78,7 +78,9 @@ $ bun run dev
 
 The import command assigns each photo a permanent ID once and copies it into the private store. The catalog is authoritative; IDs are never regenerated from file paths or image contents. Filenames carry the ID before `__`, so changing folders, the rest of the filename, or the image encoding does not change its photo-page URL. Keep that prefix when renaming files.
 
-New photos are placed first. Reorder the private catalog's `photos` array to change gallery order. Photo pages show fixed capture dates only when available. Add former IDs to a photo's `aliases` array to preserve old links with permanent redirects; an ID cannot belong to two photos.
+New photos are placed first, sorted by capture date from newest to oldest within each import. Photos without capture dates follow the dated photos in that batch. Existing catalog order stays unchanged. Reorder the private catalog's `photos` array to change gallery order. Photo pages show fixed capture dates only when available. Add former IDs to a photo's `aliases` array to preserve old links with permanent redirects; an ID cannot belong to two photos.
+
+HEIC and HEIF imports use Bun's native decoder on macOS or Windows and store a lossless PNG copy. The source file stays intact. Capture dates respect embedded time-zone offsets.
 
 ### Recovering after losing the local image store
 
