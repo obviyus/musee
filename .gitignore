@@ -31,4 +31,6 @@ pnpm-debug.log*
 # Project specific
 .astro/
 src/assets/images/original/
+src/assets/images/catalog.json
+src/assets/images/catalog.json.tmp
 src/assets/images/imageList.ts

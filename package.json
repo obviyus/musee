@@ -10,8 +10,10 @@
 	"sideEffects": false,
 	"scripts": {
 		"dev": "bunx --bun astro dev",
-		"build": "bunx --bun astro build",
+		"build": "bunx --bun astro build && bun src/scripts/writePhotoRedirects.ts",
 		"check": "bunx --bun astro check",
+		"photos:add": "bun src/scripts/importPhotos.ts",
+		"photos:restore": "bun src/scripts/restorePhotos.ts",
 		"verify:images": "bun src/scripts/verifyImages.ts",
 		"deploy:personal": "bun run build && bun run verify:images && bunx wrangler pages deploy dist/ --project-name musee --branch master",
 		"format": "oxfmt --check .oxfmtrc.json astro.config.mjs package.json public/site.webmanifest src tsconfig.json",
@@ -25,7 +27,6 @@
 		"astro": "7.3.1",
 		"exifreader": "^4.44.1",
 		"sharp": "^0.35.4",
-		"sqids": "^0.3.0",
 		"tailwindcss": "^4.3.3"
 	},
 	"devDependencies": {

@@ -5,6 +5,9 @@
 /_astro/*
   Cache-Control: public, max-age=31536000, immutable
 
+/photos.json
+  Cache-Control: no-store
+
 /favicon-*.png
   Cache-Control: public, max-age=31536000
 
@@ -25,4 +28,3 @@
 
 /images/*
   Cache-Control: public, max-age=31536000
-

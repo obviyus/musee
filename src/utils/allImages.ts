@@ -1,56 +1,32 @@
-import { createHash } from "node:crypto";
-import { basename, extname, resolve } from "node:path";
 import type { ImageMetadata } from "astro";
-import Sqids from "sqids";
-import { dashify } from "./slug";
+import { matchPhotoSources, parsePhotoCatalog } from "./photoCatalog";
 
 const modules = import.meta.glob<{ default: ImageMetadata }>(
 	"/src/assets/images/original/**/*.{png,jpg,jpeg,webp}",
 	{ eager: true },
 );
 
-const sqids = new Sqids({
-	minLength: 10,
-	alphabet: "abcdefghijklmnopqrstuvwxyz",
+const catalogs = import.meta.glob<unknown>("../assets/images/catalog.json", {
+	eager: true,
+	import: "default",
 });
-
-function generateStableIdFromPath(absolutePath: string): string {
-	const hash = createHash("sha256").update(absolutePath).digest();
-	const firstUint32 = hash.readUInt32LE(0);
-	return sqids.encode([firstUint32]);
-}
+const catalogData = catalogs["../assets/images/catalog.json"];
+if (!catalogData) throw new Error("Photo catalog missing. Use photos:add or photos:restore first.");
+const catalog = parsePhotoCatalog(catalogData);
+const sources = matchPhotoSources(catalog, Object.keys(modules));
 
 export interface ImageSource {
 	metadata: ImageMetadata;
-	sourcePath: string;
 	slug: string;
+	capturedAt: string | null;
+	aliases: string[];
 }
 
-function resolveSourcePath(importPath: string): string {
-	return resolve(process.cwd(), importPath.replace(/^\/+/, ""));
-}
-
-function getSlugFromPath(path: string): string {
-	const filename = basename(path, extname(path));
-	const explicitSlug = filename.match(/^([a-z0-9]+(?:-[a-z0-9]+)+)__/);
-	return explicitSlug?.[1] ?? dashify(generateStableIdFromPath(path));
-}
-
-const seenIds = new Set<string>();
-
-const images: ImageSource[] = Object.entries(modules)
-	.sort(([a], [b]) => a.localeCompare(b))
-	.map(([path, mod]) => {
-		const slug = getSlugFromPath(path);
-		if (seenIds.has(slug)) {
-			throw new Error(`Duplicate image id generated: ${slug} for ${path}`);
-		}
-		seenIds.add(slug);
-		return {
-			metadata: mod.default,
-			sourcePath: resolveSourcePath(path),
-			slug,
-		};
-	});
+const images: ImageSource[] = catalog.photos.map((photo) => ({
+	metadata: modules[sources.get(photo.id)!].default,
+	slug: photo.id,
+	capturedAt: photo.capturedAt,
+	aliases: photo.aliases,
+}));
 
 export default images;

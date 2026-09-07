@@ -1,10 +1,9 @@
 import type { GetImageResult } from "astro";
-import type { ImageDate } from "./imageDate";
 
 export interface ProcessedImage {
 	slug: string;
-	date: ImageDate;
-	timestamp: number;
+	date: Date | null;
+	aliases: string[];
 	original: GetImageResult;
 	display: GetImageResult;
 	thumbnail: GetImageResult;
@@ -21,12 +20,10 @@ export async function getProcessedImages(): Promise<ProcessedImage[]> {
 async function loadProcessedImages(): Promise<ProcessedImage[]> {
 	const { getImage } = await import("astro:assets");
 	const { default: images } = await import("./allImages");
-	const { getImageDate } = await import("./imageDate");
 
 	const processed = await Promise.all(
-		images.map(async ({ metadata, sourcePath, slug }) => {
-			const [date, original, thumbnail] = await Promise.all([
-				getImageDate(sourcePath),
+		images.map(async ({ metadata, slug, capturedAt, aliases }) => {
+			const [original, thumbnail] = await Promise.all([
 				getImage({
 					src: metadata,
 					format: "webp",
@@ -52,16 +49,14 @@ async function loadProcessedImages(): Promise<ProcessedImage[]> {
 
 			return {
 				slug,
-				date,
-				timestamp: date.date.getTime(),
+				date: capturedAt === null ? null : new Date(capturedAt),
+				aliases,
 				original,
 				display,
 				thumbnail,
 			};
 		}),
 	);
-
-	processed.sort((a, b) => b.timestamp - a.timestamp);
 
 	return processed;
 }

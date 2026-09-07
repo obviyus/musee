@@ -9,7 +9,7 @@ export async function getStaticPaths() {
 	return images.map((img) => ({
 		params: { slug: img.slug },
 		props: {
-			date: img.date.kind === "captured" ? img.date.date : null,
+			date: img.date,
 			slug: img.slug,
 			src: img.display.src,
 			srcSet: img.display.srcSet.attribute,

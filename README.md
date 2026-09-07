@@ -60,7 +60,11 @@ $ bun install
 
 Astro 7 runs on Bun. TypeScript stays on 6.x because `astro check` requires its programmatic compiler API; TypeScript 7 does not yet provide that API.
 
-Load your images in the `src/assets/images/original` directory.
+Import photos from their current location:
+
+```bash
+bun run photos:add ~/Pictures/photo.jpg
+```
 
 2. Start development server
 
@@ -70,11 +74,23 @@ $ bun run dev
 
 ### Private image store
 
-`src/assets/images/original/` is gitignored. Keep personal images there, build locally, and push only code changes.
+`src/assets/images/original/` and `src/assets/images/catalog.json` are gitignored. Photos, their IDs, dates, order, and redirects stay out of the project repository.
 
-Recovered images named `slug__filename.webp` keep `slug` as the public route. Other images get generated stable slugs.
+The import command assigns each photo a permanent ID once and copies it into the private store. The catalog is authoritative; IDs are never regenerated from file paths or image contents. Filenames carry the ID before `__`, so changing folders, the rest of the filename, or the image encoding does not change its photo-page URL. Keep that prefix when renaming files.
 
-Photo pages show a fixed capture date only when the source contains one. File modification times still determine ordering when capture dates are unavailable, but are not presented as photo dates.
+New photos are placed first. Reorder the private catalog's `photos` array to change gallery order. Photo pages show fixed capture dates only when available. Add former IDs to a photo's `aliases` array to preserve old links with permanent redirects; an ID cannot belong to two photos.
+
+### Recovering after losing the local image store
+
+Each deployment includes `/photos.json`, containing the published photo URLs and the catalog data needed to preserve IDs, order, dates, and aliases. It is part of the gallery deployment, not the Git repository.
+
+In a fresh checkout, install dependencies and run:
+
+```bash
+bun run photos:restore https://your-gallery.example
+```
+
+Restore refuses to overwrite an existing private store. It downloads into a staging directory and installs the catalog only after all photos are available. It recovers the published, compressed images; keep a separate backup if you need camera originals or their private metadata.
 
 ## 🚀 Deployment
 
