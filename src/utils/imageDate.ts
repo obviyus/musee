@@ -4,6 +4,11 @@ import ExifReader from "exifreader";
 
 const EXIF_EXTENSIONS = new Set([".jpg", ".jpeg", ".png"]);
 
+export interface ImageDate {
+	date: Date;
+	kind: "captured" | "file";
+}
+
 function parseExifDate(str: string): Date | null {
 	const iso = str.replace(/^(\d{4}):(\d{2}):(\d{2})/, "$1-$2-$3").replace(" ", "T");
 	const d = new Date(iso);
@@ -30,12 +35,12 @@ async function getExifDate(filepath: string): Promise<Date | null> {
 	return null;
 }
 
-export async function getImageDate(filepath: string): Promise<Date> {
+export async function getImageDate(filepath: string): Promise<ImageDate> {
 	if (EXIF_EXTENSIONS.has(extname(filepath).toLowerCase())) {
 		const exifDate = await getExifDate(filepath);
-		if (exifDate) return exifDate;
+		if (exifDate) return { date: exifDate, kind: "captured" };
 	}
 
 	const stats = await stat(filepath);
-	return new Date(stats.mtime);
+	return { date: stats.mtime, kind: "file" };
 }

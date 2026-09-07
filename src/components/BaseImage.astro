@@ -1,33 +1,30 @@
 ---
 export interface Props {
-	date: Date;
+	date: Date | null;
 	src: string;
+	srcSet: string;
+	fullSizeSrc: string;
 	slug: string;
 	width: number;
 	height: number;
 	alt?: string;
 }
 
-const { date, slug, src, width, height, alt } = Astro.props;
+const { date, slug, src, srcSet, fullSizeSrc, width, height, alt } = Astro.props;
 const imageAlt = alt || `Image ${slug}`;
-
-const DAY_MS = 24 * 60 * 60 * 1000;
-
-function daysAgo(startDate: Date): string {
-	const diffInDays = Math.floor((Date.now() - startDate.getTime()) / DAY_MS);
-	return ["Today", "Yesterday"][diffInDays] ?? `${diffInDays} days ago`;
-}
-
-const timeAgo = daysAgo(date);
+const aspectRatio = width / height;
+const heightBound = `calc(${100 * aspectRatio}vh - ${12 * aspectRatio}rem)`;
+const sizes = `(min-width: 768px) min(${width}px, calc(100vw - 5rem), ${heightBound}), (min-width: 640px) min(${width}px, calc(100vw - 4rem), ${heightBound}), min(${width}px, calc(100vw - 2rem), ${heightBound})`;
 ---
 
-<div class="flex flex-col min-h-screen max-h-screen w-full overflow-hidden">
+<main class="flex flex-col min-h-screen max-h-screen w-full overflow-hidden">
+	<h1 class="sr-only">{imageAlt}</h1>
 	<div class="flex-1 flex items-center justify-center p-4 sm:p-8 md:p-10">
 		<div
 			class="image-container relative w-full h-full flex items-center justify-center"
 		>
 			<a
-				href={src}
+				href={fullSizeSrc}
 				target="_blank"
 				rel="noopener noreferrer"
 				aria-label={`View full size image: ${imageAlt}`}
@@ -35,6 +32,8 @@ const timeAgo = daysAgo(date);
 			>
 				<img
 					src={src}
+					srcset={srcSet}
+					sizes={sizes}
 					alt={imageAlt}
 					width={width}
 					height={height}
@@ -46,12 +45,11 @@ const timeAgo = daysAgo(date);
 			</a>
 		</div>
 	</div>
-	<div class="flex justify-center pb-8">
-		<time datetime={date.toISOString()} class="font-bold text-slate-700">
-			{timeAgo}
-		</time>
+	<div class="flex flex-wrap justify-center gap-4 pb-8 text-slate-700">
+		<a href="/" class="underline underline-offset-4">All photos</a>
+		{date && <time datetime={date.toISOString()}>{new Intl.DateTimeFormat("en", { dateStyle: "long" }).format(date)}</time>}
 	</div>
-</div>
+</main>
 
 <style>
 	.image-container {
@@ -64,6 +62,18 @@ const timeAgo = daysAgo(date);
 		to {
 			opacity: 1;
 			transform: translateY(0);
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.image-container {
+			opacity: 1;
+			transform: none;
+			animation: none;
+		}
+		.image-container img {
+			transition: none;
+			transform: none;
 		}
 	}
 </style>

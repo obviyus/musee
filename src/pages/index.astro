@@ -10,5 +10,8 @@ const sortedImages = await getProcessedImages();
 	title="Galerie d'Ayaan"
 	description="Ayaan Zaidi's personal image feed. Mild obsession with aircrafts and shiny things. Mostly shot on a mobile camera."
 >
-	<MasonryGrid images={sortedImages} />
+	<main>
+		<h1 class="sr-only">Ayaan Zaidi’s photo gallery</h1>
+		<MasonryGrid images={sortedImages} />
+	</main>
 </BaseIndex>

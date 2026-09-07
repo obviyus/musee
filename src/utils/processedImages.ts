@@ -1,10 +1,12 @@
 import type { GetImageResult } from "astro";
+import type { ImageDate } from "./imageDate";
 
 export interface ProcessedImage {
 	slug: string;
-	date: Date;
+	date: ImageDate;
 	timestamp: number;
 	original: GetImageResult;
+	display: GetImageResult;
 	thumbnail: GetImageResult;
 }
 
@@ -36,12 +38,24 @@ async function loadProcessedImages(): Promise<ProcessedImage[]> {
 					format: "webp",
 				}),
 			]);
+			// Reading the imported metadata directly marks private originals for publication.
+			const sourceWidth = original.attributes.width as number;
+			const displayWidth = Math.min(sourceWidth, 1920);
+			const maxWidth = Math.min(sourceWidth, 2560);
+			const display = await getImage({
+				src: metadata,
+				width: displayWidth,
+				widths: [...[640, 1280, 1920].filter((width) => width < maxWidth), maxWidth],
+				quality: 80,
+				format: "webp",
+			});
 
 			return {
 				slug,
 				date,
-				timestamp: date.getTime(),
+				timestamp: date.date.getTime(),
 				original,
+				display,
 				thumbnail,
 			};
 		}),

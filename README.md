@@ -30,6 +30,7 @@ The trick: Astro pre-computes the column distribution for every breakpoint at bu
 - [x] True masonry layout with horizontal ordering
 - [x] Generate image thumbnails
 - [x] Compress original images
+- [x] Responsive photo pages with a full-size download link
 - [x] Strip image metadata before deployment
 - [x] Typescript support
 - [x] Statically Generated
@@ -37,6 +38,7 @@ The trick: Astro pre-computes the column distribution for every breakpoint at bu
 - [x] OpenGraph meta tags
 - [x] CSS-only animations
 - [x] Works with JavaScript disabled
+- [x] Sitemap and image structured data
 - [ ] Captions for images
 - [ ] Device metadata for images
 - [ ] Image geo-tag map generation
@@ -56,6 +58,8 @@ Feel free to make a PR to add your own.
 $ bun install
 ```
 
+Astro 7 runs on Bun. TypeScript stays on 6.x because `astro check` requires its programmatic compiler API; TypeScript 7 does not yet provide that API.
+
 Load your images in the `src/assets/images/original` directory.
 
 2. Start development server
@@ -70,6 +74,8 @@ $ bun run dev
 
 Recovered images named `slug__filename.webp` keep `slug` as the public route. Other images get generated stable slugs.
 
+Photo pages show a fixed capture date only when the source contains one. File modification times still determine ordering when capture dates are unavailable, but are not presented as photo dates.
+
 ## 🚀 Deployment
 
 Deployment (for now) is done to Cloudflare Pages. Documentation is available here: https://developers.cloudflare.com/pages/framework-guides/astro/
@@ -77,6 +83,8 @@ Deployment (for now) is done to Cloudflare Pages. Documentation is available her
 ```bash
 $ bun run deploy:personal
 ```
+
+The command checks that generated images contain no private metadata or unprocessed original files, then publishes `dist/` to the production `master` branch of Cloudflare Pages project `musee`. Build from the private image store locally; commit and push code only.
 
 ## 🏛️ Architecture
 

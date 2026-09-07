@@ -5,6 +5,7 @@ export interface Props {
 	previewImage?: string;
 	siteName?: string;
 	locale?: string;
+	photo?: { src: string; width: number; height: number };
 }
 const {
 	title,
@@ -12,11 +13,23 @@ const {
 	previewImage,
 	siteName = "Musée",
 	locale = "en_US",
+	photo,
 } = Astro.props;
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? Astro.url).href;
 const preview = previewImage
 	? new URL(previewImage, Astro.site ?? Astro.url).href
 	: new URL("/social_preview.jpeg", Astro.site ?? Astro.url).href;
+const photoSchema = photo && {
+	"@context": "https://schema.org",
+	"@type": "ImageObject",
+	name: title,
+	url: canonicalUrl,
+	contentUrl: new URL(photo.src, Astro.site).href,
+	thumbnailUrl: preview,
+	width: photo.width,
+	height: photo.height,
+	creator: { "@type": "Person", name: "Ayaan Zaidi", url: "https://obviy.us/" },
+};
 ---
 
 <meta charset="utf-8" />
@@ -42,6 +55,7 @@ const preview = previewImage
 <meta property="og:site_name" content={siteName} />
 <meta property="og:locale" content={locale} />
 <link rel="canonical" href={canonicalUrl} />
+{photoSchema && <script is:inline type="application/ld+json" set:html={JSON.stringify(photoSchema)} />}
 
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />

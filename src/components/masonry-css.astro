@@ -48,7 +48,7 @@ const columnsByBreakpoint = Object.fromEntries(
 								class={`masonry-item opacity-0 delay-${globalIndex % 5}`}
 							>
 								<a
-									href={`/image/${image.slug}`}
+									href={`/image/${image.slug}/`}
 									aria-label={`View image ${image.slug}`}
 								>
 									<img
@@ -62,7 +62,8 @@ const columnsByBreakpoint = Object.fromEntries(
 												.height as number
 										}
 										alt={`Thumbnail for ${image.slug}`}
-										loading="lazy"
+										loading={globalIndex === 0 ? "eager" : "lazy"}
+										fetchpriority={globalIndex === 0 ? "high" : undefined}
 										decoding="async"
 										class="transition-transform duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 will-change-transform"
 									/>
@@ -179,6 +180,17 @@ const columnsByBreakpoint = Object.fromEntries(
 		to {
 			opacity: 1;
 			transform: translateY(0);
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.masonry-item {
+			opacity: 1;
+			animation: none;
+		}
+		.masonry-item img {
+			transition: none;
+			transform: none;
 		}
 	}
 </style>

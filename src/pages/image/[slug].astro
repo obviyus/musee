@@ -9,11 +9,18 @@ export async function getStaticPaths() {
 	return images.map((img) => ({
 		params: { slug: img.slug },
 		props: {
-			date: img.date,
+			date: img.date.kind === "captured" ? img.date.date : null,
 			slug: img.slug,
-			src: img.original.src,
-			width: img.original.attributes.width as number,
-			height: img.original.attributes.height as number,
+			src: img.display.src,
+			srcSet: img.display.srcSet.attribute,
+			fullSizeSrc: img.original.src,
+			photo: {
+				src: img.original.src,
+				width: img.original.attributes.width as number,
+				height: img.original.attributes.height as number,
+			},
+			width: img.display.attributes.width as number,
+			height: img.display.attributes.height as number,
 			thumbnailSrc: img.thumbnail.src,
 			alt: `Image ${img.slug}`,
 		},
@@ -28,6 +35,7 @@ const props = Astro.props;
 	title={`Image ${slug} - Galerie d'Ayaan`}
 	description="Ayaan Zaidi's personal image feed. Mild obsession with aircrafts and shiny things. Mostly shot on a mobile camera."
 	previewImage={props.thumbnailSrc}
+	photo={props.photo}
 >
 	<BaseImage {...props} />
 </BaseIndex>
